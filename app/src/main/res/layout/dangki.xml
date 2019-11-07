@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:layout_marginRight="5dp"
+    android:layout_marginLeft="5dp"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Đăng Kí"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:textSize="50dp"
+        android:gravity="center"
+
+        />
+        <EditText
+        android:id="@+id/dangki_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:hint="User"
+        />
+    <EditText
+        android:id="@+id/dangki_Pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:hint="Pass"
+        />
+    <EditText
+        android:id="@+id/dangki_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:hint="Email"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+        <EditText
+            android:id="@+id/dangki_Ho"
+            android:layout_marginRight="50dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:hint="Họ"
+            />
+        <EditText
+            android:id="@+id/dangki_Ten"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:hint="Tên"
+            />
+    </LinearLayout>
+    <EditText
+        android:id="@+id/dangki_SDT"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:hint="SĐT"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+
+        >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonDangKi_dangki"
+            android:text="Đăng kí"
+            android:layout_marginRight="50dp"
+            android:textColor="#ffffff"
+
+
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonDangKi_huy"
+            android:text="Hủy"
+            android:textColor="#ffffff"
+
+
+            />
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
