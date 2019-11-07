@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -82,6 +84,32 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
                 dialog.show();
+            }
+        });
+        buttonDangNhap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(editUser.getText().length()!=0 && editPass.getText().length()!=0)
+                {
+                    if(editUser.getText().toString().equals(User) && editPass.getText().toString().equals(Pass))
+                    {
+                        Toast.makeText(MainActivity.this,"Bạn đã đăng nhập thành công",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this,Main2Activity.class);
+                        startActivity(intent);
+
+                    }else
+                        if(editUser.getText().toString().equals("admin") && editPass.getText().toString().equals("admin"))
+                        {
+                            Toast.makeText(MainActivity.this,"Bạn đã đăng nhập thành công",Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(MainActivity.this,Main2Activity.class);
+                        }else
+                            Toast.makeText(MainActivity.this,"Bạn đã đăng nhập thất bại",Toast.LENGTH_SHORT).show();
+
+                }else
+                {
+                    Toast.makeText(MainActivity.this,"mời các bạn nhập đủ thông tin",Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
     }
