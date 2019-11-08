@@ -10,10 +10,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Đăng Kí"
+        android:text="@string/dangky_title"
         android:textStyle="bold"
         android:textColor="#000000"
-        android:textSize="50dp"
+        android:textSize="50sp"
         android:gravity="center"
 
         />
@@ -22,21 +22,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:hint="User"
+        android:hint="@string/dangky_username"
+        android:inputType="text"
         />
     <EditText
         android:id="@+id/dangki_Pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:hint="Pass"
+        android:hint="@string/dangky_password"
+        android:inputType="text"
         />
     <EditText
         android:id="@+id/dangki_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:hint="Email"
+        android:hint="@string/dangky_email"
+        android:inputType="text"
         />
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,14 +53,16 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:hint="Họ"
+            android:hint="@string/dangky_lastname"
+            android:inputType="text"
             />
         <EditText
             android:id="@+id/dangki_Ten"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:hint="Tên"
+            android:hint="@string/dangky_firstname"
+            android:inputType="text"
             />
     </LinearLayout>
     <EditText
@@ -66,39 +71,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:hint="SĐT"
+        android:hint="@string/dangky_phoneNumber"
+        android:inputType="phone"
         />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center"
-
-        >
+        android:gravity="center">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/buttonDangKi_dangki"
-            android:text="Đăng kí"
+            android:text="@string/dangky_signinButton"
             android:layout_marginRight="50dp"
             android:textColor="#ffffff"
-
-
             />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/buttonDangKi_huy"
-            android:text="Hủy"
+            android:text="@string/dangky_cancelButton"
             android:textColor="#ffffff"
-
-
             />
 
     </LinearLayout>
-
-
 
 
 </LinearLayout>
