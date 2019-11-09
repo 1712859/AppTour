@@ -16,4 +16,13 @@
     <string name="dangky_phoneNumber">SĐT</string>
     <string name="dangky_signinButton">Đăng ký</string>
     <string name="dangky_cancelButton">Hủy</string>
+
+    <string name="tourItem_hint_title">Tên tour</string>
+    <string name="tourItem_hint_price">Giá: </string>
+    <string name="tourItem_hint_priceMin">0đ</string>
+    <string name="tourItem_hint_priceMax">0đ</string>
+    <string name="tourItem_hint_time">Thời gian: </string>
+    <string name="tourItem_hint_timeMin">1/1/2019</string>
+    <string name="tourItem_hint_timeMax">1/1/2019</string>
+    <string name="tourItem_separator">~</string>
 </resources>
