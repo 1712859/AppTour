@@ -52,14 +52,14 @@
         android:layout_height="wrap_content"
         android:layout_width="120dp"
         android:text="@string/main_loginButton"
-        android:textColor="#ffffff"
+        android:textColor="@color/textwhite"
         android:id="@+id/buttonDangNhap"/>
 
     <Button
         android:layout_height="wrap_content"
         android:layout_width="120dp"
         android:text="@string/main_signinButton"
-        android:textColor="#ffffff"
+        android:textColor="@color/textwhite"
         android:id="@+id/buttonDangKi"/>
 
 </LinearLayout>
@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:text="@string/main_escapeButton"
-        android:textColor="#ffffff"
+        android:textColor="@color/textwhite"
         android:id="@+id/buttonThoat"
         android:layout_marginTop="200dp"/>
 

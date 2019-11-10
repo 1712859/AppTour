@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="@string/dangky_title"
         android:textStyle="bold"
-        android:textColor="#000000"
+        android:textColor="@color/textblack"
         android:textSize="50sp"
         android:gravity="center"
 
@@ -86,14 +86,14 @@
             android:id="@+id/buttonDangKi_dangki"
             android:text="@string/dangky_signinButton"
             android:layout_marginRight="50dp"
-            android:textColor="#ffffff"
+            android:textColor="@color/textwhite"
             />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/buttonDangKi_huy"
             android:text="@string/dangky_cancelButton"
-            android:textColor="#ffffff"
+            android:textColor="@color/textwhite"
             />
 
     </LinearLayout>
