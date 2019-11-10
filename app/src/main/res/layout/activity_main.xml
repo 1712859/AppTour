@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="@string/main_title"
-        android:textColor="#000000"
+        android:textColor="@color/textbalck"
         android:textStyle="bold"
         android:textSize="50sp"
 

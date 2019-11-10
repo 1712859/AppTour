@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="@string/dangky_title"
         android:textStyle="bold"
-        android:textColor="@color/textblack"
+        android:textColor="@color/textbalck"
         android:textSize="50sp"
         android:gravity="center"
 

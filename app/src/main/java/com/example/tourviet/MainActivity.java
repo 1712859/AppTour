@@ -70,13 +70,14 @@ public class MainActivity extends AppCompatActivity {
                         SDT =  editSDTdk.getText().toString().trim();
                         Ho =  editHodk.getText().toString().trim();
                         Ten =  editTendk.getText().toString().trim();
-                    if(editUserdk.getText().length()!=0 && editPassdk.getText().length()!=0 && editEmaildk.getText().length()!=0 && editSDTdk.getText().length() != 0 && editHodk.getText().length() != 0 && editTendk.getText().length() != 0 ) {
-                        editUser.setText(User);
-                        editPass.setText(Pass);
-                        dialog.cancel();
-                    }
-                    else
-                        Toast.makeText(MainActivity.this,"mời các bạn nhập đủ thông tin",Toast.LENGTH_SHORT).show();
+                if(editUserdk.getText().length()!=0 &&editPassdk.getText().length()!=0 && editEmaildk.getText().length()!=0 && editSDTdk.getText().length()!=0  && editHodk.getText().length()!=0 && editTendk.getText().length()!=0) {
+                    editUser.setText(User);
+                    editPass.setText(Pass);
+                    dialog.cancel();
+                }
+                else
+                    Toast.makeText(MainActivity.this,"mời các bạn nhập đủ thông tin",Toast.LENGTH_SHORT).show();
+
                     }
                 });
                 buttonHuy.setOnClickListener(new View.OnClickListener() {
