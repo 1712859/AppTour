@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText editUser,editPass;
     Button buttonDangKi,buttonDangNhap,buttonThoat;
-    String User,Pass,Email,SDT,Ho,Ten;
+    String Pass,Email,SDT,Ho_Ten,Address,Date,Gender;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,31 +53,28 @@ public class MainActivity extends AppCompatActivity {
                 final Dialog dialog = new Dialog(MainActivity.this);
                 dialog.setCancelable(false);
                 dialog.setContentView(R.layout.dangki);
-                final EditText editUserdk = (EditText)dialog.findViewById(R.id.dangki_user);
+                final EditText editAddressdk = (EditText)dialog.findViewById(R.id.dangki_user);
                 final EditText editPassdk = (EditText)dialog.findViewById(R.id.dangki_Pass);
                 final EditText editEmaildk = (EditText)dialog.findViewById(R.id.dangki_email);
-                final EditText editHodk = (EditText)dialog.findViewById(R.id.dangki_Ho);
+                final EditText editHo_tendk = (EditText)dialog.findViewById(R.id.dangki_Ho_Ten);
                 final EditText editSDTdk = (EditText)dialog.findViewById(R.id.dangki_SDT);
-                final EditText editTendk = (EditText)dialog.findViewById(R.id.dangki_Ten);
+                final EditText editDatedk = (EditText)dialog.findViewById(R.id.dangki_Date) ;
                 Button buttonDangKi = (Button)dialog.findViewById(R.id.buttonDangKi_dangki);
                 Button buttonHuy = (Button)dialog.findViewById(R.id.buttonDangKi_huy);
                 buttonDangKi.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        User =  editUserdk.getText().toString().trim();
+                        Address =  editAddressdk.getText().toString().trim();
                         Pass =  editPassdk.getText().toString().trim();
                         Email =  editEmaildk.getText().toString().trim();
                         SDT =  editSDTdk.getText().toString().trim();
-                        Ho =  editHodk.getText().toString().trim();
-                        Ten =  editTendk.getText().toString().trim();
-                if(editUserdk.getText().length()!=0 &&editPassdk.getText().length()!=0 && editEmaildk.getText().length()!=0 && editSDTdk.getText().length()!=0  && editHodk.getText().length()!=0 && editTendk.getText().length()!=0) {
-                    editUser.setText(User);
-                    editPass.setText(Pass);
-                    dialog.cancel();
-                }
-                else
-                    Toast.makeText(MainActivity.this,"mời các bạn nhập đủ thông tin",Toast.LENGTH_SHORT).show();
+                        Ho_Ten =  editHo_tendk.getText().toString().trim();
+                        Date = editDatedk.getText().toString().trim();
 
+
+                        editUser.setText(Email);
+                        editPass.setText(Pass);
+                        dialog.cancel();
                     }
                 });
                 buttonHuy.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(editUser.getText().length()!=0 && editPass.getText().length()!=0)
                 {
-                    if(editUser.getText().toString().equals(User) && editPass.getText().toString().equals(Pass))
+                    if(editUser.getText().toString().equals(Email) && editPass.getText().toString().equals(Pass))
                     {
                         Toast.makeText(MainActivity.this,"Bạn đã đăng nhập thành công",Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(MainActivity.this,Main2Activity.class);
@@ -107,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this,"Bạn đã đăng nhập thành công",Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(MainActivity.this,Main2Activity.class);
                             startActivity(intent);
+
                         }else
                             Toast.makeText(MainActivity.this,"Bạn đã đăng nhập thất bại",Toast.LENGTH_SHORT).show();
 

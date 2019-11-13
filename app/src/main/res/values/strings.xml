@@ -1,17 +1,18 @@
 <resources>
     <string name="app_name">TourViet</string>
-    <string name="main_title">Đăng Nhập</string>
-    <string name="main_usernameHint">Nhập username</string>
+
+    <string name="main_usernameHint">Nhập email or SĐT</string>
     <string name="main_passwordHint">Nhập password</string>
     <string name="main_loginButton">đăng nhập</string>
     <string name="main_signinButton">Đăng ký</string>
     <string name="main_escapeButton">Thoát</string>
 
-    <string name="dangky_title">Đăng ký</string>
-    <string name="dangky_username">Username</string>
+
+    <string name="dangky_Date">Date (yyyy-mm-dd)</string>
+    <string name="dangky_address">Address</string>
     <string name="dangky_password">Password</string>
     <string name="dangky_email">Email</string>
-    <string name="dangky_lastname">Họ</string>
+    <string name="dangky_fullname">Họ và Tên</string>
     <string name="dangky_firstname">Tên</string>
     <string name="dangky_phoneNumber">SĐT</string>
     <string name="dangky_signinButton">Đăng ký</string>
@@ -25,4 +26,5 @@
     <string name="tourItem_hint_timeMin">1/1/2019</string>
     <string name="tourItem_hint_timeMax">1/1/2019</string>
     <string name="tourItem_separator">~</string>
+    <string name="title_activity_main3">Main3Activity</string>
 </resources>
