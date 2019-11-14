@@ -7,13 +7,14 @@
 
     <ImageView
         android:id="@+id/tourItem_avatar"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars[0]" />
@@ -22,12 +23,12 @@
         android:id="@+id/tourItem_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:hint="@string/tourItem_hint_title"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tourItem_avatar"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tourItem_avatar" />
 
     <TextView
         android:id="@+id/tourItem_price"
@@ -37,7 +38,8 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
         android:hint="@string/tourItem_hint_price"
-        app:layout_constraintStart_toEndOf="@+id/tourItem_avatar"
+        app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toBottomOf="@+id/tourItem_title" />
 
     <TextView
@@ -48,7 +50,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
         android:hint="@string/tourItem_hint_time"
-        app:layout_constraintStart_toEndOf="@+id/tourItem_avatar"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tourItem_price" />
 
     <TextView

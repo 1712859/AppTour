@@ -1,75 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-    <LinearLayout tools:context=".MainActivity"
-    android:gravity="center"
-    android:layout_marginRight="5dp"
-    android:layout_marginLeft="5dp"
-    android:orientation="vertical"
-    android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="match_parent"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/logo"
-        android:layout_marginBottom="10dp"
 
         />
 
 
     <EditText
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
         android:id="@+id/edittextuser"
-        android:hint="@string/main_usernameHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:maxLines="1"
-        />
+        android:hint="@string/main_usernameHint"
+        android:maxLines="1" />
 
 
     <EditText
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
         android:id="@+id/edittextpass"
-        android:hint="@string/main_passwordHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:maxLines="1"
-        android:inputType="textPassword"/>
+        android:hint="@string/main_passwordHint"
+        android:inputType="textPassword"
+        android:maxLines="1" />
 
 
     <LinearLayout
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content"
+        android:id="@+id/DN_DK"
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp">
-
-    <Button android:layout_marginRight="40dp"
         android:layout_height="wrap_content"
-        android:layout_width="120dp"
-        android:text="@string/main_loginButton"
-        android:textColor="@color/textwhile"
-        android:id="@+id/buttonDangNhap"/>
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-    <Button
-        android:layout_height="wrap_content"
-        android:layout_width="120dp"
-        android:text="@string/main_signinButton"
-        android:textColor="@color/textwhile"
-        android:id="@+id/buttonDangKi"/>
+        <Button
+            android:id="@+id/buttonDangNhap"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="40dp"
+            android:text="@string/main_loginButton"
+            android:textColor="@color/textwhile" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/buttonDangKi"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/main_signinButton"
+            android:textColor="@color/textwhile" />
 
-    <Button android:gravity="center"
-        android:layout_height="wrap_content"
+    </LinearLayout>
+    <TextView
         android:layout_width="wrap_content"
-        android:text="@string/main_escapeButton"
-        android:textColor="@color/textwhile"
-        android:id="@+id/buttonThoat"
-        android:layout_marginTop="200dp"/>
+        android:layout_height="wrap_content"
+        android:text="@string/main_DangNhapKhac"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="left"
+        android:maxLines="1"
+        />
+    <LinearLayout
+        android:id="@+id/DN_DK_GG_FB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="left"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonDangNhapGG"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="40dp"
+            android:textSize="17dp"
+            android:text="@string/main_loginGGButton"
+            android:textColor="@color/textGG"
+            android:background="@color/ButtonGG_FB"
+            android:drawableLeft="@drawable/icongg"
+
+            />
+
+        <Button
+            android:id="@+id/buttonDangNhapFB"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/main_loginFBButton"
+            android:textColor="@color/textFB"
+            android:background="@color/ButtonGG_FB"
+            android:drawableLeft="@drawable/iconfb"
+
+            />
+
+    </LinearLayout>
 
 </LinearLayout>

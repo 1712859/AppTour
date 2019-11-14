@@ -3,5 +3,8 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="textwhile">#ffffff</color>
+    <color name="ButtonGG_FB">#00FFFFFF</color>
+    <color name="textwhile">#FFFFFF</color>
+    <color name="textGG">#FF3D00</color>
+    <color name="textFB">#3D5AFE</color>
 </resources>
