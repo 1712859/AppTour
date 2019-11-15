@@ -25,4 +25,5 @@
     <string name="tourItem_hint_timeMin">1/1/2019</string>
     <string name="tourItem_hint_timeMax">1/1/2019</string>
     <string name="tourItem_separator">~</string>
+    <string name="tourItem_avatarDescription">Ảnh đại điện chuyến đi</string>
 </resources>
