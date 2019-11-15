@@ -1,38 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="350dp"
     android:layout_height="match_parent"
     android:gravity="center"
     android:layout_marginRight="5dp"
     android:layout_marginLeft="5dp"
     >
-
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/dangky_title"
-        android:textStyle="bold"
-        android:textColor="@color/textbalck"
-        android:textSize="50sp"
-        android:gravity="center"
-
-        />
-        <EditText
-        android:id="@+id/dangki_user"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:hint="@string/dangky_username"
-        android:inputType="text"
-        />
-    <EditText
-        android:id="@+id/dangki_Pass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:hint="@string/dangky_password"
-        android:inputType="text"
-        />
+        android:src="@drawable/logo"
+    />
     <EditText
         android:id="@+id/dangki_email"
         android:layout_width="match_parent"
@@ -41,44 +20,62 @@
         android:hint="@string/dangky_email"
         android:inputType="text"
         />
-    <LinearLayout
+
+    <EditText
+        android:id="@+id/dangki_Pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        >
-        <EditText
-            android:id="@+id/dangki_Ho"
-            android:layout_marginRight="50dp"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:hint="@string/dangky_lastname"
-            android:inputType="text"
-            />
-        <EditText
-            android:id="@+id/dangki_Ten"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:hint="@string/dangky_firstname"
-            android:inputType="text"
-            />
-    </LinearLayout>
+        android:maxLines="1"
+        android:hint="@string/dangky_password"
+        android:inputType="text"
+        />
+
+    <EditText
+        android:id="@+id/dangki_Ho_Ten"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/dangky_fullname"
+        android:inputType="text"
+        android:maxLines="1" />
+
+    <EditText
+        android:id="@+id/dangki_Address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/dangky_address"
+        android:inputType="text"
+        android:maxLines="1" />
+
     <EditText
         android:id="@+id/dangki_SDT"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
         android:hint="@string/dangky_phoneNumber"
         android:inputType="phone"
         />
+    <EditText
+        android:id="@+id/dangki_Date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/dangky_Date"
+        android:inputType="text"
+        android:maxLines="1"
+        />
+    <EditText
+        android:id="@+id/dangki_Phai"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/dangky_Phai"
+        android:inputType="text"
+        android:maxLines="1"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginBottom="20dp">
 
         <Button
             android:layout_width="wrap_content"
@@ -86,14 +83,14 @@
             android:id="@+id/buttonDangKi_dangki"
             android:text="@string/dangky_signinButton"
             android:layout_marginRight="50dp"
-            android:textColor="@color/textwhite"
+            android:textColor="@color/textwhile"
             />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/buttonDangKi_huy"
             android:text="@string/dangky_cancelButton"
-            android:textColor="@color/textwhite"
+            android:textColor="@color/textwhile"
             />
 
     </LinearLayout>
