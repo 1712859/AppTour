@@ -1,4 +1,4 @@
-package com.example.tourviet.api;
+package com.example.tourviet;
 
 public class User {
 
