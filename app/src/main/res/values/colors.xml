@@ -3,8 +3,18 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
     <color name="ButtonGG_FB">#00FFFFFF</color>
-    <color name="textwhile">#FFFFFF</color>
-    <color name="textGG">#FF3D00</color>
-    <color name="textFB">#3D5AFE</color>
+    <color name="ButtonDN_DK">#FFFFFF</color>
+    <color name="Buttontext">#007BA4</color>
+    <color name="Buttonsstroke">#71DFE2</color>
+
+    <color name="textwhile">#02849B</color>
+    <color name="textGG">#FFC909</color>
+    <color name="textFB">#227BC4</color>
+    <color name="edittextlogin">#032689</color>
+
+    <color name="backgroundApp">#47B5BE</color>
+
+    <color name="colorItemlist">#D1D1D1</color>
 </resources>

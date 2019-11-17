@@ -5,68 +5,92 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/backgroundApp"
     tools:context=".Main1Activity">
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:src="@drawable/logo"
         />
     <EditText
         android:id="@+id/dangki_email"
-        android:layout_width="match_parent"
+        android:layout_marginTop="8dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:maxLines="1"
         android:hint="@string/dangky_email"
+        android:textColorHint="@color/edittextlogin"
+        android:background="@drawable/button_login"
         android:inputType="text"
+
         />
 
     <EditText
         android:id="@+id/dangki_Pass"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
+        android:layout_marginTop="8dp"
         android:layout_height="wrap_content"
         android:maxLines="1"
+        android:textColorHint="@color/edittextlogin"
+        android:background="@drawable/button_login"
         android:hint="@string/dangky_password"
         android:inputType="text"
         />
 
     <EditText
         android:id="@+id/dangki_Ho_Ten"
-        android:layout_width="match_parent"
+        android:layout_marginTop="8dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="@string/dangky_fullname"
+        android:textColorHint="@color/edittextlogin"
+        android:background="@drawable/button_login"
         android:inputType="text"
         android:maxLines="1" />
 
     <EditText
         android:id="@+id/dangki_Address"
-        android:layout_width="match_parent"
+        android:layout_marginTop="8dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="@string/dangky_address"
+        android:textColorHint="@color/edittextlogin"
+        android:background="@drawable/button_login"
         android:inputType="text"
         android:maxLines="1" />
 
     <EditText
         android:id="@+id/dangki_SDT"
-        android:layout_width="match_parent"
+        android:layout_marginTop="8dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:maxLines="1"
         android:hint="@string/dangky_phoneNumber"
+        android:textColorHint="@color/edittextlogin"
+        android:background="@drawable/button_login"
         android:inputType="phone"
         />
     <EditText
         android:id="@+id/dangki_Date"
-        android:layout_width="match_parent"
+        android:layout_marginTop="8dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="@string/dangky_Date"
+        android:textColorHint="@color/edittextlogin"
+        android:background="@drawable/button_login"
         android:inputType="text"
         android:maxLines="1"
         />
     <EditText
         android:id="@+id/dangki_Phai"
-        android:layout_width="match_parent"
+        android:layout_marginTop="8dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="@string/dangky_Phai"
-        android:inputType="text"
+        android:textColorHint="@color/edittextlogin"
+        android:background="@drawable/button_login"
+        android:inputType="number"
         android:maxLines="1"
         />
     <LinearLayout
@@ -74,6 +98,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp">
 
         <Button
@@ -82,6 +107,7 @@
             android:id="@+id/buttonDangKi_dangki"
             android:text="@string/dangky_signinButton"
             android:layout_marginRight="50dp"
+            android:background="@drawable/button_stye"
             android:textColor="@color/textwhile"
             />
         <Button
@@ -89,6 +115,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/buttonDangKi_huy"
             android:text="@string/dangky_cancelButton"
+            android:background="@drawable/button_stye"
             android:textColor="@color/textwhile"
             />
 

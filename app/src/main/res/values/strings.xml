@@ -10,7 +10,7 @@
     <string name="main_loginFBButton">Facebook</string>
     <string name="main_DangNhapKhac">Hoặc đăng nhập với ----------------------------------------------------</string>
 
-    <string name="dangky_Phai">Phái</string>
+    <string name="dangky_Phai">Phái ( Nam: 1 or Nữ: 0)</string>
     <string name="dangky_Date">Date (yyyy-mm-dd)</string>
     <string name="dangky_address">Address</string>
     <string name="dangky_password">Password</string>
