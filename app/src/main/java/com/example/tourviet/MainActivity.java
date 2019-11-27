@@ -1,5 +1,7 @@
 package com.example.tourviet;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.tourviet.FacebookLogin;
+import com.example.tourviet.userClient;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,8 +9,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.content.Context;
+import com.example.tourviet.MainActivity;
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 
 
+import java.lang.reflect.AccessibleObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,7 +34,9 @@ public class MainActivity extends AppCompatActivity {
 
     EditText editUser,editPass;
     Button buttonDangKi,buttonDangNhap;
-    String token;
+    String token,tokenA;
+    LoginButton facebookbutton;
+    CallbackManager callbackManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +44,14 @@ public class MainActivity extends AppCompatActivity {
         Anhxa();
         controlButton();
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+
     private void controlButton() {
 
         buttonDangKi.setOnClickListener(new View.OnClickListener() {
@@ -37,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        buttonDangNhap.setOnClickListener(new View.OnClickListener() {
+        buttonDangNhap.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view) {
                 if(editUser.getText().length()!=0 && editPass.getText().length()!=0)
@@ -46,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                             editUser.getText().toString().trim(),
                             editPass.getText().toString().trim()
                     );
-                    sendNetworkRequestLogin(loginClient);
+
 
 
                     if(editUser.getText().toString().equals("admin") && editPass.getText().toString().equals("admin"))
@@ -88,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
                             // trả biến Authorization
                             token =response.body().getToken();
                             Toast.makeText(MainActivity.this, "Đăng nhập thành công. xin chào "+response.body().getUserId(), Toast.LENGTH_LONG).show();
+
                             //mở Acctivity mới - truyền token qua Main2Activity
                             Intent intent = new Intent(MainActivity.this,Main2Activity.class);
                             Bundle bundle = new Bundle();
@@ -105,6 +131,72 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+        callbackManager = CallbackManager.Factory.create();
+        facebookbutton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+
+
+                if(AccessToken.getCurrentAccessToken()==null)
+                {
+                    Toast.makeText(MainActivity.this, "đăng nhập fb không thành công", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                else
+                {
+                    AccessToken accessToken = AccessToken.getCurrentAccessToken();
+                }
+                FacebookLogin facebookLogin = new FacebookLogin(
+                        AccessToken.getCurrentAccessToken().toString().trim()
+                );
+                Toast.makeText(MainActivity.this, "đăng nhập fb thành công", Toast.LENGTH_LONG).show();
+                sendNetworkRequestLoginFB(facebookLogin);
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                Toast.makeText(MainActivity.this, "đăng nhập fb không thành công", Toast.LENGTH_LONG).show();
+            }
+            private void sendNetworkRequestLoginFB(FacebookLogin facebookLogin)
+            {
+                Retrofit builder= new Retrofit.Builder()
+                        .baseUrl("http://35.197.153.192:3000")
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+                userClient client =builder.create((userClient.class));
+                Call<FacebookLogin> call = client.LoginFacebook(facebookLogin);
+                call.enqueue(new Callback<FacebookLogin>() {
+                    @Override
+                    public void onResponse(Call<FacebookLogin> call, Response<FacebookLogin> response) {
+                        if (!response.isSuccessful()) {
+                            Toast.makeText(MainActivity.this, "lỗi ko gửi yêu cầu qua sever được", Toast.LENGTH_LONG).show();
+                            return;
+                        }else
+                        {
+                            tokenA = response.body().getTokenA();
+                            Toast.makeText(MainActivity.this, "Đăng nhập thành công. xin chào " + response.body().getFullName(), Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putString("Key_1", token);
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<FacebookLogin> call, Throwable t) {
+
+                    }
+                });
+
+            }
+        });
 
         //        button đăng nhập bằng google và facebook
         //        ..........
@@ -115,6 +207,8 @@ public class MainActivity extends AppCompatActivity {
         editPass = (EditText)findViewById(R.id.edittextpass);
         buttonDangKi = (Button)findViewById((R.id.buttonDangKi));
         buttonDangNhap = (Button)findViewById(R.id.buttonDangNhap);
+        facebookbutton = (LoginButton) findViewById(R.id.buttonDangNhapFB);
+
 //        button đăng nhập bằng google và facebook
 //         .........................
 

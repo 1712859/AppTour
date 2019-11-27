@@ -7,14 +7,17 @@
     <color name="ButtonGG_FB">#00FFFFFF</color>
     <color name="ButtonDN_DK">#FFFFFF</color>
     <color name="Buttontext">#007BA4</color>
-    <color name="Buttonsstroke">#71DFE2</color>
+    <color name="Buttonsstroke">#9071DFE2</color>
 
-    <color name="textwhile">#02849B</color>
+    <color name="textwhile">#ffffff</color>
+    <color name="textBlu">#02849B</color>
     <color name="textGG">#FFC909</color>
     <color name="textFB">#227BC4</color>
     <color name="edittextlogin">#032689</color>
 
-    <color name="backgroundApp">#47B5BE</color>
+    <color name="backgrounddangnhap">#47B5BE</color>
+    <color name="backgrounđangki">#007BA4</color>
 
     <color name="colorItemlist">#D1D1D1</color>
+    <color name="black">#000000</color>
 </resources>

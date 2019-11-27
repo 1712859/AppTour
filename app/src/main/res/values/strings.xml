@@ -1,25 +1,24 @@
 <resources>
     <string name="app_name">TourViet</string>
 
-    <string name="main_usernameHint">Nhập email or SĐT</string>
-    <string name="main_passwordHint">Nhập password</string>
-    <string name="main_loginButton">đăng nhập</string>
-    <string name="main_signinButton">Đăng ký</string>
+    <string name="main_usernameHint">Email or PhoneNumber</string>
+    <string name="main_passwordHint">Password</string>
+    <string name="main_loginButton">Login</string>
+    <string name="main_signinButton">Create Account</string>
 
     <string name="main_loginGGButton">Google</string>
     <string name="main_loginFBButton">Facebook</string>
-    <string name="main_DangNhapKhac">Hoặc đăng nhập với ----------------------------------------------------</string>
+    <string name="main_DangNhapKhac">Or Login With ----------------------------------------------------</string>
 
-    <string name="dangky_Phai">Phái ( Nam: 1 or Nữ: 0)</string>
+    <string name="dangky_Phai">female: 0 or male: 1</string>
     <string name="dangky_Date">Date (yyyy-mm-dd)</string>
     <string name="dangky_address">Address</string>
     <string name="dangky_password">Password</string>
     <string name="dangky_email">Email</string>
-    <string name="dangky_fullname">Họ và Tên</string>
-    <string name="dangky_firstname">Tên</string>
-    <string name="dangky_phoneNumber">SĐT</string>
-    <string name="dangky_signinButton">Đăng ký</string>
-    <string name="dangky_cancelButton">Hủy</string>
+    <string name="dangky_fullname">Full name</string>
+    <string name="dangky_phoneNumber">PhoneNumber</string>
+    <string name="dangky_signinButton">Create Account</string>
+    <string name="dangky_cancelButton">Quit</string>
 
     <string name="tourItem_hint_title">Tên tour</string>
     <string name="tourItem_hint_price">Giá: </string>
@@ -32,4 +31,8 @@
     <string name="tourItem_avatarDescription">Ảnh đại điện chuyến đi</string>
 
     <string name="title_activity_main3">Main3Activity</string>
+
+    <string name="facebook_app_id">737774043369479</string>
+    <string name="fb_login_protocol_scheme">fb737774043369479</string>
+
 </resources>

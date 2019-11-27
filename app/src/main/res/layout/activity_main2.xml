@@ -4,14 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main2Activity">
+    android:orientation="horizontal"
+    tools:context=".Main2Activity"
+    >
+
+    <LinearLayout
+        android:id="@+id/nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        android:gravity="center"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/backge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:background="#00ffffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:drawableLeft="@drawable/back"
+            android:paddingRight="15dp"
+
+
+            />
+
+        <Button
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00ffffff"
+            android:paddingRight="15dp"
+            android:layout_gravity="right"
+            />
+        <Button
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00ffffff"
+            android:paddingRight="15dp"
+            android:layout_gravity="right"
+            />
+
+        <Button
+            android:id="@+id/addtour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:background="#00ffffff"
+            android:drawableRight="@drawable/add"
+            />
+    </LinearLayout>
+
 
     <ListView
         android:id="@+id/main2_tourListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="51dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/nav"
+        app:layout_constraintVertical_bias="0.0"
+
+        />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
