@@ -19,7 +19,7 @@ public class FacebookLogin {
         return fullName;
     }
 
-    public String getTokenA() {
+    public String getToken() {
         return token;
     }
 }

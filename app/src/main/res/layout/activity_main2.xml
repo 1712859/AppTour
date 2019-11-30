@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     tools:context=".Main2Activity"
+    android:background="#20000000"
     >
 
     <LinearLayout
@@ -65,10 +66,10 @@
         android:layout_marginTop="51dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nav"
-        app:layout_constraintVertical_bias="0.0"
+        android:background="#20000000"
+
 
         />
 

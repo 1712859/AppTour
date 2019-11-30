@@ -3,7 +3,7 @@
 
     <string name="main_usernameHint">Email or PhoneNumber</string>
     <string name="main_passwordHint">Password</string>
-    <string name="main_loginButton">Login</string>
+    <string name="main_loginButton">login</string>
     <string name="main_signinButton">Create Account</string>
 
     <string name="main_loginGGButton">Google</string>
@@ -22,17 +22,28 @@
 
     <string name="tourItem_hint_title">Tên tour</string>
     <string name="tourItem_hint_price">Giá: </string>
-    <string name="tourItem_hint_priceMin">0đ</string>
-    <string name="tourItem_hint_priceMax">0đ</string>
+    <string name="tourItem_hint_priceMin">100.000</string>
+    <string name="tourItem_hint_priceMax">200.000</string>
     <string name="tourItem_hint_time">Thời gian: </string>
     <string name="tourItem_hint_timeMin">1/1/2019</string>
     <string name="tourItem_hint_timeMax">1/1/2019</string>
     <string name="tourItem_separator">~</string>
     <string name="tourItem_avatarDescription">Ảnh đại điện chuyến đi</string>
+    <string name="tourItem_money">Đ</string>
 
     <string name="title_activity_main3">Main3Activity</string>
 
     <string name="facebook_app_id">737774043369479</string>
     <string name="fb_login_protocol_scheme">fb737774043369479</string>
+
+    <string name="CreatTourTitle">Creat Tour</string>
+    <string name="TourName">Tour Name</string>
+    <string name="DateStart">Date Start</string>
+    <string name="DateEnd">Date End</string>
+    <string name="adults">Adults</string>
+    <string name="childs">Childs</string>
+    <string name="Maxcost">Max Cost</string>
+    <string name="Mincos">Min Cost</string>
+    <string name="imagetour">Link Image Tour</string>
 
 </resources>

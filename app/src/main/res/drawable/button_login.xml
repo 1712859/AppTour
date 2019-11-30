@@ -6,6 +6,6 @@ android:shape="rectangle">
     android:width="5dp"/>
 <padding android:bottom="8dp"
     android:top="8dp"
-    android:left="12dp"
+    android:left="8dp"
     android:right="8dp"/>
 </shape>

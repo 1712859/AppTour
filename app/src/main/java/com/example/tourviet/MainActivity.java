@@ -139,18 +139,20 @@ public class MainActivity extends AppCompatActivity {
 
                 if(AccessToken.getCurrentAccessToken()==null)
                 {
-                    Toast.makeText(MainActivity.this, "đăng nhập fb không thành công", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Không lấy được thông tin đăng nhập", Toast.LENGTH_LONG).show();
                     return;
                 }
                 else
                 {
-                    AccessToken accessToken = AccessToken.getCurrentAccessToken();
+
+                    FacebookLogin facebookLogin = new FacebookLogin(
+                            loginResult.getAccessToken()
+                                    .getToken()
+                    );
+                    Toast.makeText(MainActivity.this, "đăng nhập fb thành công", Toast.LENGTH_LONG).show();
+                    sendNetworkRequestLoginFB(facebookLogin);
                 }
-                FacebookLogin facebookLogin = new FacebookLogin(
-                        AccessToken.getCurrentAccessToken().toString().trim()
-                );
-                Toast.makeText(MainActivity.this, "đăng nhập fb thành công", Toast.LENGTH_LONG).show();
-                sendNetworkRequestLoginFB(facebookLogin);
+
             }
 
             @Override
@@ -161,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onError(FacebookException error) {
                 Toast.makeText(MainActivity.this, "đăng nhập fb không thành công", Toast.LENGTH_LONG).show();
+
             }
             private void sendNetworkRequestLoginFB(FacebookLogin facebookLogin)
             {
@@ -179,11 +182,11 @@ public class MainActivity extends AppCompatActivity {
                             return;
                         }else
                         {
-                            tokenA = response.body().getTokenA();
+                            tokenA = response.body().getToken();
                             Toast.makeText(MainActivity.this, "Đăng nhập thành công. xin chào " + response.body().getFullName(), Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(MainActivity.this, Main2Activity.class);
                             Bundle bundle = new Bundle();
-                            bundle.putString("Key_1", token);
+                            bundle.putString("Key_1", tokenA);
                             intent.putExtras(bundle);
                             startActivity(intent);
                         }

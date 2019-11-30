@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Ngày"
+        android:textColor="@color/red"
+        android:textSize="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/STT_StopPoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:text="1"
+        android:textColor="@color/red"
+        android:textSize="10dp"
+        app:layout_constraintStart_toEndOf="@+id/a"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:text="-"
+        android:textColor="@color/red"
+        android:textSize="10dp"
+        app:layout_constraintStart_toEndOf="@+id/STT_StopPoint"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/startday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:text="12/12/1999"
+        android:textColor="@color/red"
+        android:textSize="10dp"
+        app:layout_constraintStart_toEndOf="@+id/b"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/serviceType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:text="Hotel"
+        android:textColor="#000000"
+        android:textSize="15dp"
+
+        app:layout_constraintHorizontal_bias="0.902"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/a" />
+
+    <TextView
+        android:id="@+id/c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:text=":"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/serviceType"
+        app:layout_constraintTop_toBottomOf="@id/a" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:maxLines="1"
+        android:text="Hoa Hồng"
+        android:textColor="@color/black"
+
+        app:layout_constraintStart_toEndOf="@id/c"
+        app:layout_constraintTop_toBottomOf="@id/a" />
+
+    <TextView
+        android:id="@+id/d"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:text="Đ"
+        android:textColor="@color/black"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/serviceType" />
+
+    <TextView
+        android:id="@+id/text_maxcost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:text="1.000.000"
+        android:textColor="@color/black"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toStartOf="@id/d"
+        app:layout_constraintTop_toBottomOf="@id/serviceType" />
+
+    <TextView
+        android:id="@+id/e"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:text="-"
+        android:textColor="@color/black"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toStartOf="@id/text_maxcost"
+        app:layout_constraintTop_toBottomOf="@id/serviceType" />
+
+    <TextView
+        android:id="@+id/f"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:text="-"
+        android:textColor="@color/black"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toStartOf="@id/text_maxcost"
+        app:layout_constraintTop_toBottomOf="@id/serviceType" />
+
+    <TextView
+        android:id="@+id/g"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:text="Đ"
+        android:textColor="@color/black"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toStartOf="@id/f"
+        app:layout_constraintTop_toBottomOf="@id/serviceType" />
+
+    <TextView
+        android:id="@+id/text_mincost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:text="1.000.000"
+        android:textColor="@color/black"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toStartOf="@id/g"
+        app:layout_constraintTop_toBottomOf="@id/serviceType" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

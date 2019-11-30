@@ -10,6 +10,7 @@ import android.widget.Toast;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.facebook.login.LoginManager;
 import com.facebook.login.widget.LoginButton;
 import android.widget.AdapterView.OnItemClickListener;
 import java.util.ArrayList;
@@ -104,6 +105,8 @@ public class Main2Activity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Main2Activity.this,MainActivity.class);
                 startActivity(intent);
+                LoginManager.getInstance().logOut();
+
             }
         });
         creattour.setOnClickListener(new View.OnClickListener() {

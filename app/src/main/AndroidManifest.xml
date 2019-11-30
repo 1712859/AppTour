@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Main4Activity_Creat"></activity>
+        <activity android:name=".Main5Activity_stopPoint"></activity>
+        <activity android:name=".Main4Activity_Creat" />
         <activity android:name=".Main3Activity" />
         <activity android:name=".Main1Activity" />
         <activity android:name=".Main2Activity" />
