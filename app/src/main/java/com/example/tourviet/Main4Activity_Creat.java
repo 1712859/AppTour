@@ -16,7 +16,7 @@ import java.util.Calendar;
 public class Main4Activity_Creat extends AppCompatActivity {
     Button back,creat;
     EditText TourName, DateStart,DateEnd,Adults,Childs,MinCost,MaxCost,LinkImage;
-    String token;
+    String token, image_url;
     int Daystart,monthstart,yearstart;
     int Dayend,monthend,yearend;
     DatePickerDialog datePickerDialog;
@@ -30,6 +30,7 @@ public class Main4Activity_Creat extends AppCompatActivity {
         if (bundle != null) {
 
             token = bundle.getString("Key_1");
+            image_url = bundle.getString("Key_3");
         }
         Anhxa();
         ControlButton();
@@ -43,6 +44,8 @@ public class Main4Activity_Creat extends AppCompatActivity {
                 Bundle bundle1 = new Bundle();
                 bundle1.putString("Key_1", token);
                 intent.putExtras(bundle1);
+                bundle1.putString("Key_3", image_url);
+                intent.putExtras(bundle1);
                 startActivity(intent);
             }
         });
@@ -52,6 +55,8 @@ public class Main4Activity_Creat extends AppCompatActivity {
                 Intent intent = new Intent(Main4Activity_Creat.this,Main5Activity_stopPoint.class);
                 Bundle bundle1 = new Bundle();
                 bundle1.putString("Key_1", token);
+                intent.putExtras(bundle1);
+                bundle1.putString("Key_3", image_url);
                 intent.putExtras(bundle1);
                 startActivity(intent);
             }

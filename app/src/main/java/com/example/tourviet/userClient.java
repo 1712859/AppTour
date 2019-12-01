@@ -4,6 +4,8 @@ import com.facebook.login.LoginFragment;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface userClient {
@@ -18,4 +20,7 @@ public interface userClient {
 
    @POST("/tour/info")
    Call<TourInfo> tourInfor(@Body TourInfo tourInfo);
+
+   @GET("/user/info")
+   Call<User_infor> GetUserInfor(@Header("Authorization") String loginToken);
 }

@@ -9,54 +9,56 @@
     android:background="#20000000"
     >
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/nav"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:background="@color/colorPrimary"
         android:orientation="horizontal"
         android:gravity="center"
         tools:ignore="MissingConstraints">
 
+
         <Button
             android:id="@+id/backge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="31dp"
+            android:layout_height="35dp"
             android:layout_gravity="left"
+            android:layout_marginStart="16dp"
             android:background="#00ffffff"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:drawableLeft="@drawable/back"
             android:paddingRight="15dp"
-
-
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             />
 
-        <Button
 
+        <TextView
+            android:id="@+id/nameUer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#00ffffff"
-            android:paddingRight="15dp"
-            android:layout_gravity="right"
-            />
-        <Button
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#00ffffff"
-            android:paddingRight="15dp"
-            android:layout_gravity="right"
-            />
+            android:layout_marginLeft="10dp"
+            android:text="Anh Tú"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/backge"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/addtour"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="36dp"
+            android:layout_height="32dp"
             android:layout_gravity="left"
+            android:layout_marginEnd="16dp"
             android:background="#00ffffff"
             android:drawableRight="@drawable/add"
-            />
-    </LinearLayout>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <ListView

@@ -7,10 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 public class Main3Activity extends AppCompatActivity {
     Long ID;
-    String token;
+    String token,image_url;
     TextView Id;
     Button back;
     @Override
@@ -26,6 +25,7 @@ public class Main3Activity extends AppCompatActivity {
         if (bundle != null) {
             ID = bundle.getLong("Key_2");
             token = bundle.getString("Key_1");
+            image_url = bundle.getString("Key_3");
         }
 
         String s = String.valueOf(ID);
@@ -43,6 +43,8 @@ public class Main3Activity extends AppCompatActivity {
                 Intent intent = new Intent(Main3Activity.this,Main2Activity.class);
                 Bundle bundle1 = new Bundle();
                 bundle1.putString("Key_1", token);
+                intent.putExtras(bundle1);
+                bundle1.putString("Key_3", image_url);
                 intent.putExtras(bundle1);
                 startActivity(intent);
             }

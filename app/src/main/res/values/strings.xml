@@ -46,4 +46,17 @@
     <string name="Mincos">Min Cost</string>
     <string name="imagetour">Link Image Tour</string>
 
+
+    <string name="profile_email">Email:</string>
+    <string name="profile_sdt">PhoneNumber:</string>
+    <string name="profile_Phai">Gender:</string>
+    <string name="profile_date">Date:</string>
+    <string name="profile_address">Address:</string>
+    <string name="profile_email_value">Email is NULL</string>
+    <string name="profile_sdt_value">PhoneNumber is NULL</string>
+    <string name="profile_Phai_value">Gender is NULL</string>
+    <string name="profile_date_value">Date is NULL</string>
+    <string name="profile_address_value">Address is NULL</string>
+
+
 </resources>

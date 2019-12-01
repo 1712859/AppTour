@@ -17,10 +17,16 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.lang.reflect.AccessibleObject;
 
@@ -35,14 +41,17 @@ public class MainActivity extends AppCompatActivity {
     EditText editUser,editPass;
     Button buttonDangKi,buttonDangNhap;
     String token,tokenA;
+    String image_url;
     LoginButton facebookbutton;
     CallbackManager callbackManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        LoginManager.getInstance().logOut();
         Anhxa();
         controlButton();
+
     }
 
     @Override
@@ -144,12 +153,35 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else
                 {
+                    try {
+                        GraphRequest request = GraphRequest.newMeRequest(
+                                loginResult.getAccessToken(),
+                                new GraphRequest.GraphJSONObjectCallback() {
+                                    @Override
+                                    public void onCompleted(JSONObject object, GraphResponse response) {
+                                        // Application code
+                                        try {
+
+                                            String fb_id = object.getString("id");   //FaceBook User ID
+                                            image_url = "https://graph.facebook.com/" + fb_id + "/picture?width=200&height=200";
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
+                        Bundle parameters = new Bundle();
+                        parameters.putString("fields", "id,picture.type(small)");
+                        request.setParameters(parameters);
+                        request.executeAsync();
+
+                    } catch (Exception e) {
+
+                    }
 
                     FacebookLogin facebookLogin = new FacebookLogin(
                             loginResult.getAccessToken()
-                                    .getToken()
-                    );
-                    Toast.makeText(MainActivity.this, "đăng nhập fb thành công", Toast.LENGTH_LONG).show();
+                                    .getToken());
+
                     sendNetworkRequestLoginFB(facebookLogin);
                 }
 
@@ -188,6 +220,8 @@ public class MainActivity extends AppCompatActivity {
                             Bundle bundle = new Bundle();
                             bundle.putString("Key_1", tokenA);
                             intent.putExtras(bundle);
+                            bundle.putString("Key_3", image_url);
+                            intent.putExtras(bundle);
                             startActivity(intent);
                         }
                     }
@@ -212,10 +246,10 @@ public class MainActivity extends AppCompatActivity {
         buttonDangNhap = (Button)findViewById(R.id.buttonDangNhap);
         facebookbutton = (LoginButton) findViewById(R.id.buttonDangNhapFB);
 
-//        button đăng nhập bằng google và facebook
-//         .........................
+
 
     }
+
 
 }
 
