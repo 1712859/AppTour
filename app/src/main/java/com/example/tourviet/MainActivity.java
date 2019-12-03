@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         LoginManager.getInstance().logOut();
         Anhxa();
+        callbackManager = CallbackManager.Factory.create();
         controlButton();
 
     }
@@ -140,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
-        callbackManager = CallbackManager.Factory.create();
+
         facebookbutton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {

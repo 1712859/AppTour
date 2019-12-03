@@ -89,7 +89,7 @@ public class Main4Activity_Creat extends AppCompatActivity {
                 datePickerDialog = new DatePickerDialog(Main4Activity_Creat.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                        DateEnd.setText(day+"/"+month+"/"+year);
+                        DateEnd.setText(year+"/"+month+"/"+day);
                     }
 
                 }, yearend, monthend, Dayend);

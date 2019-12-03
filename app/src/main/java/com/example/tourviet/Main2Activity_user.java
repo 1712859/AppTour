@@ -22,10 +22,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Main2Activity_user extends AppCompatActivity {
-    Button Backbutton;
+    Button Backbutton,EditInformationButton,MyTour;
     String token,image_url;
     TextView name,email,phone,address,date,gender;
-    CallbackManager callbackManager;
     ImageView image;
 
 
@@ -42,7 +41,11 @@ public class Main2Activity_user extends AppCompatActivity {
             token = bundle.getString("Key_1");
             image_url = bundle.getString("Key_3");
         }
+        Run();
 
+    }
+    private  void Run()
+    {
         Picasso.get().load(image_url).fit().into(image);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://35.197.153.192:3000")
@@ -80,7 +83,12 @@ public class Main2Activity_user extends AppCompatActivity {
                 {
                     gender.setText("Male");
                 }
-                else gender.setText("Female");
+                else
+                if(response.body().getGender()==0)
+                {
+                    gender.setText("Female");
+                }else
+                    gender.setText("Unknow");
             }
 
             @Override
@@ -116,6 +124,31 @@ public class Main2Activity_user extends AppCompatActivity {
 
             }
         });
+        EditInformationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Main2Activity_user.this,MainActivity_EditImformation.class);
+                Bundle bundle1 = new Bundle();
+                bundle1.putString("Key_1", token);
+                intent.putExtras(bundle1);
+                bundle1.putString("Key_3", image_url);
+                intent.putExtras(bundle1);
+                startActivity(intent);
+
+            }
+        });
+        MyTour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Main2Activity_user.this,MainActivity_UserTour.class);
+                Bundle bundle1 = new Bundle();
+                bundle1.putString("Key_1", token);
+                intent.putExtras(bundle1);
+                bundle1.putString("Key_3", image_url);
+                intent.putExtras(bundle1);
+                startActivity(intent);
+            }
+        });
 
 
     }
@@ -129,6 +162,7 @@ public class Main2Activity_user extends AppCompatActivity {
         date =(TextView)findViewById(R.id.profile_date_value);
         address =(TextView)findViewById(R.id.profile_address_value);
         image = (ImageView)findViewById(R.id.profile_pic);
-
+        EditInformationButton = (Button)findViewById((R.id.buttonEditImformation));
+        MyTour = (Button)findViewById(R.id.buttonviewMyTour);
     }
 }

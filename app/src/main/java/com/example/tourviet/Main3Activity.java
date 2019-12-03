@@ -30,10 +30,6 @@ public class Main3Activity extends AppCompatActivity {
 
         String s = String.valueOf(ID);
         Id.setText(s);
-
-
-
-
     }
 
     private void ButtonControl() {

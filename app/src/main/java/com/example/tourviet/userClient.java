@@ -23,4 +23,6 @@ public interface userClient {
 
    @GET("/user/info")
    Call<User_infor> GetUserInfor(@Header("Authorization") String loginToken);
+   @POST("/user/edit-info")
+   Call<User_infor> UppdateUserInfor(@Header("Authorization") String Token,@Body User_infor user_infor) ;
 }

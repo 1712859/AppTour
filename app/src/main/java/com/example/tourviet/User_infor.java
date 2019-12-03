@@ -9,6 +9,14 @@ public class User_infor {
     private String dob;
     private int gender;
 
+    public User_infor(String fullName, String email, String phone, int gender, String dob) {
+        this.fullName = fullName;
+        this.email = email;
+        this.phone = phone;
+        this.gender = gender;
+        this.dob = dob;
+
+    }
 
     public String getFullName() {
         return fullName;
