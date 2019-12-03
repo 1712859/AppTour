@@ -1,80 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     tools:context=".Main2Activity"
-    android:background="#20000000"
     >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/nav"
+    <Button
+        android:id="@+id/main2_viewUserProfileBtn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal"
-        android:gravity="center"
-        tools:ignore="MissingConstraints">
-
-
-        <Button
-            android:id="@+id/backge"
-            android:layout_width="31dp"
-            android:layout_height="35dp"
-            android:layout_gravity="left"
-            android:layout_marginStart="16dp"
-            android:background="#00ffffff"
-            android:drawableLeft="@drawable/back"
-            android:paddingRight="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-
-
-        <TextView
-            android:id="@+id/nameUer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Anh Tú"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:hint="aa"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/backge"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/addtour"
-            android:layout_width="36dp"
-            android:layout_height="32dp"
-            android:layout_gravity="left"
-            android:layout_marginEnd="16dp"
-            android:background="#00ffffff"
-            android:drawableRight="@drawable/add"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <ListView
-        android:id="@+id/main2_tourListView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="51dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nav"
-        android:background="#20000000"
-
-
+        android:text="@string/main2_viewUserProfile"
         />
 
+    <Button
+        android:id="@+id/main2_createTourBtn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/main2_createTour"
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/main2_viewAvailableTourBtn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/main2_viewAvailableTourList"
+        />
+
+</LinearLayout>

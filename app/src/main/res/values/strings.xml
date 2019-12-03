@@ -20,6 +20,10 @@
     <string name="dangky_signinButton">Create Account</string>
     <string name="dangky_cancelButton">Quit</string>
 
+    <string name="main2_viewUserProfile">Xem thông tin người dùng</string>
+    <string name="main2_createTour">Tạo một chuyến đi mới</string>
+    <string name="main2_viewAvailableTourList">Xem danh sách các chuyến đi hiện có</string>
+
     <string name="tourItem_hint_title">Tên tour</string>
     <string name="tourItem_hint_price">Giá: </string>
     <string name="tourItem_hint_priceMin">100.000</string>
@@ -30,6 +34,9 @@
     <string name="tourItem_separator">~</string>
     <string name="tourItem_avatarDescription">Ảnh đại điện chuyến đi</string>
     <string name="tourItem_money">Đ</string>
+
+    <string name="tourList_createTour">Tạo chuyến đi mới</string>
+    <string name="tourList_avaibleTour">Danh sách chuyến đi hiện có</string>
 
     <string name="title_activity_main3">Main3Activity</string>
 
