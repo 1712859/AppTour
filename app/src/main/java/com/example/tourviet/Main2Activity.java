@@ -44,7 +44,7 @@ public class Main2Activity extends AppCompatActivity {
         creatTourBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Main2Activity.this, Main4Activity_Creat.class);
+                Intent intent = new Intent(Main2Activity.this, TourCreateActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("Key_1", token);
                 intent.putExtras(bundle);
@@ -72,7 +72,7 @@ public class Main2Activity extends AppCompatActivity {
         viewAvailableTourBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Main2Activity.this, AvailableTourActivity.class);
+                Intent intent = new Intent(Main2Activity.this, TourAvailableActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("Key_1", token);
                 intent.putExtras(bundle);

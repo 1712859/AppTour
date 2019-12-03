@@ -1,7 +1,5 @@
 package com.example.tourviet;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,21 +8,23 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
-import java.time.Year;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Calendar;
 
-public class Main4Activity_Creat extends AppCompatActivity {
-    Button back,creat;
-    EditText TourName, DateStart,DateEnd,Adults,Childs,MinCost,MaxCost,LinkImage;
+public class TourCreateActivity extends AppCompatActivity {
+    Button back, creat;
+    EditText TourName, DateStart, DateEnd, Adults, Childs, MinCost, MaxCost, LinkImage;
     String token, image_url;
-    int Daystart,monthstart,yearstart;
-    int Dayend,monthend,yearend;
+    int Daystart, monthstart, yearstart;
+    int Dayend, monthend, yearend;
     DatePickerDialog datePickerDialog;
     Calendar calendar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main4__creat);
+        setContentView(R.layout.activity_tour_create);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
@@ -40,7 +40,7 @@ public class Main4Activity_Creat extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Main4Activity_Creat.this,Main2Activity.class);
+                Intent intent = new Intent(TourCreateActivity.this, Main2Activity.class);
                 Bundle bundle1 = new Bundle();
                 bundle1.putString("Key_1", token);
                 intent.putExtras(bundle1);
@@ -52,7 +52,7 @@ public class Main4Activity_Creat extends AppCompatActivity {
         creat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Main4Activity_Creat.this,Main5Activity_stopPoint.class);
+                Intent intent = new Intent(TourCreateActivity.this, Main5Activity_stopPoint.class);
                 Bundle bundle1 = new Bundle();
                 bundle1.putString("Key_1", token);
                 intent.putExtras(bundle1);
@@ -68,10 +68,10 @@ public class Main4Activity_Creat extends AppCompatActivity {
                 yearstart = calendar.get(Calendar.YEAR);
                 monthstart = calendar.get(Calendar.MONTH);
                 Daystart = calendar.get(Calendar.DAY_OF_MONTH);
-                datePickerDialog = new DatePickerDialog(Main4Activity_Creat.this, new DatePickerDialog.OnDateSetListener() {
+                datePickerDialog = new DatePickerDialog(TourCreateActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                        DateStart.setText(day+"/"+month+"/"+year);
+                        DateStart.setText(day + "/" + month + "/" + year);
                     }
 
                 }, yearstart, monthstart, Daystart);
@@ -86,10 +86,10 @@ public class Main4Activity_Creat extends AppCompatActivity {
                 yearend = calendar.get(Calendar.YEAR);
                 monthend = calendar.get(Calendar.MONTH);
                 Dayend = calendar.get(Calendar.DAY_OF_MONTH);
-                datePickerDialog = new DatePickerDialog(Main4Activity_Creat.this, new DatePickerDialog.OnDateSetListener() {
+                datePickerDialog = new DatePickerDialog(TourCreateActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                        DateEnd.setText(year+"/"+month+"/"+day);
+                        DateEnd.setText(year + "/" + month + "/" + day);
                     }
 
                 }, yearend, monthend, Dayend);
@@ -101,16 +101,16 @@ public class Main4Activity_Creat extends AppCompatActivity {
     }
 
     private void Anhxa() {
-        back = (Button)findViewById(R.id.backgeCreat);
-        creat = (Button)findViewById(R.id.CreateTour);
-        TourName = (EditText)findViewById(R.id.TourName);
-        DateStart = (EditText)findViewById(R.id.DayStart);
-        DateEnd = (EditText)findViewById(R.id.DayEnd);
-        Adults = (EditText)findViewById(R.id.edittextNguoiLon);
-        Childs = (EditText)findViewById(R.id.edittextTreEm);
-        MinCost = (EditText)findViewById(R.id.edittextMinCost);
-        MaxCost = (EditText)findViewById(R.id.edittextMaxCost);
-        LinkImage = (EditText)findViewById(R.id.edittextImageTour);
+        back = (Button) findViewById(R.id.backgeCreat);
+        creat = (Button) findViewById(R.id.CreateTour);
+        TourName = (EditText) findViewById(R.id.TourName);
+        DateStart = (EditText) findViewById(R.id.DayStart);
+        DateEnd = (EditText) findViewById(R.id.DayEnd);
+        Adults = (EditText) findViewById(R.id.edittextNguoiLon);
+        Childs = (EditText) findViewById(R.id.edittextTreEm);
+        MinCost = (EditText) findViewById(R.id.edittextMinCost);
+        MaxCost = (EditText) findViewById(R.id.edittextMaxCost);
+        LinkImage = (EditText) findViewById(R.id.edittextImageTour);
 
     }
 }

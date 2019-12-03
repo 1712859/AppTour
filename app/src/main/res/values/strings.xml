@@ -38,7 +38,18 @@
     <string name="tourList_createTour">Tạo chuyến đi mới</string>
     <string name="tourList_avaibleTour">Danh sách chuyến đi hiện có</string>
 
-    <string name="title_activity_main3">Main3Activity</string>
+    <string name="tourDetail_tourName_hint">Tên tour</string>
+    <string name="tourDetail_tourID">Mã tour: </string>
+    <string name="tourDetail_tourID_hint">00000000</string>
+    <string name="tourDetail_tourAdult">Số người lớn:</string>
+    <string name="tourDetail_tourAdult_hint">30</string>
+    <string name="tourDetail_tourChild">Số trẻ em:</string>
+    <string name="tourDetail_tourChild_hint">20</string>
+    <string name="tourDetail_price">Giá tiền</string>
+    <string name="tourDetail_price_hint">1.000.000</string>
+    <string name="tourDetail_price_sign">Đ</string>
+    <string name="tourDetail_startDate">Ngày khỏi hành</string>
+    <string name="tourDetail_startDate_hint">12/12/1999</string>
 
     <string name="facebook_app_id">737774043369479</string>
     <string name="fb_login_protocol_scheme">fb737774043369479</string>

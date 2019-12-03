@@ -60,7 +60,7 @@ public class TourAdapter extends BaseAdapter {
             viewHolder=(ViewHolder) convertView.getTag();
         }
 
-        String image = tourItems.get(position).getAvatar();
+        String image = tourItems.get(position).getImageUrl();
         Picasso.get().load(image).fit().into(viewHolder.tourAvatar);
 
         viewHolder.tourTitle.setText(tourItems.get(position).getName());

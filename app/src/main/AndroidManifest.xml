@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AvailableTourActivity" />
+        <activity android:name=".TourAvailableActivity" />
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -39,8 +39,8 @@
         <activity android:name=".MainActivity_EditImformation" />
         <activity android:name=".Main2Activity_user" />
         <activity android:name=".Main5Activity_stopPoint" />
-        <activity android:name=".Main4Activity_Creat" />
-        <activity android:name=".Main3Activity" />
+        <activity android:name=".TourCreateActivity" />
+        <activity android:name=".TourDetailActivity" />
         <activity android:name=".Main1Activity" />
         <activity android:name=".Main2Activity" />
         <activity android:name=".MainActivity">
