@@ -24,7 +24,7 @@ public class TourAvailableActivity extends AppCompatActivity {
     ListView tourListView;
     TourAdapter tourAdapter;
     Button createTourBtn;
-    List<TourItem> tourData = new ArrayList<TourItem>();
+    List<TourItem> tourData = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +64,7 @@ public class TourAvailableActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(TourAvailableActivity.this, TourCreateActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putString("Key_1", token);
-                    intent.putExtras(bundle);
-                    bundle.putString("Key_3", image_url);
+                    bundle.putString("token", token);
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }

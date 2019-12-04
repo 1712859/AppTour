@@ -1,185 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TourCreateActivity"
-    android:paddingRight="5dp"
-    android:paddingLeft="5dp"
-    android:background="@color/backgrounđangki">
+    android:background="@color/backgrounđangki"
+    tools:context=".TourCreateActivity">
 
-    <Button
-        android:id="@+id/backgeCreat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_marginLeft="20dp"
-        android:background="#00ffffff"
-        android:drawableLeft="@drawable/back"
-        android:paddingRight="15dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <TextView
-        android:id="@+id/Tilel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="80dp"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/CreatTourTitle"
-        android:gravity="center"
-        android:textSize="40dp"
-        android:textStyle="bold"
-        android:textColor="@color/textwhile"
-        />
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
 
-    <EditText
-
-        android:id="@+id/TourName"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:hint="@string/TourName"
-        android:inputType="text"
-        android:textSize="20dp"
-        android:textColorHint="@color/textwhile"
-        android:textColor="@color/textwhile"
-        android:background="@drawable/button_login"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Tilel"
-        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/createTour_title"
+            android:textColor="@color/textwhile"
+            android:textSize="40sp"
+            android:textStyle="bold" />
 
 
-    <EditText
-
-        android:id="@+id/DayStart"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/button_login"
-        android:gravity="center"
-        android:hint="@string/DateStart"
-        android:inputType="date"
-        android:textColor="@color/textwhile"
-        android:textColorHint="@color/textwhile"
-        app:layout_constraintEnd_toEndOf="@+id/edittextNguoiLon"
-        app:layout_constraintStart_toStartOf="@+id/edittextNguoiLon"
-        app:layout_constraintTop_toBottomOf="@id/TourName" />
-
-    <EditText
-        android:id="@+id/DayEnd"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/button_login"
-        android:gravity="center"
-        android:hint="@string/DateEnd"
-        android:inputType="date"
-        android:textColor="@color/textwhile"
-        android:textColorHint="@color/textwhile"
-        app:layout_constraintEnd_toEndOf="@+id/edittextTreEm"
-        app:layout_constraintStart_toStartOf="@+id/edittextTreEm"
-        app:layout_constraintTop_toBottomOf="@id/TourName" />
-    <EditText
-        android:id="@+id/edittextNguoiLon"
-        android:gravity="center"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:hint="@string/adults"
-        android:inputType="number"
-        android:textColorHint="@color/textwhile"
-        android:textColor="@color/textwhile"
-        android:background="@drawable/button_login"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/DayStart"
-        />
-
-    <EditText
-        android:id="@+id/edittextTreEm"
-        android:gravity="center"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/button_login"
-        android:hint="@string/childs"
-        android:inputType="number"
-        android:textColorHint="@color/textwhile"
-        android:textColor="@color/textwhile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/DayStart" />
-
-    <EditText
-        android:id="@+id/edittextMinCost"
-        android:gravity="center"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:hint="@string/Mincos"
-        android:inputType="number"
-        android:textColorHint="@color/textwhile"
-        android:background="@drawable/button_login"
-        android:textColor="@color/textwhile"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edittextNguoiLon"
-        />
-
-    <EditText
-        android:id="@+id/edittextMaxCost"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/button_login"
-        android:gravity="center"
-        android:hint="@string/Maxcost"
-        android:inputType="number"
-        android:textColorHint="@color/textwhile"
-        android:textColor="@color/textwhile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edittextNguoiLon" />
-
-    <EditText
-        android:id="@+id/edittextImageTour"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:hint="@string/imagetour"
-        android:inputType="text"
-        android:textColorHint="@color/textwhile"
-        android:textColor="@color/textwhile"
-        android:background="@drawable/button_login"
-        app:layout_constraintTop_toBottomOf="@id/edittextMinCost"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
-    <Button
-        android:id="@+id/CreateTour"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Creat"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:layout_marginBottom="30dp"
-        android:textColor="@color/backgrounđangki"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@drawable/button_stye"
-        />
+        <EditText
+            android:id="@+id/createTour_tourName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_login"
+            android:gravity="center"
+            android:hint="@string/createTour_tourName"
+            android:inputType="text"
+            android:textColor="@color/textwhile"
+            android:textColorHint="@color/textwhile"
+            android:textSize="20sp" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+
+            android:id="@+id/createTour_dateStart"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_login"
+            android:gravity="center"
+            android:hint="@string/createTour_startDate"
+            android:inputType="date"
+            android:textColor="@color/textwhile"
+            android:textColorHint="@color/textwhile" />
+
+        <EditText
+            android:id="@+id/createTour_dateEnd"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_login"
+            android:gravity="center"
+            android:hint="@string/createTour_endDate"
+            android:inputType="date"
+            android:textColor="@color/textwhile"
+            android:textColorHint="@color/textwhile" />
+
+        <EditText
+            android:id="@+id/createTour_adult"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_login"
+            android:gravity="center"
+            android:hint="@string/createTour_adult"
+            android:inputType="number"
+            android:textColor="@color/textwhile"
+            android:textColorHint="@color/textwhile" />
+
+        <EditText
+            android:id="@+id/createTour_child"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_login"
+            android:gravity="center"
+            android:hint="@string/createTour_child"
+            android:inputType="number"
+            android:textColor="@color/textwhile"
+            android:textColorHint="@color/textwhile" />
+
+        <EditText
+            android:id="@+id/createTour_minCost"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_login"
+            android:gravity="center"
+            android:hint="@string/createTour_minCost"
+            android:inputType="number"
+            android:textColor="@color/textwhile"
+            android:textColorHint="@color/textwhile"
+
+            />
+
+        <EditText
+            android:id="@+id/createTour_maxCost"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_login"
+            android:gravity="center"
+            android:hint="@string/createTour_maxCost"
+            android:inputType="number"
+            android:textColor="@color/textwhile"
+            android:textColorHint="@color/textwhile" />
+
+        <EditText
+            android:id="@+id/createTour_imageUrl"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_login"
+            android:gravity="center"
+            android:hint="@string/createTour_imageUrl"
+            android:inputType="textUri"
+            android:textColor="@color/textwhile"
+            android:textColorHint="@color/textwhile" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/createTour_privateBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/createTour_private"
+                    android:textColor="@color/textwhile"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/createTour_publicBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/createTour_public"
+                    android:textColor="@color/textwhile"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/createTour_pickStopPoint"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_stye"
+            android:gravity="center"
+            android:text="@string/createTour_pickStopPoint"
+            android:textColor="@color/backgrounđangki"
+            android:textColorHint="@color/textwhile" />
+
+        <Button
+            android:id="@+id/createTour_createBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_stye"
+            android:text="@string/createTour_createBtn"
+            android:textColor="@color/backgrounđangki"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+</ScrollView>

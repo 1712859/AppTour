@@ -58,15 +58,27 @@
     <!--    <string name="fb_login_protocol_scheme">fb1032814657050860</string>-->
 
 
-    <string name="CreatTourTitle">Creat Tour</string>
-    <string name="TourName">Tour Name</string>
-    <string name="DateStart">Date Start</string>
-    <string name="DateEnd">Date End</string>
-    <string name="adults">Adults</string>
-    <string name="childs">Childs</string>
-    <string name="Maxcost">Max Cost</string>
-    <string name="Mincos">Min Cost</string>
-    <string name="imagetour">Link Image Tour</string>
+    <string name="createTour_title">Tạo chuyến đi</string>
+    <string name="createTour_tourName">Tên chuyến đi</string>
+    <string name="createTour_startDate">Ngày bắt đầu</string>
+    <string name="createTour_endDate">Ngày kết thúc</string>
+    <string name="createTour_adult">Số người lớn</string>
+    <string name="createTour_child">Số trẻ em</string>
+    <string name="createTour_maxCost">Chi phí tối đa</string>
+    <string name="createTour_minCost">Chi phí tối thiểu</string>
+    <string name="createTour_imageUrl">Link ảnh minh họa</string>
+    <string name="createTour_private">Tour cá nhân</string>
+    <string name="createTour_public">Tour công cộng</string>
+    <string name="createTour_pickStopPoint">Chọn các điểm đến</string>
+    <string name="createTour_createBtn">Xác nhận</string>
+
+    <string name="pickStopPoint_pickStartPointBtn">Chọn vị trí bắt đầu chuyến đi</string>
+    <string name="pickStopPoint_pickEndPointBtn">Chọn vị trí kết thúc chuyến đi</string>
+    <string name="pickStopPoint_startPointInfo_hint">Vị trí bắt đầu:\n 0, 0</string>
+    <string name="pickStopPoint_endPointInfo_hint">Vị trí kết thúc:\n 0, 0</string>
+    <string name="pickStopPoint_confirmBtn">Xác nhận</string>
+
+    <string name="mapGetLocation_confirmBtn">Xác nhận</string>
 
 
     <string name="profile_email">Email:</string>
