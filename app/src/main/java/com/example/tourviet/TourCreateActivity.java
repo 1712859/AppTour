@@ -6,9 +6,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class TourCreateActivity extends AppCompatActivity {
     static int PICK_STOP_POINT_REQUEST_CODE = 1;
@@ -30,6 +38,8 @@ public class TourCreateActivity extends AppCompatActivity {
         if (bundle != null) {
 
             token = bundle.getString("token");
+            //dùng token tạm
+            token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzNjkiLCJwaG9uZSI6IjA4NTg0NTYxNTIiLCJlbWFpbCI6InR1YmF0bzE5OTlAZ21haWwuY29tIiwiZXhwIjoxNTc2MjIyNDY0MTg1LCJhY2NvdW50IjoidXNlciIsImlhdCI6MTU3MzYzMDQ2NH0.0CruSddOgakdzQdG98VkPpFBSTNOq2h9FZq6r6vvIQs";
         }
 
         createBtn = findViewById(R.id.createTour_createBtn);
@@ -60,6 +70,8 @@ public class TourCreateActivity extends AppCompatActivity {
             }
         });
 
+        privateBtn.toggle();
+
         pickStopPointBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +89,12 @@ public class TourCreateActivity extends AppCompatActivity {
         createBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (allFormRequireFilled()) {
+                    submitForm();
+                } else {
+                    Toast.makeText(TourCreateActivity.this, "Xin hãy điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                    return;
+                }
             }
         });
     }
@@ -96,4 +113,65 @@ public class TourCreateActivity extends AppCompatActivity {
             }
         }
     }
+
+    private boolean allFormRequireFilled() {
+        if (tourName.getText().toString().equals("")) {
+            return false;
+        } else if (dateStart.getText().toString().equals("")) {
+            return false;
+        } else if (dateEnd.getText().toString().equals("")) {
+            return false;
+        } else if (sourceLas == 0) {
+            return false;
+        } else if (sourceLong == 0) {
+            return false;
+        } else if (desLas == 0) {
+            return false;
+        } else if (desLong == 0) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private void submitForm() {
+        TourCreateForm form = new TourCreateForm(
+                tourName.getText().toString(),
+                dateStart.getText().toString(),
+                dateEnd.getText().toString(),
+                sourceLas,
+                sourceLong,
+                desLas,
+                desLong,
+                isPrivate,
+                Integer.valueOf(adult.getText().toString()),
+                Integer.valueOf(child.getText().toString()),
+                Integer.valueOf(minCost.getText().toString()),
+                Integer.valueOf(maxCost.getText().toString())
+        );
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://35.197.153.192:3000")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
+
+        Call<TourCreateForm> call = jsonPlaceHolderApi.postTourCreateForm(form, token);
+
+        call.enqueue(new Callback<TourCreateForm>() {
+            @Override
+            public void onResponse(Call<TourCreateForm> call, Response<TourCreateForm> response) {
+                new AlertDialog.Builder(TourCreateActivity.this)
+                        .setTitle("Post response  FOR DEBUG ONLY")
+                        .setMessage(response.toString())
+                        .show();
+            }
+
+            @Override
+            public void onFailure(Call<TourCreateForm> call, Throwable t) {
+                Toast.makeText(TourCreateActivity.this, "lỗi gửi thông tin lên server", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 }

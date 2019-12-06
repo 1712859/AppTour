@@ -40,7 +40,7 @@ public class PickStopPointActivity extends AppCompatActivity {
 
         String infoText = "Vị trí bắt đầu: " + sourceName + '\n' + sourceLas + ", " + sourceLong;
         startPointInfo.setText(infoText);
-        infoText = "Vị trí kết thúc: " + sourceName + '\n' + sourceLas + ", " + sourceLong;
+        infoText = "Vị trí kết thúc: " + desName + '\n' + desLas + ", " + desLong;
         endPointInfo.setText(infoText);
 
         pickStartPointBtn.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +95,7 @@ public class PickStopPointActivity extends AppCompatActivity {
                 desName = data.getStringExtra("name");
                 desLas = data.getDoubleExtra("las", 0);
                 desLong = data.getDoubleExtra("long", 0);
-                String infoText = "Vị trí kết thúc: " + sourceName + '\n' + sourceLas + ", " + sourceLong;
+                String infoText = "Vị trí kết thúc: " + desName + '\n' + desLas + ", " + desLong;
                 endPointInfo.setText(infoText);
             }
         }

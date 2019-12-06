@@ -79,7 +79,7 @@
     <string name="pickStopPoint_confirmBtn">Xác nhận</string>
 
     <string name="mapGetLocation_confirmBtn">Xác nhận</string>
-
+    <string name="mapGetLocation_targetIconDescription">thể hiện vị trí người dùng chọn</string>
 
     <string name="profile_email">Email:</string>
     <string name="profile_sdt">PhoneNumber:</string>
