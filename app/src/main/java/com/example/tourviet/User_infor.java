@@ -1,13 +1,26 @@
 package com.example.tourviet;
 
 public class User_infor {
-
+    private int id;
     private String fullName;
     private String email;
     private String phone;
     private String address;
     private String dob;
     private int gender;
+    private String avatar;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
 
     public User_infor(String fullName, String email, String phone, int gender, String dob) {
         this.fullName = fullName;

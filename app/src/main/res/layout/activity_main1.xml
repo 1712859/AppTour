@@ -13,16 +13,18 @@
         android:layout_height="200dp"
         android:src="@drawable/logo"
         />
+
     <EditText
         android:id="@+id/dangki_email"
-        android:layout_marginTop="8dp"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:hint="@string/dangky_email"
-        android:textColorHint="@color/textwhile"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
         android:background="@drawable/button_login"
+        android:hint="@string/dangky_email"
         android:inputType="text"
+        android:maxLines="1"
+        android:textColorHint="@color/textwhile"
 
         />
 
@@ -31,6 +33,7 @@
         android:layout_width="300dp"
         android:layout_marginTop="8dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:maxLines="1"
         android:textColorHint="@color/textwhile"
         android:background="@drawable/button_login"
@@ -44,6 +47,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="@string/dangky_fullname"
+        android:gravity="center"
         android:textColorHint="@color/textwhile"
         android:background="@drawable/button_login"
         android:inputType="text"
@@ -55,6 +59,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="@string/dangky_address"
+        android:gravity="center"
         android:textColorHint="@color/textwhile"
         android:background="@drawable/button_login"
         android:inputType="text"
@@ -64,6 +69,7 @@
         android:id="@+id/dangki_SDT"
         android:layout_marginTop="8dp"
         android:layout_width="300dp"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:maxLines="1"
         android:hint="@string/dangky_phoneNumber"
@@ -76,22 +82,24 @@
         android:layout_marginTop="8dp"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:hint="@string/dangky_Date"
         android:textColorHint="@color/textwhile"
         android:background="@drawable/button_login"
         android:inputType="text"
         android:maxLines="1"
         />
-    <EditText
-        android:id="@+id/dangki_Phai"
-        android:layout_marginTop="8dp"
+    <Spinner
+        android:id="@+id/spinner1"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:hint="@string/dangky_Phai"
-        android:textColorHint="@color/textwhile"
+        android:layout_marginTop="8dp"
         android:background="@drawable/button_login"
-        android:inputType="number"
-        android:maxLines="1"
+        android:spinnerMode="dropdown"
+        style="@style/spinner_style_creat"
+        android:textSize="14dp"
+        android:outlineAmbientShadowColor="#00000000"
+        android:textAlignment="center"
         />
     <LinearLayout
         android:layout_width="match_parent"

@@ -14,30 +14,28 @@
         android:layout_marginStart="16dp"
         android:background="#00ffffff"
         android:drawableLeft="@drawable/back"
-
         android:paddingRight="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
 
-
     <EditText
         android:id="@+id/profile_nameED"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/edittext"
         android:layout_marginTop="40dp"
         android:gravity="center"
-        android:text="@string/dangky_fullname"
-        android:textColor="@color/textwhile"
-        android:maxLines="1"
-        android:textSize="25dp"
-        android:textStyle="bold"
         android:inputType="text"
-        android:background="@drawable/edittext"
-        android:paddingRight="10dp"
-        android:paddingBottom="5dp"
+        android:maxLines="1"
         android:paddingLeft="10dp"
         android:paddingTop="5dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp"
+        android:text="@string/dangky_fullname"
+        android:textColor="@color/textwhile"
+        android:textSize="25dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -111,7 +109,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/profile_SDT"
         app:layout_constraintStart_toEndOf="@id/profile_SDT"
         app:layout_constraintTop_toTopOf="@+id/profile_SDT"
-         />
+        />
 
     <TextView
         android:id="@+id/profile_gender"
@@ -126,22 +124,16 @@
         app:layout_constraintEnd_toEndOf="@+id/profile_SDT"
         app:layout_constraintTop_toBottomOf="@+id/profile_SDT" />
 
-    <EditText
-        android:id="@+id/profile_gender_valueED"
+    <Spinner
+        android:id="@+id/spinner1"
         android:layout_width="200dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/edittext"
-        android:gravity="center"
-        android:hint="@string/profile_Phai_value"
-        android:inputType="number"
-        android:maxLines="1"
-        android:paddingLeft="10dp"
-        android:paddingTop="5dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="5dp"
-        android:textColor="@color/textwhile"
+        android:spinnerMode="dropdown"
+        style="@style/spinner_style"
         android:textSize="14dp"
-        android:textStyle="bold"
+        android:outlineAmbientShadowColor="#00000000"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@+id/profile_gender"
         app:layout_constraintStart_toStartOf="@+id/profile_SDT_valueED"
         app:layout_constraintTop_toTopOf="@+id/profile_gender" />
@@ -178,8 +170,11 @@
         android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/profile_date"
-        app:layout_constraintStart_toStartOf="@+id/profile_gender_valueED"
+        app:layout_constraintStart_toStartOf="@+id/spinner1"
         app:layout_constraintTop_toTopOf="@+id/profile_date" />
+
+
+
 
     <Button
         android:id="@+id/buttonSaveEditInfor"
@@ -195,5 +190,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,9 +22,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Main2Activity_user extends AppCompatActivity {
-    Button Backbutton,EditInformationButton,MyTour;
+    Button Backbutton,EditInformationButton,MyTour,avatar;
     String token,image_url;
-    TextView name,email,phone,address,date,gender;
+    TextView name,email,phone,address,date,gender,changePass;
     ImageView image;
 
 
@@ -39,14 +39,14 @@ public class Main2Activity_user extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
             token = bundle.getString("Key_1");
-            image_url = bundle.getString("Key_3");
+
         }
         Run();
 
     }
     private  void Run()
     {
-        Picasso.get().load(image_url).fit().into(image);
+//
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://35.197.153.192:3000")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -73,7 +73,7 @@ public class Main2Activity_user extends AppCompatActivity {
                     }
                 }
                 //......................................................
-
+                Picasso.get().load(response.body().getAvatar()).fit().into(image);
                 name.setText(convert(response.body().getFullName()));
                 email.setText(response.body().getEmail());
                 phone.setText(response.body().getPhone());
@@ -89,6 +89,7 @@ public class Main2Activity_user extends AppCompatActivity {
                     gender.setText("Female");
                 }else
                     gender.setText("Unknow");
+                image_url = response.body().getAvatar();
             }
 
             @Override
@@ -118,8 +119,6 @@ public class Main2Activity_user extends AppCompatActivity {
                 Bundle bundle1 = new Bundle();
                 bundle1.putString("Key_1", token);
                 intent.putExtras(bundle1);
-                bundle1.putString("Key_3", image_url);
-                intent.putExtras(bundle1);
                 startActivity(intent);
 
             }
@@ -130,8 +129,6 @@ public class Main2Activity_user extends AppCompatActivity {
                 Intent intent = new Intent(Main2Activity_user.this,MainActivity_EditImformation.class);
                 Bundle bundle1 = new Bundle();
                 bundle1.putString("Key_1", token);
-                intent.putExtras(bundle1);
-                bundle1.putString("Key_3", image_url);
                 intent.putExtras(bundle1);
                 startActivity(intent);
 
@@ -144,12 +141,34 @@ public class Main2Activity_user extends AppCompatActivity {
                 Bundle bundle1 = new Bundle();
                 bundle1.putString("Key_1", token);
                 intent.putExtras(bundle1);
+
+                startActivity(intent);
+            }
+        });
+        changePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Main2Activity_user.this,Main3Activity_ChangePass.class);
+                Bundle bundle1 = new Bundle();
+                bundle1.putString("Key_1", token);
+                intent.putExtras(bundle1);
                 bundle1.putString("Key_3", image_url);
                 intent.putExtras(bundle1);
                 startActivity(intent);
             }
         });
-
+        avatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Main2Activity_user.this,Main3Activity_changeAvatar.class);
+                Bundle bundle1 = new Bundle();
+                bundle1.putString("Key_1", token);
+                intent.putExtras(bundle1);
+                bundle1.putString("Key_3", image_url);
+                intent.putExtras(bundle1);
+                startActivity(intent);
+            }
+        });
 
     }
     private void Anhxa() {
@@ -164,5 +183,7 @@ public class Main2Activity_user extends AppCompatActivity {
         image = (ImageView)findViewById(R.id.profile_pic);
         EditInformationButton = (Button)findViewById((R.id.buttonEditImformation));
         MyTour = (Button)findViewById(R.id.buttonviewMyTour);
+        changePass = (TextView)findViewById(R.id.changePass);
+        avatar = (Button) findViewById(R.id.buttonAvata);
     }
 }
