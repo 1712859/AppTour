@@ -1,114 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
+    android:orientation="horizontal"
+    android:layout_gravity="center"
     android:background="@color/backgrounddangnhap"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:layout_width="300dp"
-        android:layout_height="250dp"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/logo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-        />
 
 
-    <EditText
-        android:id="@+id/edittextuser"
-        android:gravity="center"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:hint="@string/main_usernameHint"
-        android:maxLines="1"
-        android:textColorHint="@color/edittextlogin"
-        android:background="@drawable/button_login"
-        android:inputType="text"/>
-
-    <EditText
-        android:id="@+id/edittextpass"
-        android:gravity="center"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:hint="@string/main_passwordHint"
-        android:textColorHint="@color/edittextlogin"
-        android:inputType="textPassword"
-        android:background="@drawable/button_login"
-        android:maxLines="1"
-        />
-
-
-    <LinearLayout
-        android:id="@+id/DN_DK"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginLeft="8dp">
-
-        <Button
-            android:id="@+id/buttonDangNhap"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="40dp"
-            android:text="@string/main_loginButton"
-            android:textStyle="bold"
-            android:background="@drawable/button_stye"
-            android:textColor="@color/Buttontext" />
-
-        <Button
-            android:id="@+id/buttonDangKi"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_stye"
-            android:text="@string/main_signinButton"
-            android:textStyle="bold"
-            android:textColor="@color/Buttontext" />
-
-    </LinearLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/main_DangNhapKhac"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="left"
-        android:layout_marginLeft="10dp"
-        android:textSize="15dp"
-
-        android:textColor="@color/edittextlogin"
-        android:maxLines="1"
-        />
-    <LinearLayout
-        android:id="@+id/DN_DK_GG_FB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@color/backgrounđangki"
-        android:orientation="horizontal"
-        >
-
-        <com.facebook.login.widget.LoginButton
-            android:id="@+id/buttonDangNhapFB"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:background="@color/ButtonGG_FB"
-            android:textColor="@color/textwhile"
-            android:textSize="15dp"
-            android:textStyle="bold"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            />
 
-    </LinearLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/logo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
 
-</LinearLayout>
+                />
+
+            <EditText
+                android:id="@+id/edittextuser"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_login"
+                android:gravity="center"
+                android:hint="@string/main_usernameHint"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColorHint="@color/edittextlogin" />
+
+            <EditText
+                android:id="@+id/edittextpass"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_login"
+                android:gravity="center"
+                android:hint="@string/main_passwordHint"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:textColorHint="@color/edittextlogin" />
+
+
+            <LinearLayout
+                android:id="@+id/DN_DK"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonDangNhap"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="40dp"
+                    android:background="@drawable/button_stye"
+                    android:text="@string/main_loginButton"
+                    android:textColor="@color/Buttontext"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/buttonDangKi"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_stye"
+                    android:text="@string/main_signinButton"
+                    android:textColor="@color/Buttontext"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:maxLines="1"
+                android:text="@string/main_DangNhapKhac"
+
+                android:textColor="@color/edittextlogin"
+                android:textSize="15dp" />
+
+            <LinearLayout
+                android:id="@+id/DN_DK_GG_FB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/backgrounđangki"
+                android:orientation="horizontal"
+                android:layout_marginBottom="50dp">
+
+                <com.facebook.login.widget.LoginButton
+                    android:id="@+id/buttonDangNhapFB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@color/ButtonGG_FB"
+                    android:textColor="@color/textwhile"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+</ScrollView>

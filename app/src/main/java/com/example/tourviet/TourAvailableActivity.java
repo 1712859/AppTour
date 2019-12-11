@@ -35,7 +35,6 @@ public class TourAvailableActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
             token = bundle.getString("Key_1");
-            image_url = bundle.getString("Key_3");
         }
         try {
             loaddata();
@@ -77,7 +76,7 @@ public class TourAvailableActivity extends AppCompatActivity {
 
     private void loaddata() {
         tourData.add(new TourItem(9999, 0, "Đi hạ long (sample)", 100000, 200000, "21/10/1999", "27/2/2014", 0, 0, false, "https://tour.dulichvietnam.com.vn/uploads/tour/1554713265_tour-ha-long-3.jpg"));
-        tourData.add(new TourItem(8888, 0, "Đi đà lạc (sample)", 700000, 900000, "14/5/216", "8/2/374", 0, 0, false, "https://cdn3.ivivu.com/2013/09/khu-nghi-duong-terracotta-da-lat-1-800x450.jpg"));
+        tourData.add(new TourItem(8888, 0, "Đi đà lạt (sample)", 700000, 900000, "14/5/216", "8/2/374", 0, 0, false, "https://cdn3.ivivu.com/2013/09/khu-nghi-duong-terracotta-da-lat-1-800x450.jpg"));
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://35.197.153.192:3000")

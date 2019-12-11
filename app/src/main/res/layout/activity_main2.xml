@@ -1,32 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Main2Activity"
+    android:background="@color/backgrounddangnhap"
+    android:gravity="center"
     >
-
-    <Button
-        android:id="@+id/main2_viewUserProfileBtn"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="@string/main2_viewUserProfile"
-        />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="250dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
 
-    <Button
-        android:id="@+id/main2_createTourBtn"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="@string/main2_createTour"
-        />
+            />
 
-    <Button
-        android:id="@+id/main2_viewAvailableTourBtn"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="@string/main2_viewAvailableTourList"
-        />
+        <Button
+            android:id="@+id/main2_viewUserProfileBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/main2_viewUserProfile"
+            android:textColor="@color/backgrounđangki"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:background="@drawable/button_stye"
+            />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/main2_createTourBtn"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_height="50dp"
+            android:text="@string/main2_createTour"
+            android:textColor="@color/backgrounđangki"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:background="@drawable/button_stye"
+            />
+
+        <Button
+            android:id="@+id/main2_viewAvailableTourBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/main2_viewAvailableTourList"
+            android:textColor="@color/backgrounđangki"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:background="@drawable/button_stye"
+            />
+        <Button
+            android:id="@+id/main2_Đăng_Xuất"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="50dp"
+            android:text="@string/main2_Đăng_xuất"
+            android:textColor="@color/backgrounđangki"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:background="@drawable/button_stye"
+            />
+    </LinearLayout>
+
+
+</ScrollView>

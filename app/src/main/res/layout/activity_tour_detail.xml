@@ -12,7 +12,6 @@
         android:id="@+id/tourDetail_image"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:adjustViewBounds="true"
         android:contentDescription="@string/tourItem_avatarDescription"
         android:scaleType="fitCenter"
         tools:srcCompat="@drawable/ic_launcher_background" />

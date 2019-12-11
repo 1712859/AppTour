@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main2Activity_changeAvatar"
+    tools:context=".Main3Activity_changeAvatar"
     android:background="@color/backgrounddangnhap">
 
     <Button
@@ -21,7 +21,7 @@
         />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/avatar"
         android:layout_width="272dp"
         android:layout_height="272dp"
         android:layout_marginTop="50dp"

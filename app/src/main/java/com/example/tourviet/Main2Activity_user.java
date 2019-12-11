@@ -1,6 +1,4 @@
 package com.example.tourviet;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,11 +7,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.CallbackManager;
-import com.facebook.login.LoginManager;
-import com.squareup.picasso.Picasso;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.net.URL;
+import com.squareup.picasso.Picasso;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -73,6 +69,7 @@ public class Main2Activity_user extends AppCompatActivity {
                     }
                 }
                 //......................................................
+                image_url = response.body().getAvatar();
                 Picasso.get().load(response.body().getAvatar()).fit().into(image);
                 name.setText(convert(response.body().getFullName()));
                 email.setText(response.body().getEmail());
@@ -89,7 +86,7 @@ public class Main2Activity_user extends AppCompatActivity {
                     gender.setText("Female");
                 }else
                     gender.setText("Unknow");
-                image_url = response.body().getAvatar();
+
             }
 
             @Override
@@ -130,7 +127,9 @@ public class Main2Activity_user extends AppCompatActivity {
                 Bundle bundle1 = new Bundle();
                 bundle1.putString("Key_1", token);
                 intent.putExtras(bundle1);
+
                 startActivity(intent);
+
 
             }
         });
@@ -163,8 +162,6 @@ public class Main2Activity_user extends AppCompatActivity {
                 Intent intent = new Intent(Main2Activity_user.this,Main3Activity_changeAvatar.class);
                 Bundle bundle1 = new Bundle();
                 bundle1.putString("Key_1", token);
-                intent.putExtras(bundle1);
-                bundle1.putString("Key_3", image_url);
                 intent.putExtras(bundle1);
                 startActivity(intent);
             }

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "840587027112",
+    "firebase_url": "https://viettour.firebaseio.com",
+    "project_id": "viettour",
+    "storage_bucket": "viettour.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840587027112:android:fdc6b1017ed0ce3b2e989d",
+        "android_client_info": {
+          "package_name": "com.example.tourviet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "840587027112-qabqjbq66el4qti62ak76fnlib7dfcr4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFWLnWezd3bMRt6P6VzqK0G381_gAVMzc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "840587027112-qabqjbq66el4qti62ak76fnlib7dfcr4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

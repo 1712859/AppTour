@@ -1,7 +1,5 @@
 package com.example.tourviet;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -74,7 +74,7 @@ public class Main1Activity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         if (!response.isSuccessful()) {
-                            Toast.makeText(Main1Activity.this, "lỗi lấy thông tin từ server.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Main1Activity.this, "Email hay SDT đã có người sử dụng!!! xin nhâp lại", Toast.LENGTH_LONG).show();
                             return;
                         }
                         else {
