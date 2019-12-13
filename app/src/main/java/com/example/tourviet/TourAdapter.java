@@ -2,7 +2,6 @@ package com.example.tourviet;
 
 import android.app.Activity;
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TourAdapter extends BaseAdapter {
@@ -21,9 +19,10 @@ public class TourAdapter extends BaseAdapter {
     private List<TourItem> tourItems;
 
     public TourAdapter(Context context, List<TourItem> tourItems) {
-        this.context=context;
-        this.tourItems=tourItems;
+        this.context = context;
+        this.tourItems = tourItems;
     }
+
     @Override
     public int getCount() {
         return tourItems.size();
@@ -43,27 +42,26 @@ public class TourAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
 
-        if(convertView==null){
-            LayoutInflater layoutInflater = ((Activity)context).getLayoutInflater();
+        if (convertView == null) {
+            LayoutInflater layoutInflater = ((Activity) context).getLayoutInflater();
             convertView = layoutInflater.inflate(R.layout.main2_tour_item, null);
 
-            viewHolder=new ViewHolder();
-            viewHolder.tourAvatar=convertView.findViewById(R.id.tourItem_avatar);
-            viewHolder.tourTitle=convertView.findViewById(R.id.tourItem_title);
-            viewHolder.tourPriceMin=convertView.findViewById(R.id.tourItem_priceMin);
-            viewHolder.tourPriceMax=convertView.findViewById(R.id.tourItem_priceMax);
-            viewHolder.tourTimeMin=convertView.findViewById(R.id.tourItem_timeMin);
-            viewHolder.tourTimeMax=convertView.findViewById(R.id.tourItem_timeMax);
+            viewHolder = new ViewHolder();
+            viewHolder.tourAvatar = convertView.findViewById(R.id.tourItem_avatar);
+            viewHolder.tourTitle = convertView.findViewById(R.id.tourItem_title);
+            viewHolder.tourPriceMin = convertView.findViewById(R.id.tourItem_priceMin);
+            viewHolder.tourPriceMax = convertView.findViewById(R.id.tourItem_priceMax);
+            viewHolder.tourTimeMin = convertView.findViewById(R.id.tourItem_timeMin);
+            viewHolder.tourTimeMax = convertView.findViewById(R.id.tourItem_timeMax);
             convertView.setTag(viewHolder);
-        }
-        else{
-            viewHolder=(ViewHolder) convertView.getTag();
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
         String image = tourItems.get(position).getAvatar();
         Picasso.get().load(image).fit().into(viewHolder.tourAvatar);
 
-        viewHolder.tourTitle.setText(tourItems.get(position).getName());
+        viewHolder.tourTitle.setText(tourItems.get(position).getTourName());
         viewHolder.tourPriceMin.setText(String.valueOf(tourItems.get(position).getMinCost()));
         viewHolder.tourPriceMax.setText(String.valueOf(tourItems.get(position).getMaxCost()));
         viewHolder.tourTimeMin.setText(tourItems.get(position).getStartDate());
@@ -72,7 +70,7 @@ public class TourAdapter extends BaseAdapter {
         return convertView;
     }
 
-    static class ViewHolder{
+    static class ViewHolder {
         ImageView tourAvatar;
         TextView tourTitle;
         TextView tourPriceMin;

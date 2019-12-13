@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Main3Activity_ChangePass"></activity>
+        <activity android:name=".TourUpdateActivity"></activity>
+        <activity android:name=".Main3Activity_ChangePass" />
         <activity android:name=".Main3Activity_changeAvatar" />
         <activity android:name=".PickStopPointActivity" />
         <activity android:name=".TourAvailableActivity" />

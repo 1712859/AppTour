@@ -15,7 +15,7 @@ public class Main2Activity extends AppCompatActivity {
     Button userProfileBtn;
     Button viewAvailableTourBtn;
     Button LogOut;
-    String token, image_url;
+    String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +55,7 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Main2Activity.this, TourCreateActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("Key_1", token);
-                intent.putExtras(bundle);
+                intent.putExtra("token", token);
                 startActivity(intent);
             }
         });

@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TourUpdateActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/tourUpdate_title" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="@string/tourUpdate_tourName" />
+
+            <EditText
+                android:id="@+id/tourUpdate_tourName"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="@string/tourUpdate_startDate" />
+
+            <EditText
+                android:id="@+id/tourUpdate_startDate"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="@string/tourUpdate_endDate" />
+
+            <EditText
+                android:id="@+id/tourUpdate_endDate"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="@string/tourUpdate_adults" />
+
+            <EditText
+                android:id="@+id/tourUpdate_adults"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="@string/tourUpdate_childs" />
+
+            <EditText
+                android:id="@+id/tourUpdate_childs"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="@string/tourUpdate_minCost" />
+
+            <EditText
+                android:id="@+id/tourUpdate_minCost"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="@string/tourUpdate_maxCost" />
+
+            <EditText
+                android:id="@+id/tourUpdate_maxCost"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="@string/tourUpdate_avatar" />
+
+            <EditText
+                android:id="@+id/tourUpdate_avatar"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="@string/tourUpdate_status" />
+
+            <Spinner
+                android:id="@+id/tourUpdate_statusSpn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/tourUpdate_privateBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/tourUpdate_privateBtn" />
+
+            <RadioButton
+                android:id="@+id/tourUpdate_publicBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/tourUpdate_publicBtn" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/tourUpdate_pickStopPointBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/tourUpdate_pickStopPointBtn" />
+
+        <Button
+            android:id="@+id/tourUpdate_confirmBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/tourUpdate_confirmBtn" />
+
+    </LinearLayout>
+
+</ScrollView>

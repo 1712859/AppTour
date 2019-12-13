@@ -128,9 +128,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:orientation="horizontal"
-
-            >
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -203,8 +201,13 @@
 
     </androidx.cardview.widget.CardView>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/tourDetail_stopPointListText" />
+
     <androidx.cardview.widget.CardView
-        android:id="@+id/StopPoint"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="10dp"
@@ -215,8 +218,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-
     </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/tourDetail_addStopPointBtn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/tourDetail_addStopPointBtn" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -224,18 +232,18 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/tourDetail_modifyBtn"
+            android:id="@+id/tourDetail_updateTourBtn"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:text="@string/tourDetail_modifyBtn"/>
+            android:text="@string/tourDetail_updateTourBtn" />
 
         <Button
-            android:id="@+id/tourDetail_deleteBtn"
+            android:id="@+id/tourDetail_deleteTourBtn"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:text="@string/tourDetail_deleteBtn"/>
+            android:text="@string/tourDetail_deleteTourBtn" />
 
     </LinearLayout>
 

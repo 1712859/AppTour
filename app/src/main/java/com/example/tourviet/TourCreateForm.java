@@ -13,9 +13,21 @@ class TourCreateForm {
     private int childs;
     private int minCost;
     private int maxCost;
-    private String avatar;
+    //private String avatar;
 
-    public TourCreateForm(String name, String startDate, String endDate, double sourceLat, double sourceLong, double desLat, double desLong, boolean isPrivate, int adults, int childs, int minCost, int maxCost, String avatar) {
+    public TourCreateForm(String name,
+                          String startDate,
+                          String endDate,
+                          double sourceLat,
+                          double sourceLong,
+                          double desLat,
+                          double desLong,
+                          boolean isPrivate,
+                          int adults,
+                          int childs,
+                          int minCost,
+                          int maxCost,
+                          String avatar) {
         this.name = name;
         this.sourceLat = sourceLat;
         this.sourceLong = sourceLong;
@@ -26,14 +38,15 @@ class TourCreateForm {
         this.childs = childs;
         this.minCost = minCost;
         this.maxCost = maxCost;
-        this.avatar = avatar;
+        //this.avatar = avatar;
 
-        endDate = endDate.replaceAll("(\\\\|\\/|-)", "");
+        endDate = endDate.replaceAll("[^0-9]", "");
         this.endDate = Integer.valueOf(endDate);
 
-        startDate = startDate.replaceAll("(\\\\|\\/|-)", "");
+        startDate = startDate.replaceAll("[^0-9]", "");
         this.startDate = Integer.valueOf(startDate);
     }
+
 
     public String getName() {
         return name;
@@ -48,7 +61,7 @@ class TourCreateForm {
     }
 
     public void setStartDate(String startDate) {
-        startDate = startDate.replaceAll("(\\\\|\\/|-)", "");
+        startDate = startDate.replaceAll("[^0-9]", "");
         this.startDate = Integer.valueOf(startDate);
     }
 
@@ -57,7 +70,7 @@ class TourCreateForm {
     }
 
     public void setEndDate(String endDate) {
-        endDate = endDate.replaceAll("(\\\\|\\/|-)", "");
+        endDate = endDate.replaceAll("[^0-9]", "");
         this.endDate = Integer.valueOf(endDate);
     }
 
@@ -132,7 +145,7 @@ class TourCreateForm {
     public void setMaxCost(int maxCost) {
         this.maxCost = maxCost;
     }
-
+/*
     public String getAvatar() {
         return avatar;
     }
@@ -140,4 +153,5 @@ class TourCreateForm {
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
+*/
 }

@@ -54,8 +54,10 @@
     <string name="tourDetail_price_sign">Đ</string>
     <string name="tourDetail_startDate">Ngày khỏi hành</string>
     <string name="tourDetail_startDate_hint">12/12/1999</string>
-    <string name="tourDetail_modifyBtn">Chỉnh sửa</string>
-    <string name="tourDetail_deleteBtn">Xóa</string>
+    <string name="tourDetail_updateTourBtn">Chỉnh sửa chuyến đi</string>
+    <string name="tourDetail_deleteTourBtn">Xóa chuyến đi</string>
+    <string name="tourDetail_stopPointListText">Danh sách điểm dừng</string>
+    <string name="tourDetail_addStopPointBtn">Thêm điểm dừng</string>
 
     <string name="facebook_app_id">737774043369479</string>
     <string name="fb_login_protocol_scheme">fb737774043369479</string>
@@ -99,6 +101,27 @@
     <string name="profile_date_value">Date is NULL</string>
     <string name="profile_address_value">Address is NULL</string>
     <string name="title_activity_maps">Map</string>
+
+    <string name="tourUpdate_title">Chỉnh sửa chuyến đi</string>
+    <string name="tourUpdate_tourName">Tên chuyến đi:</string>
+    <string name="tourUpdate_startDate">Ngày bắt đầu:</string>
+    <string name="tourUpdate_endDate">Ngày kết thúc:</string>
+    <string name="tourUpdate_adults">Số người lớn:</string>
+    <string name="tourUpdate_childs">Số trẻ em:</string>
+    <string name="tourUpdate_minCost">Chi phí tối thiểu:</string>
+    <string name="tourUpdate_maxCost">Chi phí tối đa:</string>
+    <string name="tourUpdate_avatar">Ảnh minh họa:</string>
+    <string name="tourUpdate_status">Trạng thái:</string>
+    <string name="tourUpdate_privateBtn">Chuyến đi cá nhân</string>
+    <string name="tourUpdate_publicBtn">Chuyến đi tập thể</string>
+    <string name="tourUpdate_pickStopPointBtn">Chọn điểm bắt đầu và kết thúc</string>
+    <string name="tourUpdate_confirmBtn">Xác nhận</string>
+    <string-array name="tourUpdate_status">
+        <item>Bị hủy</item>
+        <item>Đang mở</item>
+        <item>Đã bắt đầu</item>
+        <item>Đã kết thúc</item>
+    </string-array>
 
 
 </resources>

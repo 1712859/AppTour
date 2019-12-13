@@ -9,7 +9,6 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import retrofit2.Call;
@@ -19,7 +18,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class TourCreateActivity extends AppCompatActivity {
-    static int PICK_STOP_POINT_REQUEST_CODE = 1;
+    static final int PICK_STOP_POINT_REQUEST_CODE = 1;
     Button createBtn, pickStopPointBtn;
     RadioButton privateBtn, publicBtn;
     EditText tourName, dateStart, dateEnd, adult, child, minCost, maxCost, linkImage;
@@ -155,22 +154,18 @@ public class TourCreateActivity extends AppCompatActivity {
                 .baseUrl("http://35.197.153.192:3000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
-
-        Call<TourCreateForm> call = jsonPlaceHolderApi.postTourCreateForm(form, token);
-
-        call.enqueue(new Callback<TourCreateForm>() {
+        Call<TourItem> call = jsonPlaceHolderApi.postTourCreateForm(form, token);
+        call.enqueue(new Callback<TourItem>() {
             @Override
-            public void onResponse(Call<TourCreateForm> call, Response<TourCreateForm> response) {
-                /*new AlertDialog.Builder(TourCreateActivity.this)
-                        .setTitle("Post response  FOR DEBUG ONLY")
-                        .setMessage(response.toString())
-                        .show();*/
+            public void onResponse(Call<TourItem> call, Response<TourItem> response) {
+                TourItem result = response.body();
                 finish();
             }
 
             @Override
-            public void onFailure(Call<TourCreateForm> call, Throwable t) {
+            public void onFailure(Call<TourItem> call, Throwable t) {
                 Toast.makeText(TourCreateActivity.this, "lỗi gửi thông tin lên server", Toast.LENGTH_SHORT).show();
             }
         });

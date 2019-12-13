@@ -3,28 +3,29 @@ package com.example.tourviet;
 import java.io.Serializable;
 
 public class TourItem implements Serializable {
+
     private long id;
     private long hostID;
-    private int status;
-    private String name;
-    private long minCost;
-    private long maxCost;
+    private String tourName;
     private String startDate;
     private String endDate;
+    private double sourceLat;
+    private double sourceLong;
+    private double desLat;
+    private double desLong;
     private int adults;
     private int childs;
-    private boolean isPrivate;
+    private long minCost;
+    private long maxCost;
     private String avatar;
+    private boolean isPrivate;
+    private int status;
     private boolean isHost;
     private boolean isKicked;
 
-    public TourItem() {
-
-    }
-
     public TourItem(long id,
                     int status,
-                    String name,
+                    String tourName,
                     long minCost,
                     long maxCost,
                     String startDate,
@@ -35,7 +36,7 @@ public class TourItem implements Serializable {
                     String avatar) {
         this.id = id;
         this.status = status;
-        this.name = name;
+        this.tourName = tourName;
         this.minCost = minCost;
         this.maxCost = maxCost;
         this.startDate = startDate;
@@ -49,7 +50,7 @@ public class TourItem implements Serializable {
     public TourItem(long id,
                     long hostID,
                     int status,
-                    String name,
+                    String tourName,
                     long minCost,
                     long maxCost,
                     String startDate,
@@ -63,7 +64,7 @@ public class TourItem implements Serializable {
         this.id = id;
         this.hostID = hostID;
         this.status = status;
-        this.name = name;
+        this.tourName = tourName;
         this.minCost = minCost;
         this.maxCost = maxCost;
         this.startDate = startDate;
@@ -92,36 +93,12 @@ public class TourItem implements Serializable {
         this.hostID = hostID;
     }
 
-    public int getStatus() {
-        return status;
+    public String getTourName() {
+        return tourName;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public long getMinCost() {
-        return minCost;
-    }
-
-    public void setMinCost(long minCost) {
-        this.minCost = minCost;
-    }
-
-    public long getMaxCost() {
-        return maxCost;
-    }
-
-    public void setMaxCost(long maxCost) {
-        this.maxCost = maxCost;
+    public void setTourName(String tourName) {
+        this.tourName = tourName;
     }
 
     public String getStartDate() {
@@ -140,6 +117,38 @@ public class TourItem implements Serializable {
         this.endDate = endDate;
     }
 
+    public double getSourceLat() {
+        return sourceLat;
+    }
+
+    public void setSourceLat(double sourceLat) {
+        this.sourceLat = sourceLat;
+    }
+
+    public double getSourceLong() {
+        return sourceLong;
+    }
+
+    public void setSourceLong(double sourceLong) {
+        this.sourceLong = sourceLong;
+    }
+
+    public double getDesLat() {
+        return desLat;
+    }
+
+    public void setDesLat(double desLat) {
+        this.desLat = desLat;
+    }
+
+    public double getDesLong() {
+        return desLong;
+    }
+
+    public void setDesLong(double desLong) {
+        this.desLong = desLong;
+    }
+
     public int getAdults() {
         return adults;
     }
@@ -156,12 +165,20 @@ public class TourItem implements Serializable {
         this.childs = childs;
     }
 
-    public boolean isPrivate() {
-        return isPrivate;
+    public long getMinCost() {
+        return minCost;
     }
 
-    public void setPrivate(boolean aPrivate) {
-        isPrivate = aPrivate;
+    public void setMinCost(long minCost) {
+        this.minCost = minCost;
+    }
+
+    public long getMaxCost() {
+        return maxCost;
+    }
+
+    public void setMaxCost(long maxCost) {
+        this.maxCost = maxCost;
     }
 
     public String getAvatar() {
@@ -170,6 +187,22 @@ public class TourItem implements Serializable {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public boolean isPrivate() {
+        return isPrivate;
+    }
+
+    public void setPrivate(boolean aPrivate) {
+        isPrivate = aPrivate;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public boolean isHost() {
