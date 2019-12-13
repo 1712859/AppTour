@@ -7,6 +7,12 @@
     android:orientation="vertical"
     tools:context=".MapGetLocationActivity">
 
+    <Button
+        android:id="@+id/mapGetLocation_searchBtn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/mapGetLocation_searchBtn"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -28,10 +34,10 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/mapGetLocation_targetIconDescription"
             android:src="@mipmap/mapgetlocation_targeticon_foreground"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@id/mapGetLocation_mapFragment"
+            app:layout_constraintEnd_toEndOf="@id/mapGetLocation_mapFragment"
+            app:layout_constraintStart_toStartOf="@id/mapGetLocation_mapFragment"
+            app:layout_constraintTop_toTopOf="@id/mapGetLocation_mapFragment" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -39,7 +39,7 @@ public class TourCreateActivity extends AppCompatActivity {
 
             token = bundle.getString("token");
             //dùng token tạm
-            token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzNjkiLCJwaG9uZSI6IjA4NTg0NTYxNTIiLCJlbWFpbCI6InR1YmF0bzE5OTlAZ21haWwuY29tIiwiZXhwIjoxNTc2MjIyNDY0MTg1LCJhY2NvdW50IjoidXNlciIsImlhdCI6MTU3MzYzMDQ2NH0.0CruSddOgakdzQdG98VkPpFBSTNOq2h9FZq6r6vvIQs";
+            //token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzNjkiLCJwaG9uZSI6IjA4NTg0NTYxNTIiLCJlbWFpbCI6InR1YmF0bzE5OTlAZ21haWwuY29tIiwiZXhwIjoxNTc2MjIyNDY0MTg1LCJhY2NvdW50IjoidXNlciIsImlhdCI6MTU3MzYzMDQ2NH0.0CruSddOgakdzQdG98VkPpFBSTNOq2h9FZq6r6vvIQs";
         }
 
         createBtn = findViewById(R.id.createTour_createBtn);
@@ -147,7 +147,8 @@ public class TourCreateActivity extends AppCompatActivity {
                 Integer.valueOf(adult.getText().toString()),
                 Integer.valueOf(child.getText().toString()),
                 Integer.valueOf(minCost.getText().toString()),
-                Integer.valueOf(maxCost.getText().toString())
+                Integer.valueOf(maxCost.getText().toString()),
+                linkImage.getText().toString()
         );
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -161,10 +162,11 @@ public class TourCreateActivity extends AppCompatActivity {
         call.enqueue(new Callback<TourCreateForm>() {
             @Override
             public void onResponse(Call<TourCreateForm> call, Response<TourCreateForm> response) {
-                new AlertDialog.Builder(TourCreateActivity.this)
+                /*new AlertDialog.Builder(TourCreateActivity.this)
                         .setTitle("Post response  FOR DEBUG ONLY")
                         .setMessage(response.toString())
-                        .show();
+                        .show();*/
+                finish();
             }
 
             @Override

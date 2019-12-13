@@ -13,9 +13,9 @@ class TourCreateForm {
     private int childs;
     private int minCost;
     private int maxCost;
-    //private String avatar;
+    private String avatar;
 
-    public TourCreateForm(String name, String startDate, String endDate, double sourceLat, double sourceLong, double desLat, double desLong, boolean isPrivate, int adults, int childs, int minCost, int maxCost) {
+    public TourCreateForm(String name, String startDate, String endDate, double sourceLat, double sourceLong, double desLat, double desLong, boolean isPrivate, int adults, int childs, int minCost, int maxCost, String avatar) {
         this.name = name;
         this.sourceLat = sourceLat;
         this.sourceLong = sourceLong;
@@ -26,6 +26,7 @@ class TourCreateForm {
         this.childs = childs;
         this.minCost = minCost;
         this.maxCost = maxCost;
+        this.avatar = avatar;
 
         endDate = endDate.replaceAll("(\\\\|\\/|-)", "");
         this.endDate = Integer.valueOf(endDate);
@@ -132,11 +133,11 @@ class TourCreateForm {
         this.maxCost = maxCost;
     }
 
-    /*public String getAvatar() {
+    public String getAvatar() {
         return avatar;
     }
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
-    }*/
+    }
 }

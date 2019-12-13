@@ -8,10 +8,16 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,11 +26,13 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class TourAvailableActivity extends AppCompatActivity {
-    String token, image_url;
-    ListView tourListView;
-    TourAdapter tourAdapter;
-    Button createTourBtn;
+    String token;
+
     List<TourItem> tourData = new ArrayList<>();
+    TourAdapter tourAdapter;
+
+    ListView tourListView;
+    Button createTourBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,58 +40,57 @@ public class TourAvailableActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tour_available);
 
         Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        if (bundle != null) {
-            token = bundle.getString("Key_1");
-            image_url = bundle.getString("Key_3");
-        }
+        token = intent.getStringExtra("token");
         try {
-            loaddata();
-
-            tourAdapter = new TourAdapter(this, tourData);
-            tourListView = findViewById(R.id.tourAvailable_tourListView);
-            tourListView.setAdapter(tourAdapter);
-            tourListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    long ID = tourData.get(position).getId();
-                    Intent intent = new Intent(TourAvailableActivity.this, TourDetailActivity.class);
-                    Bundle bundle = new Bundle();
-
-                    bundle.putSerializable("item", tourData.get(position));
-                    bundle.putString("token", token);
-                    intent.putExtras(bundle);
-
-                    startActivity(intent);
-                }
-            });
+            setupListView();
+            //getUserInfo();
+            getUserTour();
 
             createTourBtn = findViewById(R.id.tourAvailable_createTourBtn);
             createTourBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(TourAvailableActivity.this, TourCreateActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("token", token);
-                    intent.putExtras(bundle);
+                    intent.putExtra("token", token);
                     startActivity(intent);
                 }
             });
 
         } catch (Exception e) {
-            Toast.makeText(TourAvailableActivity.this, "lỗi lấy thông tin từ server.", Toast.LENGTH_LONG).show();
+            Toast.makeText(TourAvailableActivity.this, "lỗi trong quá trình thiết lập màn hình.", Toast.LENGTH_LONG).show();
         }
     }
 
-    private void loaddata() {
-        tourData.add(new TourItem(9999, 0, "Đi hạ long (sample)", 100000, 200000, "21/10/1999", "27/2/2014", 0, 0, false, "https://tour.dulichvietnam.com.vn/uploads/tour/1554713265_tour-ha-long-3.jpg"));
-        tourData.add(new TourItem(8888, 0, "Đi đà lạc (sample)", 700000, 900000, "14/5/216", "8/2/374", 0, 0, false, "https://cdn3.ivivu.com/2013/09/khu-nghi-duong-terracotta-da-lat-1-800x450.jpg"));
+    private void setupListView() {
 
+        tourListView = findViewById(R.id.tourAvailable_tourListView);
+        tourAdapter = new TourAdapter(this, tourData);
+        tourListView.setAdapter(tourAdapter);
+
+
+        tourListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                long ID = tourData.get(position).getId();
+                Intent intent = new Intent(TourAvailableActivity.this, TourDetailActivity.class);
+                Bundle bundle = new Bundle();
+
+                bundle.putSerializable("item", tourData.get(position));
+                bundle.putString("token", token);
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void getUserInfo() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://35.197.153.192:3000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         userClient client = retrofit.create((userClient.class));
+
 
         Call<User_infor> call = client.GetUserInfor(token);
         call.enqueue(new Callback<User_infor>() {
@@ -111,27 +118,33 @@ public class TourAvailableActivity extends AppCompatActivity {
                 Toast.makeText(TourAvailableActivity.this, "lỗi lấy thông tin từ server.", Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void getUserTour() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://35.197.153.192:3000")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
-        Call<TourListGet> cal1 = jsonPlaceHolderApi.getTourList(token);
-        cal1.enqueue(new Callback<TourListGet>() {
+        Call<UserTour> cal1 = jsonPlaceHolderApi.getUserTourList(1, 100, token);
+        cal1.enqueue(new Callback<UserTour>() {
             @Override
-            public void onResponse(Call<TourListGet> call, Response<TourListGet> response) {
+            public void onResponse(Call<UserTour> call, Response<UserTour> response) {
                 if (!response.isSuccessful()) {
-                    Toast.makeText(TourAvailableActivity.this, "lỗi lấy thông tin từ server.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(TourAvailableActivity.this, "lỗi lấy json từ server.", Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                TourListGet tours = response.body();
+                UserTour tours = response.body();
                 tourData.addAll(tours.getTours());
                 tourAdapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onFailure(Call<TourListGet> call, Throwable t) {
-                Toast.makeText(TourAvailableActivity.this, "lỗi lấy thông tin từ server.", Toast.LENGTH_LONG).show();
+            public void onFailure(Call<UserTour> call, Throwable t) {
+                Toast.makeText(TourAvailableActivity.this, "lỗi kết nối đến server.", Toast.LENGTH_LONG).show();
             }
         });
-
     }
 }

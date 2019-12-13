@@ -73,11 +73,7 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Main2Activity.this, TourAvailableActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("Key_1", token);
-                intent.putExtras(bundle);
-                bundle.putString("Key_3", image_url);
-                intent.putExtras(bundle);
+                intent.putExtra("token", token);
                 startActivity(intent);
             }
         });

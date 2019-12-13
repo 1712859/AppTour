@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class TourItem implements Serializable {
     private long id;
+    private long hostID;
     private int status;
     private String name;
     private long minCost;
@@ -13,13 +14,25 @@ public class TourItem implements Serializable {
     private int adults;
     private int childs;
     private boolean isPrivate;
-    private String imageUrl;
+    private String avatar;
+    private boolean isHost;
+    private boolean isKicked;
 
     public TourItem() {
 
     }
 
-    public TourItem(long id, int status, String name, long minCost, long maxCost, String startDate, String endDate, int adults, int childs, boolean isPrivate, String imageUrl) {
+    public TourItem(long id,
+                    int status,
+                    String name,
+                    long minCost,
+                    long maxCost,
+                    String startDate,
+                    String endDate,
+                    int adults,
+                    int childs,
+                    boolean isPrivate,
+                    String avatar) {
         this.id = id;
         this.status = status;
         this.name = name;
@@ -30,7 +43,37 @@ public class TourItem implements Serializable {
         this.adults = adults;
         this.childs = childs;
         this.isPrivate = isPrivate;
-        this.imageUrl = imageUrl;
+        this.avatar = avatar;
+    }
+
+    public TourItem(long id,
+                    long hostID,
+                    int status,
+                    String name,
+                    long minCost,
+                    long maxCost,
+                    String startDate,
+                    String endDate,
+                    int adults,
+                    int childs,
+                    boolean isPrivate,
+                    String avatar,
+                    boolean isHost,
+                    boolean isKicked) {
+        this.id = id;
+        this.hostID = hostID;
+        this.status = status;
+        this.name = name;
+        this.minCost = minCost;
+        this.maxCost = maxCost;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.adults = adults;
+        this.childs = childs;
+        this.isPrivate = isPrivate;
+        this.avatar = avatar;
+        this.isHost = isHost;
+        this.isKicked = isKicked;
     }
 
     public long getId() {
@@ -39,6 +82,14 @@ public class TourItem implements Serializable {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getHostID() {
+        return hostID;
+    }
+
+    public void setHostID(long hostID) {
+        this.hostID = hostID;
     }
 
     public int getStatus() {
@@ -113,11 +164,27 @@ public class TourItem implements Serializable {
         isPrivate = aPrivate;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getAvatar() {
+        return avatar;
     }
 
     public void setAvatar(String avatar) {
-        this.imageUrl = avatar;
+        this.avatar = avatar;
+    }
+
+    public boolean isHost() {
+        return isHost;
+    }
+
+    public void setHost(boolean host) {
+        isHost = host;
+    }
+
+    public boolean isKicked() {
+        return isKicked;
+    }
+
+    public void setKicked(boolean kicked) {
+        isKicked = kicked;
     }
 }

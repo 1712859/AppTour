@@ -46,7 +46,7 @@ public class TourDetailActivity extends AppCompatActivity {
         startDate = findViewById(R.id.tourDetail_startDate);
         stopPoints = findViewById(R.id.tourDetail_stopPointList);
 
-        Picasso.get().load(myTour.getImageUrl()).into(tourImage);
+        Picasso.get().load(myTour.getAvatar()).into(tourImage);
         tourName.setText(myTour.getName());
         id.setText(String.valueOf(myTour.getId()));
         adult.setText(String.valueOf(myTour.getAdults()));

@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
@@ -26,14 +27,21 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.widget.Autocomplete;
+import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 public class MapGetLocationActivity extends FragmentActivity implements OnMapReadyCallback {
-    static int FINE_LOCATION_PERMISSION_REQUEST_CODE = 1111;
-    static int COARSE_LOCATION_PERMISSION_REQUEST_CODE = 2222;
-
+    static final String TAG = "MapGetLocationActivity";
+    static final int SEARCH_LOCATION_REQUEST_CODE = 5555;
+    static final int FINE_LOCATION_PERMISSION_REQUEST_CODE = 1111;
+    static final int COARSE_LOCATION_PERMISSION_REQUEST_CODE = 2222;
+    Button searchBtn;
     Button confirmBtn;
     GoogleMap myMap;
 
@@ -48,11 +56,24 @@ public class MapGetLocationActivity extends FragmentActivity implements OnMapRea
         getPerMission(Manifest.permission.ACCESS_FINE_LOCATION, FINE_LOCATION_PERMISSION_REQUEST_CODE);
         getPerMission(Manifest.permission.ACCESS_COARSE_LOCATION, COARSE_LOCATION_PERMISSION_REQUEST_CODE);
 
+        if (!Places.isInitialized()) {
+            Places.initialize(getApplicationContext(), getResources().getString(R.string.google_maps_key));
+        }
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapGetLocation_mapFragment);
         mapFragment.getMapAsync(this);
 
+        searchBtn = findViewById(R.id.mapGetLocation_searchBtn);
         confirmBtn = findViewById(R.id.mapGetLocation_confirmBtn);
+
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.LAT_LNG, Place.Field.NAME);
+                Intent autoCompleteIntent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fields).build(getApplicationContext());
+                startActivityForResult(autoCompleteIntent, SEARCH_LOCATION_REQUEST_CODE);
+            }
+        });
 
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +107,21 @@ public class MapGetLocationActivity extends FragmentActivity implements OnMapRea
         myMap.setMyLocationEnabled(true);
         myMap.getUiSettings().setCompassEnabled(true);
         setUserLocation();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode==RESULT_OK){
+            if (requestCode==SEARCH_LOCATION_REQUEST_CODE){
+                if(data!=null){
+                    Place place = Autocomplete.getPlaceFromIntent(data);
+                    LatLng selectedLocation = place.getLatLng();
+                    myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(selectedLocation, 15f));
+                }
+            }
+        }
     }
 
     private void getPerMission(String permission, int requestCode) {

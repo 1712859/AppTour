@@ -50,6 +50,8 @@
     <string name="tourDetail_price_sign">Đ</string>
     <string name="tourDetail_startDate">Ngày khỏi hành</string>
     <string name="tourDetail_startDate_hint">12/12/1999</string>
+    <string name="tourDetail_modifyBtn">Chỉnh sửa</string>
+    <string name="tourDetail_deleteBtn">Xóa</string>
 
     <string name="facebook_app_id">737774043369479</string>
     <string name="fb_login_protocol_scheme">fb737774043369479</string>
@@ -78,6 +80,7 @@
     <string name="pickStopPoint_endPointInfo_hint">Vị trí kết thúc:\n 0, 0</string>
     <string name="pickStopPoint_confirmBtn">Xác nhận</string>
 
+    <string name="mapGetLocation_searchBtn">Tìm vị trí</string>
     <string name="mapGetLocation_confirmBtn">Xác nhận</string>
     <string name="mapGetLocation_targetIconDescription">thể hiện vị trí người dùng chọn</string>
 
