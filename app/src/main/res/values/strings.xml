@@ -23,6 +23,7 @@
     <string name="main2_viewUserProfile">Xem thông tin người dùng</string>
     <string name="main2_createTour">Tạo một chuyến đi mới</string>
     <string name="main2_viewAvailableTourList">Xem danh sách các chuyến đi hiện có</string>
+    <string name="main2_Đăng_xuất">Đắng xuất</string>
 
     <string name="tourItem_hint_title">Tên tour</string>
     <string name="tourItem_hint_price">Giá: </string>

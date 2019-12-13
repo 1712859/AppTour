@@ -1,7 +1,5 @@
 package com.example.tourviet;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.squareup.picasso.Picasso;
 
@@ -97,15 +97,13 @@ public class Main3Activity_ChangePass extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Pass> call, Response<Pass> response) {
                         if (!response.isSuccessful()) {
-                            Toast.makeText(Main3Activity_ChangePass.this, response.message(), Toast.LENGTH_LONG).show();
+                                    Toast.makeText(Main3Activity_ChangePass.this, response.message(), Toast.LENGTH_LONG).show();
                             return;
                         }
                         Toast.makeText(Main3Activity_ChangePass.this,response.message() , Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(Main3Activity_ChangePass.this,Main2Activity_user.class);
                         Bundle bundle1 = new Bundle();
                         bundle1.putString("Key_1", token);
-                        intent.putExtras(bundle1);
-                        bundle1.putString("Key_3", image_url);
                         intent.putExtras(bundle1);
                         startActivity(intent);
                     }
