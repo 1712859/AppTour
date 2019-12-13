@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,10 +21,12 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class TourAvailableActivity extends AppCompatActivity {
-    String token, image_url;
+    String token;
+    int currentPage;
     ListView tourListView;
     TourAdapter tourAdapter;
-    Button createTourBtn;
+    Button createTourBtn, previousPageBtn, nextPageBtn;
+    TextView currentPageText;
     List<TourItem> tourData = new ArrayList<>();
 
     @Override
@@ -32,33 +35,20 @@ public class TourAvailableActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tour_available);
 
         Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        if (bundle != null) {
-            token = bundle.getString("Key_1");
-            image_url = bundle.getString("Key_3");
-        }
+        token = intent.getStringExtra("token");
+        currentPage = 1;
         try {
-            loaddata();
-
-            tourAdapter = new TourAdapter(this, tourData);
             tourListView = findViewById(R.id.tourAvailable_tourListView);
-            tourListView.setAdapter(tourAdapter);
-            tourListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    long ID = tourData.get(position).getId();
-                    Intent intent = new Intent(TourAvailableActivity.this, TourDetailActivity.class);
-                    Bundle bundle = new Bundle();
-
-                    bundle.putSerializable("item", tourData.get(position));
-                    bundle.putString("token", token);
-                    intent.putExtras(bundle);
-
-                    startActivity(intent);
-                }
-            });
-
             createTourBtn = findViewById(R.id.tourAvailable_createTourBtn);
+            previousPageBtn = findViewById(R.id.tourAvailable_previousPageBtn);
+            nextPageBtn = findViewById(R.id.tourAvailable_nextPageBtn);
+            currentPageText = findViewById(R.id.tourAvailable_currentPageText);
+
+
+            setupListview();
+            //loaddata();
+            getTourList(currentPage);
+
             createTourBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -70,15 +60,54 @@ public class TourAvailableActivity extends AppCompatActivity {
                 }
             });
 
+
+            nextPageBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    currentPage++;
+                    getTourList(currentPage);
+                    currentPageText.setText(String.valueOf(currentPage));
+                }
+            });
+
+            previousPageBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (currentPage <= 1)
+                        return;
+
+                    currentPage--;
+                    getTourList(currentPage);
+                    currentPageText.setText(String.valueOf(currentPage));
+                }
+            });
+
         } catch (Exception e) {
-            Toast.makeText(TourAvailableActivity.this, "lỗi lấy thông tin từ server.", Toast.LENGTH_LONG).show();
+            Toast.makeText(TourAvailableActivity.this, "lỗi khởi tạo màn hình.", Toast.LENGTH_LONG).show();
         }
     }
 
-    private void loaddata() {
-        tourData.add(new TourItem(9999, 0, "Đi hạ long (sample)", 100000, 200000, "21/10/1999", "27/2/2014", 0, 0, false, "https://tour.dulichvietnam.com.vn/uploads/tour/1554713265_tour-ha-long-3.jpg"));
-        tourData.add(new TourItem(8888, 0, "Đi đà lạc (sample)", 700000, 900000, "14/5/216", "8/2/374", 0, 0, false, "https://cdn3.ivivu.com/2013/09/khu-nghi-duong-terracotta-da-lat-1-800x450.jpg"));
 
+    private void setupListview() {
+        tourAdapter = new TourAdapter(this, tourData);
+        tourListView.setAdapter(tourAdapter);
+        tourListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                long ID = tourData.get(position).getId();
+                Intent intent = new Intent(TourAvailableActivity.this, TourDetailActivity.class);
+                Bundle bundle = new Bundle();
+
+                bundle.putSerializable("item", tourData.get(position));
+                bundle.putString("token", token);
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void loaddata() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://35.197.153.192:3000")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -90,7 +119,7 @@ public class TourAvailableActivity extends AppCompatActivity {
             @Override
             public void onResponse(retrofit2.Call<User_infor> call, Response<User_infor> response) {
                 if (!response.isSuccessful()) {
-                    Toast.makeText(TourAvailableActivity.this, "lỗi lấy thông tin từ server.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(TourAvailableActivity.this, "lỗi lấy thông tin json từ server.", Toast.LENGTH_LONG).show();
 
                     return;
                 }
@@ -108,30 +137,40 @@ public class TourAvailableActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(retrofit2.Call<User_infor> call, Throwable t) {
-                Toast.makeText(TourAvailableActivity.this, "lỗi lấy thông tin từ server.", Toast.LENGTH_LONG).show();
+                Toast.makeText(TourAvailableActivity.this, "lỗi kết nối đến server.", Toast.LENGTH_LONG).show();
             }
         });
 
+    }
+
+    private void getTourList(int page) {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://35.197.153.192:3000")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
-        Call<TourListGet> cal1 = jsonPlaceHolderApi.getTourList(token);
+        Call<TourListGet> cal1 = jsonPlaceHolderApi.getTourList(page, 10, token);
         cal1.enqueue(new Callback<TourListGet>() {
             @Override
             public void onResponse(Call<TourListGet> call, Response<TourListGet> response) {
                 if (!response.isSuccessful()) {
-                    Toast.makeText(TourAvailableActivity.this, "lỗi lấy thông tin từ server.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(TourAvailableActivity.this, "lỗi lấy thông tin json từ server.", Toast.LENGTH_LONG).show();
                     return;
                 }
 
                 TourListGet tours = response.body();
+                tourData.clear();
                 tourData.addAll(tours.getTours());
                 tourAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onFailure(Call<TourListGet> call, Throwable t) {
-                Toast.makeText(TourAvailableActivity.this, "lỗi lấy thông tin từ server.", Toast.LENGTH_LONG).show();
+                Toast.makeText(TourAvailableActivity.this, "lỗi kết nối đến server.", Toast.LENGTH_LONG).show();
             }
         });
-
     }
 }

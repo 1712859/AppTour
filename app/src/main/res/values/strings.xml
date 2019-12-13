@@ -36,8 +36,11 @@
     <string name="tourItem_avatarDescription">Ảnh đại điện chuyến đi</string>
     <string name="tourItem_money">Đ</string>
 
-    <string name="tourList_createTour">Tạo chuyến đi mới</string>
-    <string name="tourList_avaibleTour">Danh sách chuyến đi hiện có</string>
+    <string name="tourAvailable_createTour">Tạo chuyến đi mới</string>
+    <string name="tourAvailable_availableTour">Danh sách chuyến đi hiện có</string>
+    <string name="tourAvailable_previousPageBtn">Trang trước</string>
+    <string name="tourAvailable_nextPageBtn">Trang kế</string>
+    <string name="tourAvailable_currentPageText_hint">1</string>
 
     <string name="tourDetail_tourName_hint">Tên tour</string>
     <string name="tourDetail_tourID">Mã tour: </string>

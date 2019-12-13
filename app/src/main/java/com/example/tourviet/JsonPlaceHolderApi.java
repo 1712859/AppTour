@@ -14,10 +14,7 @@ import retrofit2.http.Query;
 public interface JsonPlaceHolderApi {
 
     @GET("tour/list")
-    Call<TourListGet> getTourList(@Header("Authorization") String loginToken);
-
-    @GET("/tour/history-user")
-    Call<TourListGet> getTourUserList(@Header("Authorization") String loginToken,@Body User_tour usertour);
+    Call<TourListGet> getTourList(@Query("pageNum") int index, @Query("rowPerPage") int size, @Header("Authorization") String loginToken);
 
     @POST("tour/create")
     Call<TourCreateForm> postTourCreateForm(@Body TourCreateForm form, @Header("Authorization") String loginToken);

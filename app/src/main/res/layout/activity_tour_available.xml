@@ -11,7 +11,7 @@
         android:layout_height="50dp"
         android:background="@color/colorPrimary"
         android:gravity="center"
-        android:text="@string/tourList_avaibleTour"
+        android:text="@string/tourAvailable_availableTour"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -23,11 +23,36 @@
         android:layout_weight="1"
         android:background="#20000000" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/tourAvailable_previousPageBtn"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="@string/tourAvailable_previousPageBtn"/>
+
+        <TextView
+            android:id="@+id/tourAvailable_currentPageText"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:hint="@string/tourAvailable_currentPageText_hint" />
+
+        <Button
+            android:id="@+id/tourAvailable_nextPageBtn"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="@string/tourAvailable_nextPageBtn"/>
+    </LinearLayout>
 
     <Button
         android:id="@+id/tourAvailable_createTourBtn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="@string/tourList_createTour" />
+        android:text="@string/tourAvailable_createTour" />
 
 </LinearLayout>
