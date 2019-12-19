@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,95 +20,110 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity_UserTour extends AppCompatActivity {
+public class UserToursActivity extends AppCompatActivity {
 
-
-    Button Backbutton;
-    String token,image_url;
+    String token;
+    int currentPage;
+    Button createTourBtn, nextPageBtn, previousPageBtn;
+    TextView currentPageText;
     List<TourItem> tourData = new ArrayList<>();
     TourAdapter tourAdapter;
-    ListView tourListView;
+    ListView tourList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main__user_tour);
+        setContentView(R.layout.activity_user_tours);
+
 
         Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        if (bundle != null) {
-            token = bundle.getString("Key_1");
-        }
-        Button Back = findViewById(R.id.backge);
-        Back.setOnClickListener(new View.OnClickListener() {
+        token = intent.getStringExtra("token");
+
+        tourList = findViewById(R.id.userTour_list);
+        createTourBtn = findViewById(R.id.userTour_createTourBtn);
+        previousPageBtn = findViewById(R.id.userTour_previousPageBtn);
+        nextPageBtn = findViewById(R.id.userTour_nextPageBtn);
+        currentPageText = findViewById(R.id.userTour_currentPageText);
+
+        tourAdapter = new TourAdapter(UserToursActivity.this, tourData);
+        tourList.setAdapter(tourAdapter);
+        tourList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity_UserTour.this, Main2Activity_user.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("Key_1", token);
-                intent.putExtras(bundle);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), TourDetailActivity.class);
+                intent.putExtra("id", tourData.get(position).getId());
+                intent.putExtra("token", token);
                 startActivity(intent);
             }
         });
-        try {
-            loaddata();
 
-            tourAdapter = new TourAdapter(this, tourData);
-            tourListView = findViewById(R.id.main2_tourListView);
-            tourListView.setAdapter(tourAdapter);
-            tourListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    long ID = tourData.get(position).getId();
-                    Intent intent = new Intent(MainActivity_UserTour.this, TourDetailActivity.class);
-                    Bundle bundle = new Bundle();
+        currentPage = 1;
+        getTourList(currentPage);
 
-                    bundle.putSerializable("item", tourData.get(position));
-                    bundle.putString("token", token);
-                    intent.putExtras(bundle);
 
-                    startActivity(intent);
-                }
-            });
+        createTourBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), TourCreateActivity.class);
+                intent.putExtra("token", token);
+                startActivity(intent);
+            }
+        });
 
-        } catch (Exception e) {
-            Toast.makeText(MainActivity_UserTour.this, "lỗi lấy thông tin từ server.", Toast.LENGTH_LONG).show();
-        }
+
+        nextPageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentPage++;
+                getTourList(currentPage);
+                currentPageText.setText(String.valueOf(currentPage));
+            }
+        });
+
+        previousPageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (currentPage <= 1)
+                    return;
+
+                currentPage--;
+                getTourList(currentPage);
+                currentPageText.setText(String.valueOf(currentPage));
+            }
+        });
+
 
     }
 
-    private void loaddata() {
-        tourData.add(new TourItem(9999, 0, "Đi hạ long (sample)", 100000, 200000, "21/10/1999", "27/2/2014", 0, 0, false, "https://tour.dulichvietnam.com.vn/uploads/tour/1554713265_tour-ha-long-3.jpg"));
-        tourData.add(new TourItem(8888, 0, "Đi đà lạt (sample)", 700000, 900000, "14/5/216", "8/2/374", 0, 0, false, "https://cdn3.ivivu.com/2013/09/khu-nghi-duong-terracotta-da-lat-1-800x450.jpg"));
-        User_tour user_tour = new User_tour(
-                1,
-                "10"
-        );
+
+    private void getTourList(int page) {
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://35.197.153.192:3000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
+
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
-        Call<TourListGet> cal1 = jsonPlaceHolderApi.getTourUserList(token,user_tour);
-        cal1.enqueue(new Callback<TourListGet>() {
+        Call<UserTour> cal1 = jsonPlaceHolderApi.getUserTourList(page, 10, token);
+        cal1.enqueue(new Callback<UserTour>() {
             @Override
-            public void onResponse(Call<TourListGet> call, Response<TourListGet> response) {
+            public void onResponse(Call<UserTour> call, Response<UserTour> response) {
                 if (!response.isSuccessful()) {
-                    Toast.makeText(MainActivity_UserTour.this, "lỗi lấy thông tin từ server.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "lỗi dữ liệu.", Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                TourListGet tours = response.body();
+                UserTour tours = response.body();
+                tourData.clear();
                 tourData.addAll(tours.getTours());
                 tourAdapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onFailure(Call<TourListGet> call, Throwable t) {
-                Toast.makeText(MainActivity_UserTour.this, "lỗi lấy thông tin từ server.", Toast.LENGTH_LONG).show();
+            public void onFailure(Call<UserTour> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "lỗi kết nối đến server.", Toast.LENGTH_LONG).show();
             }
         });
-
     }
 }

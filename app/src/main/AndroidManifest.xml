@@ -31,7 +31,7 @@
         <activity
             android:name=".MapGetLocationActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".MainActivity_UserTour" />
+        <activity android:name=".UserToursActivity" />
         <activity android:name=".MainActivity_EditImformation" />
         <activity android:name=".Main2Activity_user" />
         <activity android:name=".TourCreateActivity" />

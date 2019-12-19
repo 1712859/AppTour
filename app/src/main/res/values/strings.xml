@@ -123,5 +123,10 @@
         <item>Đã kết thúc</item>
     </string-array>
 
+    <string name="userTour_title">Danh sách các chuyến đi của người dùng</string>
+    <string name="userTour_createTour">Tạo chuyến đi mới</string>
+    <string name="userTour_previousPageBtn">Trang trước</string>
+    <string name="userTour_nextPageBtn">Trang kế</string>
+    <string name="userTour_currentPageText_hint">1</string>
 
 </resources>

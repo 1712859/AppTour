@@ -32,14 +32,11 @@ public class TourCreateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tour_create);
 
-        final Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        if (bundle != null) {
+        Intent intent = getIntent();
+        token = intent.getStringExtra("token");
+        //token tạm
+        //token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzNjkiLCJwaG9uZSI6IjA4NTg0NTYxNTIiLCJlbWFpbCI6InR1YmF0bzE5OTlAZ21haWwuY29tIiwiZXhwIjoxNTc2MjIyNDY0MTg1LCJhY2NvdW50IjoidXNlciIsImlhdCI6MTU3MzYzMDQ2NH0.0CruSddOgakdzQdG98VkPpFBSTNOq2h9FZq6r6vvIQs";
 
-            token = bundle.getString("token");
-            //dùng token tạm
-            //token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzNjkiLCJwaG9uZSI6IjA4NTg0NTYxNTIiLCJlbWFpbCI6InR1YmF0bzE5OTlAZ21haWwuY29tIiwiZXhwIjoxNTc2MjIyNDY0MTg1LCJhY2NvdW50IjoidXNlciIsImlhdCI6MTU3MzYzMDQ2NH0.0CruSddOgakdzQdG98VkPpFBSTNOq2h9FZq6r6vvIQs";
-        }
 
         createBtn = findViewById(R.id.createTour_createBtn);
         pickStopPointBtn = findViewById(R.id.createTour_pickStopPoint);

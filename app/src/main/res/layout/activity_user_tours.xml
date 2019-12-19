@@ -1,55 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    tools:context=".Main2Activity"
     android:background="#20000000"
-    >
+    android:orientation="vertical"
+    tools:context=".UserToursActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/nav"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal"
-        android:gravity="center"
-        tools:ignore="MissingConstraints">
-
-
-        <Button
-            android:id="@+id/backge"
-            android:layout_width="31dp"
-            android:layout_height="35dp"
-            android:layout_gravity="left"
-            android:layout_marginStart="16dp"
-            android:background="#00ffffff"
-            android:drawableLeft="@drawable/back"
-            android:paddingRight="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/userTour_title"
+        android:textSize="20sp" />
 
     <ListView
-        android:id="@+id/main2_tourListView"
+        android:id="@+id/userTour_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="51dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nav"
-        android:background="#20000000"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        />
+        <Button
+            android:id="@+id/userTour_previousPageBtn"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="@string/userTour_previousPageBtn" />
 
+        <TextView
+            android:id="@+id/userTour_currentPageText"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:hint="@string/userTour_currentPageText_hint" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/userTour_nextPageBtn"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="@string/userTour_nextPageBtn" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/userTour_createTourBtn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/userTour_createTour" />
+
+</LinearLayout>

@@ -1,0 +1,1 @@
+phần update tour thì api của thầy nó ko sửa lại tour cũ mà tạo hẳn một tour mới với dựa trên chỉnh sửa trên tour cũ

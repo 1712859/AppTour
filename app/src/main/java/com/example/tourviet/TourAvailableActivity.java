@@ -23,11 +23,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class TourAvailableActivity extends AppCompatActivity {
     String token;
     int currentPage;
-    ListView tourListView;
-    TourAdapter tourAdapter;
     Button createTourBtn, previousPageBtn, nextPageBtn;
     TextView currentPageText;
     List<TourItem> tourData = new ArrayList<>();
+    TourAdapter tourAdapter;
+    ListView tourListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +52,8 @@ public class TourAvailableActivity extends AppCompatActivity {
             createTourBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(TourAvailableActivity.this, TourCreateActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("token", token);
-                    intent.putExtras(bundle);
+                    Intent intent = new Intent(getApplicationContext(), TourCreateActivity.class);
+                    intent.putExtra("token", token);
                     startActivity(intent);
                 }
             });
@@ -83,7 +81,7 @@ public class TourAvailableActivity extends AppCompatActivity {
             });
 
         } catch (Exception e) {
-            Toast.makeText(TourAvailableActivity.this, "lỗi khởi tạo màn hình.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "lỗi khởi tạo màn hình.", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -94,53 +92,12 @@ public class TourAvailableActivity extends AppCompatActivity {
         tourListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                long ID = tourData.get(position).getId();
-                Intent intent = new Intent(TourAvailableActivity.this, TourDetailActivity.class);
-                Bundle bundle = new Bundle();
-
-                bundle.putSerializable("item", tourData.get(position));
-                bundle.putString("token", token);
-                intent.putExtras(bundle);
-
+                Intent intent = new Intent(getApplicationContext(), TourDetailActivity.class);
+                intent.putExtra("id", tourData.get(position).getId());
+                intent.putExtra("token", token);
                 startActivity(intent);
             }
         });
-    }
-
-    private void loaddata() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://35.197.153.192:3000")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        userClient client = retrofit.create((userClient.class));
-
-        Call<User_infor> call = client.GetUserInfor(token);
-        call.enqueue(new Callback<User_infor>() {
-            @Override
-            public void onResponse(retrofit2.Call<User_infor> call, Response<User_infor> response) {
-                if (!response.isSuccessful()) {
-                    Toast.makeText(TourAvailableActivity.this, "lỗi lấy thông tin json từ server.", Toast.LENGTH_LONG).show();
-
-                    return;
-                }
-                // chuyển tên thành chữ in hoa
-                StringBuilder sb = new StringBuilder(response.body().getFullName());
-                for (int index = 0; index < sb.length(); index++) {
-                    char c = sb.charAt(index);
-                    if (Character.isLowerCase(c)) {
-                        sb.setCharAt(index, Character.toUpperCase(c));
-                    } else {
-                        sb.setCharAt(index, Character.toLowerCase(c));
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(retrofit2.Call<User_infor> call, Throwable t) {
-                Toast.makeText(TourAvailableActivity.this, "lỗi kết nối đến server.", Toast.LENGTH_LONG).show();
-            }
-        });
-
     }
 
     private void getTourList(int page) {
@@ -157,7 +114,7 @@ public class TourAvailableActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<TourListGet> call, Response<TourListGet> response) {
                 if (!response.isSuccessful()) {
-                    Toast.makeText(TourAvailableActivity.this, "lỗi lấy thông tin json từ server.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "lỗi dữ liệu.", Toast.LENGTH_LONG).show();
                     return;
                 }
 
@@ -169,7 +126,7 @@ public class TourAvailableActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<TourListGet> call, Throwable t) {
-                Toast.makeText(TourAvailableActivity.this, "lỗi kết nối đến server.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "lỗi kết nối đến server.", Toast.LENGTH_LONG).show();
             }
         });
     }

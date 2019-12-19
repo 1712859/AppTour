@@ -26,7 +26,7 @@ public class TourUpdateActivity extends AppCompatActivity {
 
     String token;
     long tourId;
-    TourItem tour;
+    TourItem tour = new TourItem();
 
     String sourceName;
     String desName;
@@ -120,6 +120,13 @@ public class TourUpdateActivity extends AppCompatActivity {
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (startDateText.getText().toString().equals("") || endDateText.getText().toString().equals("")) {
+                    Toast.makeText(getApplicationContext(), "xin hãy nhập đầy đủ thông tin", Toast.LENGTH_LONG).show();
+                } else {
+                    updateTour();
+                }
+
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl("http://35.197.153.192:3000/")
                         .addConverterFactory(GsonConverterFactory.create())
@@ -130,10 +137,10 @@ public class TourUpdateActivity extends AppCompatActivity {
                 call.enqueue(new Callback<TourItem>() {
                     @Override
                     public void onResponse(Call<TourItem> call, Response<TourItem> response) {
-                        if (response.isSuccessful()) {
-                            finish();
+                        if (!response.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(), "lỗi dữ liệu", Toast.LENGTH_LONG).show();
                         } else {
-                            Toast.makeText(getApplicationContext(), "lỗi lấy truyền thông tin lên server", Toast.LENGTH_LONG).show();
+                            finish();
                         }
                     }
 
@@ -198,6 +205,17 @@ public class TourUpdateActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void updateTour() {
+        tour.setTourName(tourNameText.getText().toString());
+        tour.setStartDate(startDateText.getText().toString());
+        tour.setEndDate(endDateText.getText().toString());
+        tour.setAdults(Integer.valueOf(adultsText.getText().toString()));
+        tour.setChilds(Integer.valueOf(childsText.getText().toString()));
+        tour.setMaxCost(Integer.valueOf(maxCostText.getText().toString()));
+        tour.setMinCost(Integer.valueOf(minCostText.getText().toString()));
+        tour.setAvatar(avatarText.getText().toString());
     }
 
     private void updateDisplayString() {

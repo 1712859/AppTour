@@ -6,7 +6,7 @@ public class TourItem implements Serializable {
 
     private long id;
     private long hostID;
-    private String tourName;
+    private String name;
     private String startDate;
     private String endDate;
     private double sourceLat;
@@ -25,7 +25,7 @@ public class TourItem implements Serializable {
 
     public TourItem(long id,
                     int status,
-                    String tourName,
+                    String name,
                     long minCost,
                     long maxCost,
                     String startDate,
@@ -34,9 +34,12 @@ public class TourItem implements Serializable {
                     int childs,
                     boolean isPrivate,
                     String avatar) {
+        endDate = endDate.replaceAll("[^0-9]", "");
+        startDate = startDate.replaceAll("[^0-9]", "");
+
         this.id = id;
         this.status = status;
-        this.tourName = tourName;
+        this.name = name;
         this.minCost = minCost;
         this.maxCost = maxCost;
         this.startDate = startDate;
@@ -50,7 +53,7 @@ public class TourItem implements Serializable {
     public TourItem(long id,
                     long hostID,
                     int status,
-                    String tourName,
+                    String name,
                     long minCost,
                     long maxCost,
                     String startDate,
@@ -61,10 +64,13 @@ public class TourItem implements Serializable {
                     String avatar,
                     boolean isHost,
                     boolean isKicked) {
+        endDate = endDate.replaceAll("[^0-9]", "");
+        startDate = startDate.replaceAll("[^0-9]", "");
+
         this.id = id;
         this.hostID = hostID;
         this.status = status;
-        this.tourName = tourName;
+        this.name = name;
         this.minCost = minCost;
         this.maxCost = maxCost;
         this.startDate = startDate;
@@ -75,6 +81,10 @@ public class TourItem implements Serializable {
         this.avatar = avatar;
         this.isHost = isHost;
         this.isKicked = isKicked;
+    }
+
+    public TourItem() {
+
     }
 
     public long getId() {
@@ -94,11 +104,11 @@ public class TourItem implements Serializable {
     }
 
     public String getTourName() {
-        return tourName;
+        return name;
     }
 
-    public void setTourName(String tourName) {
-        this.tourName = tourName;
+    public void setTourName(String name) {
+        this.name = name;
     }
 
     public String getStartDate() {
@@ -106,6 +116,7 @@ public class TourItem implements Serializable {
     }
 
     public void setStartDate(String startDate) {
+        startDate = startDate.replaceAll("[^0-9]", "");
         this.startDate = startDate;
     }
 
@@ -114,6 +125,7 @@ public class TourItem implements Serializable {
     }
 
     public void setEndDate(String endDate) {
+        endDate = endDate.replaceAll("[^0-9]", "");
         this.endDate = endDate;
     }
 
