@@ -46,7 +46,6 @@ public class TourAvailableActivity extends AppCompatActivity {
 
 
             setupListview();
-            //loaddata();
             getTourList(currentPage);
 
             createTourBtn.setOnClickListener(new View.OnClickListener() {

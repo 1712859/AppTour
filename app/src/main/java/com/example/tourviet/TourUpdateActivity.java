@@ -25,11 +25,11 @@ import static com.example.tourviet.TourCreateActivity.PICK_STOP_POINT_REQUEST_CO
 public class TourUpdateActivity extends AppCompatActivity {
 
     String token;
-    long tourId;
-    TourItem tour = new TourItem();
+    long id;
+    TourInfo myTour = new TourInfo();
 
-    String sourceName;
-    String desName;
+    String sourceName, desName;
+    double sourceLat, desLat, sourceLong, desLong;
 
     EditText tourNameText;
     EditText startDateText;
@@ -53,7 +53,7 @@ public class TourUpdateActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         token = intent.getStringExtra("token");
-        tourId = intent.getLongExtra("tourId", -1);
+        id = intent.getLongExtra("tourId", -1);
 
         tourNameText = findViewById(R.id.tourUpdate_tourName);
         startDateText = findViewById(R.id.tourUpdate_startDate);
@@ -79,7 +79,7 @@ public class TourUpdateActivity extends AppCompatActivity {
         statusSpn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                tour.setStatus(position - 1);
+                myTour.setStatus(position - 1);
             }
 
             @Override
@@ -91,14 +91,14 @@ public class TourUpdateActivity extends AppCompatActivity {
         isPrivateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tour.setPrivate(true);
+                myTour.setPrivate(true);
             }
         });
 
         isPublicBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tour.setPrivate(false);
+                myTour.setPrivate(false);
             }
         });
 
@@ -108,11 +108,11 @@ public class TourUpdateActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PickStopPointActivity.class);
                 intent.putExtra("sourceName", sourceName);
-                intent.putExtra("sourceLat", tour.getSourceLat());
-                intent.putExtra("sourceLong", tour.getSourceLong());
+                intent.putExtra("sourceLat", sourceLat);
+                intent.putExtra("sourceLong", sourceLong);
                 intent.putExtra("desName", desName);
-                intent.putExtra("desLat", tour.getDesLat());
-                intent.putExtra("desLong", tour.getDesLong());
+                intent.putExtra("desLat", desLat);
+                intent.putExtra("desLong", desLong);
                 startActivityForResult(intent, PICK_STOP_POINT_REQUEST_CODE);
             }
         });
@@ -123,9 +123,9 @@ public class TourUpdateActivity extends AppCompatActivity {
 
                 if (startDateText.getText().toString().equals("") || endDateText.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(), "xin hãy nhập đầy đủ thông tin", Toast.LENGTH_LONG).show();
-                } else {
-                    updateTour();
+                    return;
                 }
+                updateTour();
 
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl("http://35.197.153.192:3000/")
@@ -133,10 +133,11 @@ public class TourUpdateActivity extends AppCompatActivity {
                         .build();
 
                 JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
-                Call<TourItem> call = jsonPlaceHolderApi.UpdateTour(tour, token);
-                call.enqueue(new Callback<TourItem>() {
+                TourUpdate tourUpdate = new TourUpdate(myTour, sourceLat, sourceLong, desLat, desLong);
+                Call<TourUpdate> call = jsonPlaceHolderApi.UpdateTour(tourUpdate, token);
+                call.enqueue(new Callback<TourUpdate>() {
                     @Override
-                    public void onResponse(Call<TourItem> call, Response<TourItem> response) {
+                    public void onResponse(Call<TourUpdate> call, Response<TourUpdate> response) {
                         if (!response.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "lỗi dữ liệu", Toast.LENGTH_LONG).show();
                         } else {
@@ -145,7 +146,7 @@ public class TourUpdateActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<TourItem> call, Throwable t) {
+                    public void onFailure(Call<TourUpdate> call, Throwable t) {
                         Toast.makeText(getApplicationContext(), "lỗi kết nối đến server", Toast.LENGTH_LONG).show();
                     }
                 });
@@ -162,11 +163,11 @@ public class TourUpdateActivity extends AppCompatActivity {
             if (requestCode == PICK_STOP_POINT_REQUEST_CODE) {
 
                 sourceName = data.getStringExtra("sourceName");
-                tour.setSourceLat(data.getDoubleExtra("sourceLat", 0));
-                tour.setSourceLong(data.getDoubleExtra("sourceLong", 0));
+                sourceLat = data.getDoubleExtra("sourceLat", 0);
+                sourceLong = data.getDoubleExtra("sourceLong", 0);
                 desName = data.getStringExtra("desName");
-                tour.setDesLat(data.getDoubleExtra("desLat", 0));
-                tour.setDesLong(data.getDoubleExtra("desLong", 0));
+                desLat = data.getDoubleExtra("desLat", 0);
+                desLong = data.getDoubleExtra("desLong", 0);
 
                 updateDisplayString();
             }
@@ -174,23 +175,25 @@ public class TourUpdateActivity extends AppCompatActivity {
     }
 
     private void getTour() {
+
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://35.197.153.192:3000/")
+                .baseUrl("http://35.197.153.192:3000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        JsonPlaceHolderApi placeHolderApi = retrofit.create(JsonPlaceHolderApi.class);
-        Call<TourItem> call = placeHolderApi.CloneTour(new TourIdHolder(tourId), token);
-        call.enqueue(new Callback<TourItem>() {
+        JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
+        Call<TourInfo> call = jsonPlaceHolderApi.InfoTour(id, token);
+        call.enqueue(new Callback<TourInfo>() {
             @Override
-            public void onResponse(Call<TourItem> call, Response<TourItem> response) {
+            public void onResponse(Call<TourInfo> call, Response<TourInfo> response) {
                 if (!response.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "lỗi lấy thông tin json từ server", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "lỗi dữ liệu.", Toast.LENGTH_LONG).show();
+                    return;
                 }
 
-                tour = response.body();
+                myTour = response.body();
 
-                if (tour.isPrivate()) {
+                if (myTour.isPrivate()) {
                     isPrivateBtn.toggle();
                 } else {
                     isPublicBtn.toggle();
@@ -200,32 +203,32 @@ public class TourUpdateActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<TourItem> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "lỗi kết nối đến server", Toast.LENGTH_LONG).show();
+            public void onFailure(Call<TourInfo> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "lỗi kết nối đến server.", Toast.LENGTH_LONG).show();
             }
         });
 
     }
 
     private void updateTour() {
-        tour.setTourName(tourNameText.getText().toString());
-        tour.setStartDate(startDateText.getText().toString());
-        tour.setEndDate(endDateText.getText().toString());
-        tour.setAdults(Integer.valueOf(adultsText.getText().toString()));
-        tour.setChilds(Integer.valueOf(childsText.getText().toString()));
-        tour.setMaxCost(Integer.valueOf(maxCostText.getText().toString()));
-        tour.setMinCost(Integer.valueOf(minCostText.getText().toString()));
-        tour.setAvatar(avatarText.getText().toString());
+        myTour.setName(tourNameText.getText().toString());
+        myTour.setStartDate(startDateText.getText().toString());
+        myTour.setEndDate(endDateText.getText().toString());
+        myTour.setAdults(Integer.valueOf(adultsText.getText().toString()));
+        myTour.setChilds(Integer.valueOf(childsText.getText().toString()));
+        myTour.setMaxCost(maxCostText.getText().toString());
+        myTour.setMinCost(minCostText.getText().toString());
+        myTour.setStatus(statusSpn.getSelectedItemPosition());
     }
 
     private void updateDisplayString() {
-        tourNameText.setText(tour.getTourName());
-        startDateText.setText(tour.getStartDate());
-        endDateText.setText(tour.getEndDate());
-        adultsText.setText(String.valueOf(tour.getAdults()));
-        childsText.setText(String.valueOf(tour.getChilds()));
-        minCostText.setText(String.valueOf(tour.getMinCost()));
-        maxCostText.setText(String.valueOf(tour.getMaxCost()));
-        avatarText.setText(tour.getAvatar());
+        tourNameText.setText(myTour.getName());
+        startDateText.setText(myTour.getStartDate());
+        endDateText.setText(myTour.getEndDate());
+        adultsText.setText(String.valueOf(myTour.getAdults()));
+        childsText.setText(String.valueOf(myTour.getChilds()));
+        minCostText.setText(String.valueOf(myTour.getMinCost()));
+        maxCostText.setText(String.valueOf(myTour.getMaxCost()));
+        statusSpn.setSelection(myTour.getStatus());
     }
 }

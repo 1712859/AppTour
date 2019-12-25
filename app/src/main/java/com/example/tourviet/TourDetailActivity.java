@@ -23,16 +23,20 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class TourDetailActivity extends AppCompatActivity {
 
     private static final int UPDATE_TOUR_REQUEST_CODE = 6666;
-    TourItem myTour = new TourItem();
+    TourInfo myTour = new TourInfo();
+    StopPointAdapter stopPointAdapter;
     String token;
     long id;
 
     TextView tourId;
     TextView tourName;
-    TextView price;
+    TextView minCost;
+    TextView maxCost;
     TextView startDate;
+    TextView endDate;
     TextView adult;
     TextView child;
+    TextView status;
     ImageView tourImage;
     ListView stopPointList;
 
@@ -55,16 +59,22 @@ public class TourDetailActivity extends AppCompatActivity {
         tourId = findViewById(R.id.tourDetail_id);
         adult = findViewById(R.id.tourDetail_adult);
         child = findViewById(R.id.tourDetail_child);
-        price = findViewById(R.id.tourDetail_price);
+        minCost = findViewById(R.id.tourDetail_minCost);
+        maxCost = findViewById(R.id.tourDetail_maxCost);
         startDate = findViewById(R.id.tourDetail_startDate);
+        endDate = findViewById(R.id.tourDetail_endDate);
+        status = findViewById(R.id.tourDetail_status);
         stopPointList = findViewById(R.id.tourDetail_stopPointList);
         addStopPointBtn = findViewById(R.id.tourDetail_addStopPointBtn);
         deleteTourBtn = findViewById(R.id.tourDetail_deleteTourBtn);
         updateTourBtn = findViewById(R.id.tourDetail_updateTourBtn);
 
         updateTourInfo();
-        updateStopPointList();
 
+        stopPointAdapter = new StopPointAdapter(getApplicationContext(), myTour.getStopPoints());
+        stopPointList.setAdapter(stopPointAdapter);
+
+        updateStopPointList();
 
         addStopPointBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,10 +110,10 @@ public class TourDetailActivity extends AppCompatActivity {
 
 
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
-        Call<TourItem> call = jsonPlaceHolderApi.CloneTour(new TourIdHolder(id), token);
-        call.enqueue(new Callback<TourItem>() {
+        Call<TourInfo> call = jsonPlaceHolderApi.InfoTour(id, token);
+        call.enqueue(new Callback<TourInfo>() {
             @Override
-            public void onResponse(Call<TourItem> call, Response<TourItem> response) {
+            public void onResponse(Call<TourInfo> call, Response<TourInfo> response) {
                 if (!response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "lỗi dữ liệu.", Toast.LENGTH_LONG).show();
                     return;
@@ -111,21 +121,25 @@ public class TourDetailActivity extends AppCompatActivity {
 
                 myTour = response.body();
 
-                Picasso.get().load(myTour.getAvatar()).into(tourImage);
-                tourName.setText(myTour.getTourName());
+
+                tourName.setText(myTour.getName());
                 tourId.setText(String.valueOf(myTour.getId()));
                 adult.setText(String.valueOf(myTour.getAdults()));
                 child.setText(String.valueOf(myTour.getChilds()));
-                price.setText(String.valueOf(myTour.getMaxCost()));
+                minCost.setText(String.valueOf(myTour.getMinCost()));
+                maxCost.setText(String.valueOf(myTour.getMaxCost()));
                 startDate.setText(myTour.getStartDate());
+                endDate.setText(myTour.getEndDate());
+                status.setText(getResources().getStringArray(R.array.tourDetail_status)[myTour.getStatus()]);
 
             }
 
             @Override
-            public void onFailure(Call<TourItem> call, Throwable t) {
+            public void onFailure(Call<TourInfo> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "lỗi kết nối đến server.", Toast.LENGTH_LONG).show();
             }
         });
+
 
     }
 
@@ -139,7 +153,7 @@ public class TourDetailActivity extends AppCompatActivity {
 
         if (resultCode == RESULT_OK) {
             if (requestCode == UPDATE_TOUR_REQUEST_CODE) {
-                myTour = (TourItem) data.getSerializableExtra("tourItem");
+                //myTour = (TourItem) data.getSerializableExtra("tourItem");
 
                 updateTourInfo();
             }

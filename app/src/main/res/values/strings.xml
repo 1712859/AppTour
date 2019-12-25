@@ -46,18 +46,27 @@
     <string name="tourDetail_tourID">Mã tour: </string>
     <string name="tourDetail_tourID_hint">00000000</string>
     <string name="tourDetail_tourAdult">Số người lớn:</string>
-    <string name="tourDetail_tourAdult_hint">30</string>
+    <string name="tourDetail_tourAdult_hint">00</string>
     <string name="tourDetail_tourChild">Số trẻ em:</string>
-    <string name="tourDetail_tourChild_hint">20</string>
-    <string name="tourDetail_price">Giá tiền</string>
-    <string name="tourDetail_price_hint">1.000.000</string>
-    <string name="tourDetail_price_sign">Đ</string>
-    <string name="tourDetail_startDate">Ngày khỏi hành</string>
-    <string name="tourDetail_startDate_hint">12/12/1999</string>
+    <string name="tourDetail_tourChild_hint">00</string>
+    <string name="tourDetail_cost">Tầm giá</string>
+    <string name="tourDetail_minCost_hint">giá tối thiểu</string>
+    <string name="tourDetail_maxCost_hint">giá tối đa</string>
+    <string name="tourDetail_date">Thời gian</string>
+    <string name="tourDetail_startDate_hint">ngày bắt đầu</string>
+    <string name="tourDetail_endDate_hint">ngày kết thúc</string>
     <string name="tourDetail_updateTourBtn">Chỉnh sửa chuyến đi</string>
     <string name="tourDetail_deleteTourBtn">Xóa chuyến đi</string>
     <string name="tourDetail_stopPointListText">Danh sách điểm dừng</string>
     <string name="tourDetail_addStopPointBtn">Thêm điểm dừng</string>
+    <string name="tourDetail_status">trạng thái:</string>
+    <string name="tourDetail_status_hint">không rõ</string>
+    <string-array name="tourDetail_status">
+        <item>Bị hủy</item>
+        <item>Đang mở</item>
+        <item>Đã bắt đầu</item>
+        <item>Đã kết thúc</item>
+    </string-array>
 
     <string name="facebook_app_id">737774043369479</string>
     <string name="fb_login_protocol_scheme">fb737774043369479</string>
@@ -128,5 +137,15 @@
     <string name="userTour_previousPageBtn">Trang trước</string>
     <string name="userTour_nextPageBtn">Trang kế</string>
     <string name="userTour_currentPageText_hint">1</string>
+
+    <string name="stopPoint_name">Tên điểm dừng</string>
+    <string name="stopPoint_avatarDescription">hình ảnh minh họa</string>
+    <string name="stopPoint_cost">chi phí</string>
+    <string name="stopPoint_minCost_hint">tối thiểu</string>
+    <string name="stopPoint_maxCost_hint">tối đa</string>
+    <string name="stopPoint_time">thời gian</string>
+    <string name="stopPoint_arrivalAt_hint">bắt đầu</string>
+    <string name="stopPoint_leaveAt_hint">kết thúc</string>
+
 
 </resources>

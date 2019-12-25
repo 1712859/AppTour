@@ -23,9 +23,9 @@ public interface JsonPlaceHolderApi {
     @GET("/tour/history-user")
     Call<UserTour> getUserTourList(@Query("pageIndex") int index, @Query("pageSize") int size, @Header("Authorization") String token);
 
-    @POST("/tour/clone")
-    Call<TourItem> CloneTour(@Body TourIdHolder tourIdHolder, @Header("Authorization") String token);
+    @GET("/tour/info")
+    Call<TourInfo> InfoTour(@Query("tourId") long id, @Header("Authorization") String token);
 
     @POST("/tour/update-tour")
-    Call<TourItem> UpdateTour(@Body TourItem cloneTour, @Header("Authorization") String token);
+    Call<TourUpdate> UpdateTour(@Body TourUpdate cloneTour, @Header("Authorization") String token);
 }

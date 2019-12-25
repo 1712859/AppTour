@@ -70,7 +70,7 @@ public class TourAdapter extends BaseAdapter {
         return convertView;
     }
 
-    static class ViewHolder {
+    private static class ViewHolder {
         ImageView tourAvatar;
         TextView tourTitle;
         TextView tourPriceMin;
