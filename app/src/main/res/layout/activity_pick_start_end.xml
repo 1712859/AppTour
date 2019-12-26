@@ -5,32 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".PickStopPointActivity">
+    tools:context=".PickStartEndActivity">
 
     <Button
-        android:id="@+id/pickStopPoint_pickStartPointBtn"
+        android:id="@+id/pickStartEnd_pickStartPointBtn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="@string/pickStopPoint_pickStartPointBtn"/>
+        android:text="@string/pickStartEnd_pickStartPointBtn"/>
     <Button
-        android:id="@+id/pickStopPoint_pickEndPointBtn"
+        android:id="@+id/pickStartEnd_pickEndPointBtn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="@string/pickStopPoint_pickEndPointBtn"/>
+        android:text="@string/pickStartEnd_pickEndPointBtn"/>
     <TextView
-        android:id="@+id/pickStopPoint_startPointInfo"
+        android:id="@+id/pickStartEnd_startPointInfo"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:hint="@string/pickStopPoint_startPointInfo_hint"/>
+        android:hint="@string/pickStartEnd_startPointInfo_hint"/>
     <TextView
-        android:id="@+id/pickStopPoint_endPointInfo"
+        android:id="@+id/pickStartEnd_endPointInfo"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:hint="@string/pickStopPoint_endPointInfo_hint"/>
+        android:hint="@string/pickStartEnd_endPointInfo_hint"/>
     <Button
-        android:id="@+id/pickStopPoint_confirmBtn"
+        android:id="@+id/pickStartEnd_confirmBtn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="@string/pickStopPoint_confirmBtn"/>
+        android:text="@string/pickStartEnd_confirmBtn"/>
 
 </LinearLayout>

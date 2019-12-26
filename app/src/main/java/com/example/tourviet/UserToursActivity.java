@@ -35,16 +35,66 @@ public class UserToursActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_tours);
 
+        try {
+            setupVariable();
+            findView();
+            setupTourList();
 
+            createTourBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), TourCreateActivity.class);
+                    intent.putExtra("token", token);
+                    startActivity(intent);
+                }
+            });
+
+            nextPageBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    currentPage++;
+                    getTourList(currentPage);
+                    currentPageText.setText(String.valueOf(currentPage));
+                }
+            });
+
+            previousPageBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (currentPage <= 1)
+                        return;
+
+                    currentPage--;
+                    getTourList(currentPage);
+                    currentPageText.setText(String.valueOf(currentPage));
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getTourList(currentPage);
+    }
+
+    private void setupVariable() {
         Intent intent = getIntent();
         token = intent.getStringExtra("token");
+        currentPage = 1;
+    }
 
+    private void findView() {
         tourList = findViewById(R.id.userTour_list);
         createTourBtn = findViewById(R.id.userTour_createTourBtn);
         previousPageBtn = findViewById(R.id.userTour_previousPageBtn);
         nextPageBtn = findViewById(R.id.userTour_nextPageBtn);
         currentPageText = findViewById(R.id.userTour_currentPageText);
+    }
 
+    private void setupTourList() {
         tourAdapter = new TourAdapter(UserToursActivity.this, tourData);
         tourList.setAdapter(tourAdapter);
         tourList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -56,43 +106,6 @@ public class UserToursActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        currentPage = 1;
-        getTourList(currentPage);
-
-
-        createTourBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), TourCreateActivity.class);
-                intent.putExtra("token", token);
-                startActivity(intent);
-            }
-        });
-
-
-        nextPageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                currentPage++;
-                getTourList(currentPage);
-                currentPageText.setText(String.valueOf(currentPage));
-            }
-        });
-
-        previousPageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currentPage <= 1)
-                    return;
-
-                currentPage--;
-                getTourList(currentPage);
-                currentPageText.setText(String.valueOf(currentPage));
-            }
-        });
-
-
     }
 
 
@@ -102,7 +115,6 @@ public class UserToursActivity extends AppCompatActivity {
                 .baseUrl("http://35.197.153.192:3000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
 
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
         Call<UserTour> cal1 = jsonPlaceHolderApi.getUserTourList(page, 10, token);

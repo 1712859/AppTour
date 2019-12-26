@@ -18,8 +18,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class TourCreateActivity extends AppCompatActivity {
-    static final int PICK_STOP_POINT_REQUEST_CODE = 1;
-    Button createBtn, pickStopPointBtn;
+    static final int PICK_START_END_REQUEST_CODE = 1;
+    Button createBtn, pickStartEndBtn;
     RadioButton privateBtn, publicBtn;
     EditText tourName, dateStart, dateEnd, adult, child, minCost, maxCost, linkImage;
     boolean isPrivate;
@@ -32,14 +32,65 @@ public class TourCreateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tour_create);
 
+        try {
+
+            setupVariable();
+            findView();
+            privateBtn.toggle();
+
+            privateBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    isPrivate = true;
+                }
+            });
+
+            publicBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    isPrivate = false;
+                }
+            });
+
+            pickStartEndBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(TourCreateActivity.this, PickStartEndActivity.class);
+                    intent.putExtra("sourceName", sourceName);
+                    intent.putExtra("sourceLas", sourceLas);
+                    intent.putExtra("sourceLong", sourceLong);
+                    intent.putExtra("desName", desName);
+                    intent.putExtra("desLas", desLas);
+                    intent.putExtra("desLong", desLong);
+                    startActivityForResult(intent, PICK_START_END_REQUEST_CODE);
+                }
+            });
+
+            createBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (allFormRequireFilled()) {
+                        submitForm();
+                    } else {
+                        Toast.makeText(TourCreateActivity.this, "Xin hãy điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                }
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setupVariable() {
         Intent intent = getIntent();
         token = intent.getStringExtra("token");
-        //token tạm
-        //token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzNjkiLCJwaG9uZSI6IjA4NTg0NTYxNTIiLCJlbWFpbCI6InR1YmF0bzE5OTlAZ21haWwuY29tIiwiZXhwIjoxNTc2MjIyNDY0MTg1LCJhY2NvdW50IjoidXNlciIsImlhdCI6MTU3MzYzMDQ2NH0.0CruSddOgakdzQdG98VkPpFBSTNOq2h9FZq6r6vvIQs";
+    }
 
-
+    private void findView() {
         createBtn = findViewById(R.id.createTour_createBtn);
-        pickStopPointBtn = findViewById(R.id.createTour_pickStopPoint);
+        pickStartEndBtn = findViewById(R.id.createTour_pickStartEnd);
         privateBtn = findViewById(R.id.createTour_privateBtn);
         publicBtn = findViewById(R.id.createTour_publicBtn);
         tourName = findViewById(R.id.createTour_tourName);
@@ -50,56 +101,13 @@ public class TourCreateActivity extends AppCompatActivity {
         minCost = findViewById(R.id.createTour_minCost);
         maxCost = findViewById(R.id.createTour_maxCost);
         linkImage = findViewById(R.id.createTour_imageUrl);
-
-
-        privateBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isPrivate = true;
-            }
-        });
-
-        publicBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isPrivate = false;
-            }
-        });
-
-        privateBtn.toggle();
-
-        pickStopPointBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(TourCreateActivity.this, PickStopPointActivity.class);
-                intent.putExtra("sourceName", sourceName);
-                intent.putExtra("sourceLas", sourceLas);
-                intent.putExtra("sourceLong", sourceLong);
-                intent.putExtra("desName", desName);
-                intent.putExtra("desLas", desLas);
-                intent.putExtra("desLong", desLong);
-                startActivityForResult(intent, PICK_STOP_POINT_REQUEST_CODE);
-            }
-        });
-
-        createBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (allFormRequireFilled()) {
-                    submitForm();
-                } else {
-                    Toast.makeText(TourCreateActivity.this, "Xin hãy điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-            }
-        });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            if (requestCode == PICK_STOP_POINT_REQUEST_CODE) {
+            if (requestCode == PICK_START_END_REQUEST_CODE) {
                 sourceName = data.getStringExtra("sourceName");
                 sourceLas = data.getDoubleExtra("sourceLas", 0);
                 sourceLong = data.getDoubleExtra("sourceLong", 0);

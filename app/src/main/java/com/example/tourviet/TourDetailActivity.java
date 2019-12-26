@@ -9,10 +9,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.squareup.picasso.Picasso;
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,35 +25,65 @@ public class TourDetailActivity extends AppCompatActivity {
     private static final int UPDATE_TOUR_REQUEST_CODE = 6666;
     TourInfo myTour = new TourInfo();
     StopPointAdapter stopPointAdapter;
+    List<StopPoint> myStopPoint = new ArrayList<>();
     String token;
     long id;
 
-    TextView tourId;
-    TextView tourName;
-    TextView minCost;
-    TextView maxCost;
-    TextView startDate;
-    TextView endDate;
-    TextView adult;
-    TextView child;
-    TextView status;
+    TextView tourId, tourName, minCost, maxCost, startDate, endDate, adult, child, status;
     ImageView tourImage;
     ListView stopPointList;
-
-    Button addStopPointBtn;
-    Button deleteTourBtn;
-    Button updateTourBtn;
-
+    Button addStopPointBtn, deleteTourBtn, updateTourBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tour_detail);
 
+        try {
+            setupVariable();
+            findView();
+            setupStopPointList();
+
+            addStopPointBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), AddStopPointActivity.class);
+                    intent.putExtra("id", myTour.getId());
+                    intent.putExtra("token", token);
+                    startActivity(intent);
+                }
+            });
+
+            updateTourBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent updateIntent = new Intent(getApplicationContext(), TourUpdateActivity.class);
+                    updateIntent.putExtra("tourId", myTour.getId());
+                    updateIntent.putExtra("token", token);
+                    startActivityForResult(updateIntent, UPDATE_TOUR_REQUEST_CODE);
+                }
+            });
+
+            deleteTourBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void setupVariable() {
         Intent intent = getIntent();
         id = intent.getLongExtra("id", 0);
         token = intent.getStringExtra("token");
+    }
 
+    private void findView() {
         tourImage = findViewById(R.id.tourDetail_image);
         tourName = findViewById(R.id.tourDetail_tourName);
         tourId = findViewById(R.id.tourDetail_id);
@@ -68,37 +98,21 @@ public class TourDetailActivity extends AppCompatActivity {
         addStopPointBtn = findViewById(R.id.tourDetail_addStopPointBtn);
         deleteTourBtn = findViewById(R.id.tourDetail_deleteTourBtn);
         updateTourBtn = findViewById(R.id.tourDetail_updateTourBtn);
+    }
 
-        updateTourInfo();
-
-        stopPointAdapter = new StopPointAdapter(getApplicationContext(), myTour.getStopPoints());
+    private void setupStopPointList() {
+        stopPointAdapter = new StopPointAdapter(TourDetailActivity.this, myStopPoint);
         stopPointList.setAdapter(stopPointAdapter);
+    }
 
-        updateStopPointList();
-
-        addStopPointBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        updateTourBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent updateIntent = new Intent(getApplicationContext(), TourUpdateActivity.class);
-                updateIntent.putExtra("tourId", myTour.getId());
-                updateIntent.putExtra("token", token);
-                startActivityForResult(updateIntent, UPDATE_TOUR_REQUEST_CODE);
-            }
-        });
-
-        deleteTourBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+    @Override
+    protected void onResume() {
+        super.onResume();
+        try {
+            updateTourInfo();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void updateTourInfo() {
@@ -107,7 +121,6 @@ public class TourDetailActivity extends AppCompatActivity {
                 .baseUrl("http://35.197.153.192:3000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
 
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
         Call<TourInfo> call = jsonPlaceHolderApi.InfoTour(id, token);
@@ -120,18 +133,7 @@ public class TourDetailActivity extends AppCompatActivity {
                 }
 
                 myTour = response.body();
-
-
-                tourName.setText(myTour.getName());
-                tourId.setText(String.valueOf(myTour.getId()));
-                adult.setText(String.valueOf(myTour.getAdults()));
-                child.setText(String.valueOf(myTour.getChilds()));
-                minCost.setText(String.valueOf(myTour.getMinCost()));
-                maxCost.setText(String.valueOf(myTour.getMaxCost()));
-                startDate.setText(myTour.getStartDate());
-                endDate.setText(myTour.getEndDate());
-                status.setText(getResources().getStringArray(R.array.tourDetail_status)[myTour.getStatus()]);
-
+                updateDisplay();
             }
 
             @Override
@@ -143,20 +145,20 @@ public class TourDetailActivity extends AppCompatActivity {
 
     }
 
-    private void updateStopPointList() {
+    private void updateDisplay() {
+        tourName.setText(myTour.getName());
+        tourId.setText(String.valueOf(myTour.getId()));
+        adult.setText(String.valueOf(myTour.getAdults()));
+        child.setText(String.valueOf(myTour.getChilds()));
+        minCost.setText(String.valueOf(myTour.getMinCost()));
+        maxCost.setText(String.valueOf(myTour.getMaxCost()));
+        startDate.setText(myTour.getStartDate());
+        endDate.setText(myTour.getEndDate());
+        status.setText(getResources().getStringArray(R.array.tourDetail_status)[myTour.getStatus() + 1]);
 
+        myStopPoint.clear();
+        myStopPoint.addAll(myTour.getStopPoints());
+        stopPointAdapter.notifyDataSetChanged();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == RESULT_OK) {
-            if (requestCode == UPDATE_TOUR_REQUEST_CODE) {
-                //myTour = (TourItem) data.getSerializableExtra("tourItem");
-
-                updateTourInfo();
-            }
-        }
-    }
 }

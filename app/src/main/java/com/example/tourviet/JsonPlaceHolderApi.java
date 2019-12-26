@@ -28,4 +28,7 @@ public interface JsonPlaceHolderApi {
 
     @POST("/tour/update-tour")
     Call<TourUpdate> UpdateTour(@Body TourUpdate cloneTour, @Header("Authorization") String token);
+
+    @POST("/tour/set-stop-points")
+    Call<Object> addStopPoint(@Body AddStopPointBody addStopPointBody, @Header("Authorization") String token);
 }

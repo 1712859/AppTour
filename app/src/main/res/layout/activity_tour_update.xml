@@ -226,10 +226,10 @@
         </RadioGroup>
 
         <Button
-            android:id="@+id/tourUpdate_pickStopPointBtn"
+            android:id="@+id/tourUpdate_pickStartEndBtn"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="@string/tourUpdate_pickStopPointBtn" />
+            android:text="@string/tourUpdate_pickStartEndBtn" />
 
         <Button
             android:id="@+id/tourUpdate_confirmBtn"

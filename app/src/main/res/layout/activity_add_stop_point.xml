@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddStopPointActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="@string/addStopPoint_title" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:text="@string/addStopPoint_name" />
+
+        <EditText
+            android:id="@+id/addStopPoint_name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:text="@string/addStopPoint_arrivalAt" />
+
+        <EditText
+            android:id="@+id/addStopPoint_arrivalAt"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:text="@string/addStopPoint_leaveAt" />
+
+        <EditText
+            android:id="@+id/addStopPoint_leaveAt"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:text="@string/addStopPoint_minCost" />
+
+        <EditText
+            android:id="@+id/addStopPoint_minCost"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:text="@string/addStopPoint_maxCost" />
+
+        <EditText
+            android:id="@+id/addStopPoint_maxCost"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:text="@string/addStopPoint_avatar" />
+
+        <EditText
+            android:id="@+id/addStopPoint_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <Button
+            android:id="@+id/addStopPoint_selectLocationBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/addStopPoint_selectLocationBtn"/>
+
+        <TextView
+            android:id="@+id/addStopPoint_address"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:maxLines="3"
+            android:gravity="center_vertical"
+            android:hint="@string/addStopPoint_address_hint"/>
+
+        <Button
+            android:id="@+id/addStopPoint_confirmBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/addStopPoint_confirmBtn"/>
+
+
+    </LinearLayout>
+
+
+</ScrollView>

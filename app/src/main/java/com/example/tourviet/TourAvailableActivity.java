@@ -34,19 +34,10 @@ public class TourAvailableActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tour_available);
 
-        Intent intent = getIntent();
-        token = intent.getStringExtra("token");
-        currentPage = 1;
         try {
-            tourListView = findViewById(R.id.tourAvailable_tourListView);
-            createTourBtn = findViewById(R.id.tourAvailable_createTourBtn);
-            previousPageBtn = findViewById(R.id.tourAvailable_previousPageBtn);
-            nextPageBtn = findViewById(R.id.tourAvailable_nextPageBtn);
-            currentPageText = findViewById(R.id.tourAvailable_currentPageText);
-
-
+            setupVariable();
+            findView();
             setupListview();
-            getTourList(currentPage);
 
             createTourBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -56,7 +47,6 @@ public class TourAvailableActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-
 
             nextPageBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -84,6 +74,25 @@ public class TourAvailableActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getTourList(currentPage);
+    }
+
+    private void setupVariable() {
+        Intent intent = getIntent();
+        token = intent.getStringExtra("token");
+        currentPage = 1;
+    }
+
+    private void findView() {
+        tourListView = findViewById(R.id.tourAvailable_tourListView);
+        createTourBtn = findViewById(R.id.tourAvailable_createTourBtn);
+        previousPageBtn = findViewById(R.id.tourAvailable_previousPageBtn);
+        nextPageBtn = findViewById(R.id.tourAvailable_nextPageBtn);
+        currentPageText = findViewById(R.id.tourAvailable_currentPageText);
+    }
 
     private void setupListview() {
         tourAdapter = new TourAdapter(this, tourData);

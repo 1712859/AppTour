@@ -20,7 +20,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.example.tourviet.TourCreateActivity.PICK_STOP_POINT_REQUEST_CODE;
+import static com.example.tourviet.TourCreateActivity.PICK_START_END_REQUEST_CODE;
 
 public class TourUpdateActivity extends AppCompatActivity {
 
@@ -42,7 +42,7 @@ public class TourUpdateActivity extends AppCompatActivity {
     Spinner statusSpn;
     RadioButton isPrivateBtn;
     RadioButton isPublicBtn;
-    Button pickStopPointBtn;
+    Button pickStartEndBtn;
     Button confirmBtn;
 
 
@@ -51,42 +51,16 @@ public class TourUpdateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tour_update);
 
-        Intent intent = getIntent();
-        token = intent.getStringExtra("token");
-        id = intent.getLongExtra("tourId", -1);
+        try {
+            setupVariable();
+            findView();
+            setupStatusSpn();
+            getTour();
 
-        tourNameText = findViewById(R.id.tourUpdate_tourName);
-        startDateText = findViewById(R.id.tourUpdate_startDate);
-        endDateText = findViewById(R.id.tourUpdate_endDate);
-        adultsText = findViewById(R.id.tourUpdate_adults);
-        childsText = findViewById(R.id.tourUpdate_childs);
-        minCostText = findViewById(R.id.tourUpdate_minCost);
-        maxCostText = findViewById(R.id.tourUpdate_maxCost);
-        avatarText = findViewById(R.id.tourUpdate_avatar);
-        statusSpn = findViewById(R.id.tourUpdate_statusSpn);
-        isPrivateBtn = findViewById(R.id.tourUpdate_privateBtn);
-        isPublicBtn = findViewById(R.id.tourUpdate_publicBtn);
-        pickStopPointBtn = findViewById(R.id.tourUpdate_pickStopPointBtn);
-        confirmBtn = findViewById(R.id.tourUpdate_confirmBtn);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        getTour();
-
-        ArrayAdapter<CharSequence> arrayAdapter =
-                ArrayAdapter.createFromResource(this, R.array.tourUpdate_status, android.R.layout.simple_spinner_item);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        statusSpn.setAdapter(arrayAdapter);
-
-        statusSpn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                myTour.setStatus(position - 1);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         isPrivateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,56 +77,75 @@ public class TourUpdateActivity extends AppCompatActivity {
         });
 
 
-        pickStopPointBtn.setOnClickListener(new View.OnClickListener() {
+        pickStartEndBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PickStopPointActivity.class);
+                Intent intent = new Intent(getApplicationContext(), PickStartEndActivity.class);
                 intent.putExtra("sourceName", sourceName);
                 intent.putExtra("sourceLat", sourceLat);
                 intent.putExtra("sourceLong", sourceLong);
                 intent.putExtra("desName", desName);
                 intent.putExtra("desLat", desLat);
                 intent.putExtra("desLong", desLong);
-                startActivityForResult(intent, PICK_STOP_POINT_REQUEST_CODE);
+                startActivityForResult(intent, PICK_START_END_REQUEST_CODE);
             }
         });
 
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (startDateText.getText().toString().equals("") || endDateText.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(), "xin hãy nhập đầy đủ thông tin", Toast.LENGTH_LONG).show();
                     return;
                 }
+                packInformation();
                 updateTour();
-
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://35.197.153.192:3000/")
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
-
-                JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
-                TourUpdate tourUpdate = new TourUpdate(myTour, sourceLat, sourceLong, desLat, desLong);
-                Call<TourUpdate> call = jsonPlaceHolderApi.UpdateTour(tourUpdate, token);
-                call.enqueue(new Callback<TourUpdate>() {
-                    @Override
-                    public void onResponse(Call<TourUpdate> call, Response<TourUpdate> response) {
-                        if (!response.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "lỗi dữ liệu", Toast.LENGTH_LONG).show();
-                        } else {
-                            finish();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<TourUpdate> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(), "lỗi kết nối đến server", Toast.LENGTH_LONG).show();
-                    }
-                });
             }
         });
 
+    }
+
+    private void setupVariable() {
+        Intent intent = getIntent();
+        token = intent.getStringExtra("token");
+        id = intent.getLongExtra("tourId", -1);
+    }
+
+    private void findView() {
+        tourNameText = findViewById(R.id.tourUpdate_tourName);
+        startDateText = findViewById(R.id.tourUpdate_startDate);
+        endDateText = findViewById(R.id.tourUpdate_endDate);
+        adultsText = findViewById(R.id.tourUpdate_adults);
+        childsText = findViewById(R.id.tourUpdate_childs);
+        minCostText = findViewById(R.id.tourUpdate_minCost);
+        maxCostText = findViewById(R.id.tourUpdate_maxCost);
+        avatarText = findViewById(R.id.tourUpdate_avatar);
+        statusSpn = findViewById(R.id.tourUpdate_statusSpn);
+        isPrivateBtn = findViewById(R.id.tourUpdate_privateBtn);
+        isPublicBtn = findViewById(R.id.tourUpdate_publicBtn);
+        pickStartEndBtn = findViewById(R.id.tourUpdate_pickStartEndBtn);
+        confirmBtn = findViewById(R.id.tourUpdate_confirmBtn);
+    }
+
+    private void setupStatusSpn() {
+        ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(
+                this,
+                R.array.tourUpdate_status,
+                android.R.layout.simple_spinner_item);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        statusSpn.setAdapter(arrayAdapter);
+
+        statusSpn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                myTour.setStatus(position - 1);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     @Override
@@ -160,7 +153,7 @@ public class TourUpdateActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK) {
-            if (requestCode == PICK_STOP_POINT_REQUEST_CODE) {
+            if (requestCode == PICK_START_END_REQUEST_CODE) {
 
                 sourceName = data.getStringExtra("sourceName");
                 sourceLat = data.getDoubleExtra("sourceLat", 0);
@@ -198,6 +191,7 @@ public class TourUpdateActivity extends AppCompatActivity {
                 } else {
                     isPublicBtn.toggle();
                 }
+                statusSpn.setSelection(myTour.getStatus() + 1);
 
                 updateDisplayString();
             }
@@ -211,6 +205,32 @@ public class TourUpdateActivity extends AppCompatActivity {
     }
 
     private void updateTour() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://35.197.153.192:3000/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
+        TourUpdate tourUpdate = new TourUpdate(myTour, sourceLat, sourceLong, desLat, desLong);
+        Call<TourUpdate> call = jsonPlaceHolderApi.UpdateTour(tourUpdate, token);
+        call.enqueue(new Callback<TourUpdate>() {
+            @Override
+            public void onResponse(Call<TourUpdate> call, Response<TourUpdate> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(), "lỗi dữ liệu", Toast.LENGTH_LONG).show();
+                } else {
+                    finish();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TourUpdate> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "lỗi kết nối đến server", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void packInformation() {
         myTour.setName(tourNameText.getText().toString());
         myTour.setStartDate(startDateText.getText().toString());
         myTour.setEndDate(endDateText.getText().toString());
@@ -218,7 +238,7 @@ public class TourUpdateActivity extends AppCompatActivity {
         myTour.setChilds(Integer.valueOf(childsText.getText().toString()));
         myTour.setMaxCost(maxCostText.getText().toString());
         myTour.setMinCost(minCostText.getText().toString());
-        myTour.setStatus(statusSpn.getSelectedItemPosition());
+        myTour.setStatus(statusSpn.getSelectedItemPosition() - 1);
     }
 
     private void updateDisplayString() {
@@ -229,6 +249,6 @@ public class TourUpdateActivity extends AppCompatActivity {
         childsText.setText(String.valueOf(myTour.getChilds()));
         minCostText.setText(String.valueOf(myTour.getMinCost()));
         maxCostText.setText(String.valueOf(myTour.getMaxCost()));
-        statusSpn.setSelection(myTour.getStatus());
+        statusSpn.setSelection(myTour.getStatus() + 1);
     }
 }

@@ -158,13 +158,13 @@
         </RadioGroup>
 
         <Button
-            android:id="@+id/createTour_pickStopPoint"
+            android:id="@+id/createTour_pickStartEnd"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="10dp"
             android:background="@drawable/button_stye"
             android:gravity="center"
-            android:text="@string/createTour_pickStopPoint"
+            android:text="@string/createTour_pickStartEnd"
             android:textColor="@color/backgrounđangki"
             android:textColorHint="@color/textwhile" />
 

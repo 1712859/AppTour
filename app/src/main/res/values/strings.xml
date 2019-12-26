@@ -66,6 +66,9 @@
         <item>Đang mở</item>
         <item>Đã bắt đầu</item>
         <item>Đã kết thúc</item>
+        <item>…</item>
+        <item>…</item>
+        <item>…</item>
     </string-array>
 
     <string name="facebook_app_id">737774043369479</string>
@@ -86,14 +89,14 @@
     <string name="createTour_imageUrl">Link ảnh minh họa</string>
     <string name="createTour_private">Tour cá nhân</string>
     <string name="createTour_public">Tour công cộng</string>
-    <string name="createTour_pickStopPoint">Chọn các điểm đến</string>
+    <string name="createTour_pickStartEnd">Chọn điểm bắt đầu/kết thúc</string>
     <string name="createTour_createBtn">Xác nhận</string>
 
-    <string name="pickStopPoint_pickStartPointBtn">Chọn vị trí bắt đầu chuyến đi</string>
-    <string name="pickStopPoint_pickEndPointBtn">Chọn vị trí kết thúc chuyến đi</string>
-    <string name="pickStopPoint_startPointInfo_hint">Vị trí bắt đầu:\n 0, 0</string>
-    <string name="pickStopPoint_endPointInfo_hint">Vị trí kết thúc:\n 0, 0</string>
-    <string name="pickStopPoint_confirmBtn">Xác nhận</string>
+    <string name="pickStartEnd_pickStartPointBtn">Chọn vị trí bắt đầu chuyến đi</string>
+    <string name="pickStartEnd_pickEndPointBtn">Chọn vị trí kết thúc chuyến đi</string>
+    <string name="pickStartEnd_startPointInfo_hint">Vị trí bắt đầu:\n 0, 0</string>
+    <string name="pickStartEnd_endPointInfo_hint">Vị trí kết thúc:\n 0, 0</string>
+    <string name="pickStartEnd_confirmBtn">Xác nhận</string>
 
     <string name="mapGetLocation_searchBtn">Tìm vị trí</string>
     <string name="mapGetLocation_confirmBtn">Xác nhận</string>
@@ -123,13 +126,16 @@
     <string name="tourUpdate_status">Trạng thái:</string>
     <string name="tourUpdate_privateBtn">Chuyến đi cá nhân</string>
     <string name="tourUpdate_publicBtn">Chuyến đi tập thể</string>
-    <string name="tourUpdate_pickStopPointBtn">Chọn điểm bắt đầu và kết thúc</string>
+    <string name="tourUpdate_pickStartEndBtn">Chọn điểm bắt đầu/kết thúc</string>
     <string name="tourUpdate_confirmBtn">Xác nhận</string>
     <string-array name="tourUpdate_status">
         <item>Bị hủy</item>
         <item>Đang mở</item>
         <item>Đã bắt đầu</item>
         <item>Đã kết thúc</item>
+        <item>…</item>
+        <item>…</item>
+        <item>…</item>
     </string-array>
 
     <string name="userTour_title">Danh sách các chuyến đi của người dùng</string>
@@ -147,5 +153,15 @@
     <string name="stopPoint_arrivalAt_hint">bắt đầu</string>
     <string name="stopPoint_leaveAt_hint">kết thúc</string>
 
+    <string name="addStopPoint_title">Tạo điểm dừng</string>
+    <string name="addStopPoint_name">Tên điểm dừng:</string>
+    <string name="addStopPoint_arrivalAt">Thời gian đến:</string>
+    <string name="addStopPoint_leaveAt">Thời gian đi:</string>
+    <string name="addStopPoint_minCost">Giá tối thiểu:</string>
+    <string name="addStopPoint_maxCost">Giá tối đa:</string>
+    <string name="addStopPoint_selectLocationBtn">Chọn vị trí điểm dừng</string>
+    <string name="addStopPoint_address_hint">Xin hãy chọn điểm dừng</string>
+    <string name="addStopPoint_confirmBtn">Xác nhận</string>
+    <string name="addStopPoint_avatar">Ảnh minh họa</string>
 
 </resources>

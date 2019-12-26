@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class PickStopPointActivity extends AppCompatActivity {
+public class PickStartEndActivity extends AppCompatActivity {
 
     static int GET_START_POINT_REQUEST_CODE = 2;
     static int GET_END_POINT_REQUEST_CODE = 3;
@@ -21,7 +21,7 @@ public class PickStopPointActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pick_stop_point);
+        setContentView(R.layout.activity_pick_start_end);
 
         Intent intent = getIntent();
         sourceName = intent.getStringExtra("sourceName");
@@ -31,11 +31,11 @@ public class PickStopPointActivity extends AppCompatActivity {
         desLas = intent.getDoubleExtra("desLas", 0);
         desLong = intent.getDoubleExtra("desLong", 0);
 
-        pickStartPointBtn = findViewById(R.id.pickStopPoint_pickStartPointBtn);
-        pickEndPointBtn = findViewById(R.id.pickStopPoint_pickEndPointBtn);
-        confirmBtn = findViewById(R.id.pickStopPoint_confirmBtn);
-        startPointInfo = findViewById(R.id.pickStopPoint_startPointInfo);
-        endPointInfo = findViewById(R.id.pickStopPoint_endPointInfo);
+        pickStartPointBtn = findViewById(R.id.pickStartEnd_pickStartPointBtn);
+        pickEndPointBtn = findViewById(R.id.pickStartEnd_pickEndPointBtn);
+        confirmBtn = findViewById(R.id.pickStartEnd_confirmBtn);
+        startPointInfo = findViewById(R.id.pickStartEnd_startPointInfo);
+        endPointInfo = findViewById(R.id.pickStartEnd_endPointInfo);
 
 
         String infoText = "Vị trí bắt đầu: " + sourceName + '\n' + sourceLas + ", " + sourceLong;
@@ -46,7 +46,7 @@ public class PickStopPointActivity extends AppCompatActivity {
         pickStartPointBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PickStopPointActivity.this, MapGetLocationActivity.class);
+                Intent intent = new Intent(PickStartEndActivity.this, MapGetLocationActivity.class);
                 startActivityForResult(intent, GET_START_POINT_REQUEST_CODE);
             }
         });
@@ -54,7 +54,7 @@ public class PickStopPointActivity extends AppCompatActivity {
         pickEndPointBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PickStopPointActivity.this, MapGetLocationActivity.class);
+                Intent intent = new Intent(PickStartEndActivity.this, MapGetLocationActivity.class);
                 startActivityForResult(intent, GET_END_POINT_REQUEST_CODE);
             }
         });
