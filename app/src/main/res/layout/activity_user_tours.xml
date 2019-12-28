@@ -3,13 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#20000000"
+    android:background="@color/backgrounđangki"
     android:orientation="vertical"
     tools:context=".UserToursActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:textColor="@color/textwhile"
+        android:textStyle="bold"
         android:gravity="center_vertical|center_horizontal"
         android:text="@string/userTour_title"
         android:textSize="20sp" />
@@ -30,12 +32,22 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_stye"
             android:text="@string/userTour_previousPageBtn" />
 
         <TextView
             android:id="@+id/userTour_currentPageText"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:textColor="@color/textwhile"
+            android:textColorHint="@color/textwhile"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:textAlignment="center"
             android:hint="@string/userTour_currentPageText_hint" />
 
         <Button
@@ -43,6 +55,11 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_stye"
             android:text="@string/userTour_nextPageBtn" />
     </LinearLayout>
 
@@ -50,6 +67,11 @@
         android:id="@+id/userTour_createTourBtn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_stye"
         android:text="@string/userTour_createTour" />
 
 </LinearLayout>

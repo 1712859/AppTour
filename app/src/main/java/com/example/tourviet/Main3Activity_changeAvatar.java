@@ -1,8 +1,11 @@
 package com.example.tourviet;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,7 +18,11 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,18 +37,16 @@ public class Main3Activity_changeAvatar extends AppCompatActivity {
     Button back,choose,save;
     ImageView image;
     String token;
-    String filePath = null;
-    Uri filepath ;
-    FirebaseStorage storage;
-    private StorageReference storageReference;
-//    StorageReference storageReference = storage.getReferenceFromUrl("gs://tourviet-b747e.appspot.com/");
+    String filePath = null,linkimage;
+
+
     StorageTask uploadtask;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3_change_avatar);
 
-        storageReference = FirebaseStorage.getInstance().getReference();
+
         Anhxa();
         controlbutton();
 
@@ -96,33 +101,56 @@ public class Main3Activity_changeAvatar extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent.createChooser(intent,"select image"),1);
+        startActivityForResult(intent, 0);
 
 
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1 && requestCode != RESULT_OK && data.getData()!= null && data != null)
-        {
-            filepath = data.getData();
-            image.setImageURI(filepath);
-            filePath = filepath.getPath();
+        if (data != null && requestCode == 0) {
 
 
+            if (resultCode == RESULT_OK) {
+                Uri targetUri = data.getData();
+                Bitmap bitmap;
+                try {
+                    bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(targetUri));
+                    linkimage = ConvertBitmapToString(bitmap);
+                    image.setImageBitmap(bitmap);
+
+
+
+                } catch (FileNotFoundException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
         }
+    }
+    public static String ConvertBitmapToString(Bitmap bitmap){
+        String encodedImage = "";
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        try {
+            encodedImage= URLEncoder.encode(Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        return encodedImage;
     }
 
     private void uploadImage() {
 
-        File FinalFile = new File(filePath);
-        Avatar avatar = new Avatar(FinalFile);
+       // File FinalFile = new File(linkimage);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://35.197.153.192:3000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         userClient client = retrofit.create((userClient.class));
-        Call<Avatar> call = client.UppdateAvatar(token,avatar);
+        Call<Avatar> call = client.UppdateAvatar(token,linkimage);
         call.enqueue(new Callback<Avatar>() {
             @Override
             public void onResponse(Call<Avatar> call, Response<Avatar> response) {

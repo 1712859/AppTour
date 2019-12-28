@@ -27,7 +27,7 @@ public class Main1Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main1);
         Anhxa();
         controlButton();
-        String[] items = new String[]{"Female","Male"};
+        String[] items = new String[]{"Nữ","Nam"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(Main1Activity.this,
                 R.layout.spinner_item,items);
         editgender.setAdapter(adapter);
@@ -41,7 +41,7 @@ public class Main1Activity extends AppCompatActivity {
                 if(editAddressdk.getText().length()!=0 && editPassdk.getText().length()!=0 && editEmaildk.getText().length()!=0 && editSDTdk.getText().length()!=0 && editHo_tendk.getText().length()!=0 && editDatedk.getText().length()!=0) {
                     String genderterm = "0";
                     String text = editgender.getSelectedItem().toString();
-                    if(text=="Male")
+                    if(text=="Nam")
                     {
                         genderterm="1";
                     }

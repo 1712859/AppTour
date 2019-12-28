@@ -1,24 +1,23 @@
 <resources>
     <string name="app_name">TourViet</string>
 
-    <string name="main_usernameHint">Email or PhoneNumber</string>
-    <string name="main_passwordHint">Password</string>
-    <string name="main_loginButton">login</string>
-    <string name="main_signinButton">Create Account</string>
+    <string name="main_usernameHint">Email Hoặc SĐT</string>
+    <string name="main_passwordHint">Mật Khẩu</string>
+    <string name="main_loginButton">Đăng Nhập</string>
+    <string name="main_signinButton">Tạo Tài KHoảng</string>
+    <string name="main_QuenMaTKhau">Quên Mật Khẩu</string>
 
-    <string name="main_loginGGButton">Google</string>
-    <string name="main_loginFBButton">Facebook</string>
-    <string name="main_DangNhapKhac">Or Login With ----------------------------------------------------</string>
+    <string name="main_DangNhapKhac">Hoặc Đăng Nhập Khác ----------------------------------------------------</string>
 
-    <string name="dangky_Phai">female: 0 or male: 1</string>
-    <string name="dangky_Date">Date (yyyy-mm-dd)</string>
-    <string name="dangky_address">Address</string>
-    <string name="dangky_password">Password</string>
+    <string name="dangky_Phai">Nam Hặc Nữ</string>
+    <string name="dangky_Date">Ngày Sinh (yyyy-mm-dd)</string>
+    <string name="dangky_address">Địa Chỉ</string>
+    <string name="dangky_password">Mật Khẩu</string>
     <string name="dangky_email">Email</string>
-    <string name="dangky_fullname">Full name</string>
-    <string name="dangky_phoneNumber">PhoneNumber</string>
-    <string name="dangky_signinButton">Create Account</string>
-    <string name="dangky_cancelButton">Quit</string>
+    <string name="dangky_fullname">Họ Tên</string>
+    <string name="dangky_phoneNumber">SĐT</string>
+    <string name="dangky_signinButton">Tạo Tài Khoảng</string>
+    <string name="dangky_cancelButton">Thoát</string>
 
     <string name="main2_viewUserProfile">Xem thông tin người dùng</string>
     <string name="main2_createTour">Tạo một chuyến đi mới</string>
@@ -27,11 +26,11 @@
 
     <string name="tourItem_hint_title">Tên tour</string>
     <string name="tourItem_hint_price">Giá: </string>
-    <string name="tourItem_hint_priceMin">100.000</string>
-    <string name="tourItem_hint_priceMax">200.000</string>
+    <string name="tourItem_hint_priceMin">000.000</string>
+    <string name="tourItem_hint_priceMax">000.000</string>
     <string name="tourItem_hint_time">Thời gian: </string>
-    <string name="tourItem_hint_timeMin">1/1/2019</string>
-    <string name="tourItem_hint_timeMax">1/1/2019</string>
+    <string name="tourItem_hint_timeMin">00/00/2019</string>
+    <string name="tourItem_hint_timeMax">00/00/2019</string>
     <string name="tourItem_separator">~</string>
     <string name="tourItem_avatarDescription">Ảnh đại điện chuyến đi</string>
     <string name="tourItem_money">Đ</string>
@@ -103,15 +102,15 @@
     <string name="mapGetLocation_targetIconDescription">thể hiện vị trí người dùng chọn</string>
 
     <string name="profile_email">Email:</string>
-    <string name="profile_sdt">PhoneNumber:</string>
-    <string name="profile_Phai">Gender:</string>
-    <string name="profile_date">Date:</string>
-    <string name="profile_address">Address:</string>
-    <string name="profile_email_value">Email is NULL</string>
-    <string name="profile_sdt_value">PhoneNumber is NULL</string>
-    <string name="profile_Phai_value">Gender(1: Male, 0:Female)</string>
-    <string name="profile_date_value">Date is NULL</string>
-    <string name="profile_address_value">Address is NULL</string>
+    <string name="profile_sdt">SĐT:</string>
+    <string name="profile_Phai">Phái:</string>
+    <string name="profile_date">Ngày Sinh:</string>
+    <string name="profile_address">Địa Chỉ:</string>
+    <string name="profile_email_value">Không có Email</string>
+    <string name="profile_sdt_value">Không có SĐT</string>
+    <string name="profile_Phai_value">Phái</string>
+    <string name="profile_date_value">Không Có Ngày Sinh</string>
+    <string name="profile_address_value">Không Có Địa chỉ</string>
     <string name="title_activity_maps">Map</string>
 
     <string name="tourUpdate_title">Chỉnh sửa chuyến đi</string>
@@ -163,5 +162,6 @@
     <string name="addStopPoint_address_hint">Xin hãy chọn điểm dừng</string>
     <string name="addStopPoint_confirmBtn">Xác nhận</string>
     <string name="addStopPoint_avatar">Ảnh minh họa</string>
+    <string name="title_activity_forgot_pass">forgot_pass</string>
 
 </resources>

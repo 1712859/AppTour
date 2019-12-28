@@ -78,11 +78,11 @@ public class Main2Activity_user extends AppCompatActivity {
                 address.setText(response.body().getAddress());
                 date.setText(response.body().getDob());
                 if (response.body().getGender() == 1) {
-                    gender.setText("Male");
+                    gender.setText("Nam");
                 } else if (response.body().getGender() == 0) {
-                    gender.setText("Female");
+                    gender.setText("Nữ");
                 } else
-                    gender.setText("Unknow");
+                    gender.setText("Không Rõ");
 
             }
 

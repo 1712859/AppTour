@@ -106,7 +106,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@color/backgrounđangki"
                 android:orientation="horizontal"
-                android:layout_marginBottom="50dp">
+                >
 
                 <com.facebook.login.widget.LoginButton
                     android:id="@+id/buttonDangNhapFB"
@@ -121,6 +121,17 @@
                     />
 
             </LinearLayout>
+            <TextView
+                android:id="@+id/QuenMK"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:maxLines="1"
+                android:text="@string/main_QuenMaTKhau"
+                android:layout_marginBottom="30dp"
+                android:textColor="@color/edittextlogin"
+                android:textSize="15dp" />
         </LinearLayout>
 
 

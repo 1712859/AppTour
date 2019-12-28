@@ -3,11 +3,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.tourviet.FacebookLogin;
 import com.example.tourviet.userClient;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Context;
 import com.example.tourviet.MainActivity;
@@ -42,8 +47,10 @@ public class MainActivity extends AppCompatActivity {
     Button buttonDangKi,buttonDangNhap;
     String token,tokenA;
     String image_url;
+    TextView QuenMK;
     LoginButton facebookbutton;
     CallbackManager callbackManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -185,6 +192,19 @@ public class MainActivity extends AppCompatActivity {
 
                     sendNetworkRequestLoginFB(facebookLogin);
                 }
+                QuenMK.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(MainActivity.this,ForgotPass.class);
+                        startActivity(intent);
+
+
+
+
+                    }
+                });
+
 
             }
 
@@ -236,8 +256,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //        button đăng nhập bằng google và facebook
-        //        ..........
+        QuenMK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,forgot_pass.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void Anhxa() {
@@ -246,6 +271,7 @@ public class MainActivity extends AppCompatActivity {
         buttonDangKi = (Button)findViewById((R.id.buttonDangKi));
         buttonDangNhap = (Button)findViewById(R.id.buttonDangNhap);
         facebookbutton = (LoginButton) findViewById(R.id.buttonDangNhapFB);
+        QuenMK = (TextView) findViewById(R.id.QuenMK);
 
 
 

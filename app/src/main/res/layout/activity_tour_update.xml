@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TourUpdateActivity">
+    tools:context=".TourUpdateActivity"
+    android:background="@color/backgrounđangki">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,6 +14,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:textColor="@color/textwhile"
+            android:textSize="25dp"
+            android:textStyle="bold"
             android:gravity="center_vertical|center_horizontal"
             android:text="@string/tourUpdate_title" />
 
@@ -26,6 +30,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:padding="5dp"
+                android:textColor="@color/textwhile"
                 android:text="@string/tourUpdate_tourName" />
 
             <EditText
@@ -33,6 +38,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textColor="@color/textwhile"
                 android:inputType="text" />
 
         </LinearLayout>
@@ -47,6 +53,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:padding="5dp"
+                android:textColor="@color/textwhile"
                 android:text="@string/tourUpdate_startDate" />
 
             <EditText
@@ -54,6 +61,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textColor="@color/textwhile"
                 android:inputType="text" />
 
         </LinearLayout>
@@ -68,6 +76,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:padding="5dp"
+                android:textColor="@color/textwhile"
                 android:text="@string/tourUpdate_endDate" />
 
             <EditText
@@ -75,6 +84,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textColor="@color/textwhile"
                 android:inputType="text" />
 
         </LinearLayout>
@@ -89,6 +99,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:padding="5dp"
+                android:textColor="@color/textwhile"
                 android:text="@string/tourUpdate_adults" />
 
             <EditText
@@ -96,6 +107,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textColor="@color/textwhile"
                 android:inputType="text" />
 
         </LinearLayout>
@@ -110,6 +122,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:padding="5dp"
+                android:textColor="@color/textwhile"
                 android:text="@string/tourUpdate_childs" />
 
             <EditText
@@ -117,6 +130,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textColor="@color/textwhile"
                 android:inputType="text" />
 
         </LinearLayout>
@@ -124,6 +138,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:textColor="@color/textwhile"
             android:orientation="horizontal">
 
             <TextView
@@ -131,6 +146,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:padding="5dp"
+                android:textColor="@color/textwhile"
                 android:text="@string/tourUpdate_minCost" />
 
             <EditText
@@ -138,6 +154,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textColor="@color/textwhile"
                 android:inputType="text" />
 
         </LinearLayout>
@@ -152,6 +169,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:padding="5dp"
+                android:textColor="@color/textwhile"
                 android:text="@string/tourUpdate_maxCost" />
 
             <EditText
@@ -159,6 +177,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textColor="@color/textwhile"
                 android:inputType="text" />
 
         </LinearLayout>
@@ -166,6 +185,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:textColor="@color/textwhile"
             android:orientation="horizontal">
 
             <TextView
@@ -173,6 +193,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:padding="5dp"
+                android:textColor="@color/textwhile"
                 android:text="@string/tourUpdate_avatar" />
 
             <EditText
@@ -180,6 +201,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textColor="@color/textwhile"
                 android:inputType="text" />
 
         </LinearLayout>
@@ -194,12 +216,14 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:padding="5dp"
+                android:textColor="@color/textwhile"
                 android:text="@string/tourUpdate_status" />
 
             <Spinner
                 android:id="@+id/tourUpdate_statusSpn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:textColor="@color/textwhile"
                 android:layout_weight="1" />
 
         </LinearLayout>
@@ -214,6 +238,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textColor="@color/textwhile"
                 android:text="@string/tourUpdate_privateBtn" />
 
             <RadioButton
@@ -221,6 +246,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textColor="@color/textwhile"
                 android:text="@string/tourUpdate_publicBtn" />
 
         </RadioGroup>
@@ -229,12 +255,24 @@
             android:id="@+id/tourUpdate_pickStartEndBtn"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_stye"
             android:text="@string/tourUpdate_pickStartEndBtn" />
 
         <Button
             android:id="@+id/tourUpdate_confirmBtn"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_stye"
             android:text="@string/tourUpdate_confirmBtn" />
 
     </LinearLayout>

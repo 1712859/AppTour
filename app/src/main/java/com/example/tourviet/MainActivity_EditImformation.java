@@ -80,9 +80,9 @@ public class MainActivity_EditImformation extends AppCompatActivity {
 //                    gender.setText("Male");
 //                }
 //                else gender.setText("Female");
-                String[] items = new String[]{"Female","Male"};
+                String[] items = new String[]{"Nữ","Nam"};
                 if(response.body().getGender()==1)
-                { items = new String[]{"Male", "Female"};}
+                { items = new String[]{"Nam", "Nữ"};}
 
 
                 ArrayAdapter<String>adapter = new ArrayAdapter<String>(MainActivity_EditImformation.this,

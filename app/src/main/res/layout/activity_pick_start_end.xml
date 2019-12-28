@@ -5,17 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/backgrounddangnhap"
     tools:context=".PickStartEndActivity">
 
     <Button
         android:id="@+id/pickStartEnd_pickStartPointBtn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:background="@drawable/button_stye"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/pickStartEnd_pickStartPointBtn"/>
     <Button
         android:id="@+id/pickStartEnd_pickEndPointBtn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:background="@drawable/button_stye"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/pickStartEnd_pickEndPointBtn"/>
     <TextView
         android:id="@+id/pickStartEnd_startPointInfo"
@@ -31,6 +42,11 @@
         android:id="@+id/pickStartEnd_confirmBtn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:background="@drawable/button_stye"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/pickStartEnd_confirmBtn"/>
 
 </LinearLayout>

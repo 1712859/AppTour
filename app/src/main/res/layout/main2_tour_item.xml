@@ -41,6 +41,8 @@
             android:layout_marginTop="12dp"
             android:hint="@string/tourItem_hint_title"
             android:textSize="20sp"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tourItem_avatar" />
@@ -53,6 +55,8 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="16dp"
             android:hint="@string/tourItem_hint_price"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
             app:layout_constraintStart_toStartOf="parent"
 
             app:layout_constraintTop_toBottomOf="@+id/tourItem_title" />
@@ -66,6 +70,8 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
             android:hint="@string/tourItem_hint_time"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tourItem_price" />
@@ -78,6 +84,8 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="16dp"
             android:hint="@string/tourItem_hint_priceMin"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
             app:layout_constraintStart_toEndOf="@+id/tourItem_price"
             app:layout_constraintTop_toBottomOf="@+id/tourItem_title" />
         <TextView
@@ -88,6 +96,8 @@
             android:layout_marginLeft="2dp"
             android:layout_marginTop="16dp"
             android:hint="@string/tourItem_money"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
             app:layout_constraintStart_toEndOf="@+id/tourItem_priceMin"
             app:layout_constraintTop_toBottomOf="@+id/tourItem_title" />
 
@@ -99,6 +109,8 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="16dp"
             android:hint="@string/tourItem_separator"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
             app:layout_constraintStart_toEndOf="@+id/Đ1"
             app:layout_constraintTop_toBottomOf="@+id/tourItem_title" />
 
@@ -110,6 +122,8 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="16dp"
             android:hint="@string/tourItem_hint_priceMax"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
             app:layout_constraintStart_toEndOf="@+id/tourItem_separator_1"
             app:layout_constraintTop_toBottomOf="@+id/tourItem_title" />
         <TextView
@@ -120,6 +134,8 @@
             android:layout_marginLeft="2dp"
             android:layout_marginTop="16dp"
             android:hint="@string/tourItem_money"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
             app:layout_constraintStart_toEndOf="@+id/tourItem_priceMax"
             app:layout_constraintTop_toBottomOf="@+id/tourItem_title" />
 
@@ -132,6 +148,8 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
             android:hint="@string/tourItem_hint_timeMin"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tourItem_time"
             app:layout_constraintTop_toBottomOf="@+id/tourItem_priceMin" />
@@ -145,6 +163,8 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
             android:hint="@string/tourItem_separator"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tourItem_timeMin"
             app:layout_constraintTop_toBottomOf="@+id/tourItem_separator_1" />
@@ -158,6 +178,8 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
             android:hint="@string/tourItem_hint_timeMax"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tourItem_separator_2"
             app:layout_constraintTop_toBottomOf="@+id/tourItem_priceMax" />
