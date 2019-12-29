@@ -1,7 +1,7 @@
 package com.example.tourviet;
 
 public class gest_user {
-    private int id;
+    private long id;
     private String fullName;
     private String email;
     private String phone;
@@ -10,7 +10,7 @@ public class gest_user {
     private String avatar;
     private int typeLogin;
 
-    public gest_user(int id, String fullName, String email, String phone, int gender, String dob, String avatar, int typeLogin) {
+    public gest_user(long id, String fullName, String email, String phone, int gender, String dob, String avatar, int typeLogin) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
@@ -21,11 +21,11 @@ public class gest_user {
         this.typeLogin = typeLogin;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

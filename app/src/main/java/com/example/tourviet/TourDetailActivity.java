@@ -73,50 +73,15 @@ public class TourDetailActivity extends AppCompatActivity {
             addUser.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    final String[] IdUser = new String[1];
-                    Retrofit retrofit = new Retrofit.Builder()
-                            .baseUrl("http://35.197.153.192:3000")
-                            .addConverterFactory(GsonConverterFactory.create())
-                            .build();
-                    userClient client = retrofit.create((userClient.class));
 
-                    Call<User_infor> call = client.GetUserInfor(token);
-                    call.enqueue(new Callback<User_infor>() {
-                        @Override
-                        public void onResponse(Call<User_infor> call, Response<User_infor> response) {
-                        long a = response.body().getId();
-                        IdUser[0] = String.valueOf(a);
-                        }
+                    Intent intent = new Intent(TourDetailActivity.this,InviteToTour.class);
+                    Bundle bundle1 = new Bundle();
+                    bundle1.putString("Key_1", token);
+                    intent.putExtras(bundle1);
+                    bundle1.putString("Key_2", String.valueOf(id));
+                    intent.putExtras(bundle1);
+                    startActivity(intent);
 
-                        @Override
-                        public void onFailure(Call<User_infor> call, Throwable t) {
-
-                        }
-                    });
-                    add_member_class add = new add_member_class(
-                            String.valueOf(id),
-                            IdUser[0],
-                            true
-
-                    );
-                    Call<add_member_class> call_ = client.addmember(token,add);
-                    call.enqueue(new Callback<User_infor>() {
-                        @Override
-                        public void onResponse(Call<User_infor> call, Response<User_infor> response) {
-                            if (!response.isSuccessful()) {
-                                Toast.makeText(TourDetailActivity.this, "lỗi dữ liệu", Toast.LENGTH_LONG).show();
-                                return;
-                            }else
-                            {
-                                Toast.makeText(TourDetailActivity.this, "Gửi lời mời thành công", Toast.LENGTH_LONG).show();
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<User_infor> call, Throwable t) {
-
-                        }
-                    });
 
                 }
             });

@@ -22,6 +22,7 @@ public class opt_requet extends AppCompatActivity {
     EditText Pass,OTP;
     Button Oke;
     String email_user;
+    Long id;
     List<gest_user> userData = new ArrayList<>();
     gest_user User;
     @Override
@@ -50,14 +51,22 @@ public class opt_requet extends AppCompatActivity {
             public void onResponse(Call<Userlistget> call, Response<Userlistget> response) {
             Userlistget user = response.body();
             userData.clear();
+                final boolean b = userData.addAll(user.getUsers());
+                if(b==false)
+                {
+                    Toast.makeText(opt_requet.this, "Email hay SDT không đúng!!! xin nhâp lại", Toast.LENGTH_LONG).show();
+                    return;
+                };
+                userData.clear();
             userData.addAll(user.getUsers());
             User = userData.get(0);
-                Pass.setText("aaaa");
+                id = User.getId();
             }
 
             @Override
             public void onFailure(Call<Userlistget> call, Throwable t) {
-                Pass.setText("bbbb");
+
+
             }
         });
 
@@ -65,7 +74,7 @@ public class opt_requet extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 verify_otp_recovery verifyOtpRecovery = new verify_otp_recovery(
-                        369,
+                        id,
                         Pass.getText().toString(),
                         OTP.getText().toString()
                 );
