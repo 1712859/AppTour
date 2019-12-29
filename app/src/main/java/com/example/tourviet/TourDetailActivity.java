@@ -145,10 +145,18 @@ public class TourDetailActivity extends AppCompatActivity {
         listSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                try {
-                    infoList.setAdapter(adapters.get((position)));
-                } catch (Exception e) {
-                    e.printStackTrace();
+                switch (position) {
+                    case 0:
+                        infoList.setAdapter(stopPointAdapter);
+                        break;
+                    case 1:
+                        infoList.setAdapter(commentAdapter);
+                        break;
+                    case 2:
+                        infoList.setAdapter(memberAdapter);
+                        break;
+                    default:
+                        break;
                 }
             }
 

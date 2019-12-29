@@ -51,7 +51,7 @@ class CommentAdapter extends BaseAdapter {
 
             viewHolder.avatar = convertView.findViewById(R.id.comment_avatar);
             viewHolder.id = convertView.findViewById(R.id.comment_id);
-            viewHolder.name = convertView.findViewById(R.id.member_name);
+            viewHolder.name = convertView.findViewById(R.id.comment_name);
             viewHolder.comment = convertView.findViewById(R.id.comment_comment);
 
             convertView.setTag(viewHolder);
@@ -63,8 +63,8 @@ class CommentAdapter extends BaseAdapter {
 
         Picasso.get().load(comment.getAvatar()).fit().into(viewHolder.avatar);
         viewHolder.id.setText(String.valueOf(comment.getId()));
-        viewHolder.name.setText(comment.getName());
-        viewHolder.comment.setText(comment.getComment());
+        viewHolder.name.setText(String.valueOf(comment.getName()));
+        viewHolder.comment.setText(String.valueOf(comment.getComment()));
 
         return convertView;
     }

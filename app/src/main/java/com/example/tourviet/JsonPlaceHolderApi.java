@@ -34,4 +34,7 @@ public interface JsonPlaceHolderApi {
 
     @GET("/user/info")
     Call<UserInfoGET> userInfo(@Header("Authorization") String token);
+
+    @POST("/tour/comment")
+    Call<Object> SendComment(@Body CommentBody commentBody, @Header("Authorization") String token);
 }
