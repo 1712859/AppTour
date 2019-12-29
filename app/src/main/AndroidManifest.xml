@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".forgot_pass"></activity>
+        <activity android:name=".opt_requet"></activity>
+        <activity android:name=".forgot_pass" />
         <activity android:name=".AddStopPointActivity" />
         <activity android:name=".TourUpdateActivity" />
         <activity android:name=".Main3Activity_ChangePass" />

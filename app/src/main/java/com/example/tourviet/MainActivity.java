@@ -123,13 +123,13 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<LoginClient> call, Response<LoginClient> response) {
                         if (!response.isSuccessful()) {
-                            Toast.makeText(MainActivity.this, "Tài khoản chưa đăng kí", Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this, "Tài khoản chưa đăng kí hoặc sai mật khẩu", Toast.LENGTH_LONG).show();
                             return;
                         }else
                         {
                             // trả biến Authorization
                             token =response.body().getToken();
-                            Toast.makeText(MainActivity.this, "Đăng nhập thành công. xin chào "+response.body().getUserId(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this, "Đăng nhập thành công. xin chào ", Toast.LENGTH_LONG).show();
 
                             //mở Acctivity mới - truyền token qua Main2Activity
                             Intent intent = new Intent(MainActivity.this,Main2Activity.class);
@@ -260,6 +260,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,forgot_pass.class);
+
                 startActivity(intent);
             }
         });

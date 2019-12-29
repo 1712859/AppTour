@@ -7,9 +7,11 @@ import java.io.File;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface userClient {
    @POST("/user/register")
@@ -36,8 +38,13 @@ public interface userClient {
    @POST("/user/request-otp-recovery")
    Call<ForgotPass> forgotPass(@Body ForgotPass forgotPass);
 
-//   @GET("/tour/history-user")
-//   Call<TourListGet> getUserTour(@Header("Authorization") String Token,@Body User_tour usertour);
+   @HTTP(method = "GET", path = "/user/search", hasBody = true)
+   Call<Userlistget> searchUser(@Query("searchKey") Userlistget userlistget, @Query("pageIndex") int index, @Query("pageSize") String size);
 
+   @POST("/user/verify-otp-recovery")
+   Call<verify_otp_recovery> requet_otp(@Body verify_otp_recovery verifyOtpRecovery);
+
+   @POST("/tour/add/member")
+   Call<add_member_class> addmember(@Header("Authorization")String Token,@Body add_member_class add_member );
 
 }

@@ -144,7 +144,7 @@ public class Main3Activity_changeAvatar extends AppCompatActivity {
 
     private void uploadImage() {
 
-       // File FinalFile = new File(linkimage);
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://35.197.153.192:3000")
                 .addConverterFactory(GsonConverterFactory.create())

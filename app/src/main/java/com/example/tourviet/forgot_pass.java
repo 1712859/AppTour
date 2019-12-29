@@ -57,7 +57,10 @@ public class forgot_pass extends AppCompatActivity {
                         }
                         else {
                             Toast.makeText(forgot_pass.this, "gửi thành công ("+ response.body().getExpiredOn()+")", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(forgot_pass.this, MainActivity.class);
+                            Intent intent = new Intent(forgot_pass.this,opt_requet.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putString("email_User",editText.getText().toString() );
+                            intent.putExtras(bundle);
                             startActivity(intent);
                         }
                     }

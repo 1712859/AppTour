@@ -8,7 +8,10 @@
     tools:actionBarNavMode="standard"
 
     tools:context=".TourDetailActivity">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <ImageView
         android:id="@+id/tourDetail_image"
         android:layout_width="match_parent"
@@ -225,8 +228,8 @@
         android:background="@drawable/button_stye"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+
+
         android:text="@string/tourDetail_addStopPointBtn" />
 
     <LinearLayout
@@ -242,8 +245,7 @@
             android:background="@drawable/button_stye"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+
 
             android:text="@string/tourDetail_updateTourBtn" />
 
@@ -257,9 +259,20 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-
             android:text="@string/tourDetail_deleteTourBtn" />
-
+        <Button
+            android:id="@+id/tourDetail_addUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/button_stye"
+            android:text="Thêm thành viên"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            />
     </LinearLayout>
+
+</LinearLayout>
+
 
 </LinearLayout>

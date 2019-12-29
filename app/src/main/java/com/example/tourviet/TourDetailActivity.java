@@ -32,7 +32,7 @@ public class TourDetailActivity extends AppCompatActivity {
     TextView tourId, tourName, minCost, maxCost, startDate, endDate, adult, child, status;
     ImageView tourImage;
     ListView stopPointList;
-    Button addStopPointBtn, deleteTourBtn, updateTourBtn;
+    Button addStopPointBtn, deleteTourBtn, updateTourBtn,addUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +70,56 @@ public class TourDetailActivity extends AppCompatActivity {
 
                 }
             });
+            addUser.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final String[] IdUser = new String[1];
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl("http://35.197.153.192:3000")
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+                    userClient client = retrofit.create((userClient.class));
+
+                    Call<User_infor> call = client.GetUserInfor(token);
+                    call.enqueue(new Callback<User_infor>() {
+                        @Override
+                        public void onResponse(Call<User_infor> call, Response<User_infor> response) {
+                        long a = response.body().getId();
+                        IdUser[0] = String.valueOf(a);
+                        }
+
+                        @Override
+                        public void onFailure(Call<User_infor> call, Throwable t) {
+
+                        }
+                    });
+                    add_member_class add = new add_member_class(
+                            String.valueOf(id),
+                            IdUser[0],
+                            true
+
+                    );
+                    Call<add_member_class> call_ = client.addmember(token,add);
+                    call.enqueue(new Callback<User_infor>() {
+                        @Override
+                        public void onResponse(Call<User_infor> call, Response<User_infor> response) {
+                            if (!response.isSuccessful()) {
+                                Toast.makeText(TourDetailActivity.this, "lỗi dữ liệu", Toast.LENGTH_LONG).show();
+                                return;
+                            }else
+                            {
+                                Toast.makeText(TourDetailActivity.this, "Gửi lời mời thành công", Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<User_infor> call, Throwable t) {
+
+                        }
+                    });
+
+                }
+            });
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -98,6 +148,7 @@ public class TourDetailActivity extends AppCompatActivity {
         addStopPointBtn = findViewById(R.id.tourDetail_addStopPointBtn);
         deleteTourBtn = findViewById(R.id.tourDetail_deleteTourBtn);
         updateTourBtn = findViewById(R.id.tourDetail_updateTourBtn);
+        addUser = (Button)findViewById(R.id.tourDetail_addUser);
     }
 
     private void setupStopPointList() {

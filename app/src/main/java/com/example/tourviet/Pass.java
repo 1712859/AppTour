@@ -6,6 +6,7 @@ public class Pass {
     private String newPassword;
 
 
+
     public Pass(int userId, String ocurrentPassword, String newPassword) {
         this.userId = userId;
         this.cocurrentPassword = ocurrentPassword;
