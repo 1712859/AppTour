@@ -44,7 +44,7 @@ public class opt_requet extends AppCompatActivity {
                 .build();
 
         userClient client =builder.create((userClient.class));
-        final Call<Userlistget> call= client.searchUser(userlistget,1,"10");
+        final Call<Userlistget> call= client.searchUser(userlistget.searchKey,1,10);
         call.enqueue(new Callback<Userlistget>() {
             @Override
             public void onResponse(Call<Userlistget> call, Response<Userlistget> response) {

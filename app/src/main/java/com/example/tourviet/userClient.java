@@ -38,8 +38,8 @@ public interface userClient {
    @POST("/user/request-otp-recovery")
    Call<ForgotPass> forgotPass(@Body ForgotPass forgotPass);
 
-   @HTTP(method = "GET", path = "/user/search", hasBody = true)
-   Call<Userlistget> searchUser(@Query("searchKey") Userlistget userlistget, @Query("pageIndex") int index, @Query("pageSize") String size);
+   @GET("/user/search")
+   Call<Userlistget> searchUser(@Query("searchKey") String searchKey, @Query("pageIndex") int index, @Query("pageSize") int size);
 
    @POST("/user/verify-otp-recovery")
    Call<verify_otp_recovery> requet_otp(@Body verify_otp_recovery verifyOtpRecovery);
