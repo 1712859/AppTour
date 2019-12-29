@@ -3,9 +3,13 @@ package com.example.tourviet;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,16 +27,23 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class TourDetailActivity extends AppCompatActivity {
 
     private static final int UPDATE_TOUR_REQUEST_CODE = 6666;
-    TourInfo myTour = new TourInfo();
-    StopPointAdapter stopPointAdapter;
-    List<StopPoint> myStopPoint = new ArrayList<>();
     String token;
     long id;
 
+    TourInfo myTour = new TourInfo();
+    StopPointAdapter stopPointAdapter;
+    CommentAdapter commentAdapter;
+    MemberAdapter memberAdapter;
+    List<BaseAdapter> adapters = new ArrayList<>();
+    List<StopPoint> myStopPoint = new ArrayList<>();
+    List<TourComment> myComments = new ArrayList<>();
+    List<TourMember> myMembers = new ArrayList<>();
+
     TextView tourId, tourName, minCost, maxCost, startDate, endDate, adult, child, status;
     ImageView tourImage;
-    ListView stopPointList;
-    Button addStopPointBtn, deleteTourBtn, updateTourBtn,addUser;
+    Spinner listSpinner;
+    ListView infoList;
+    Button addStopPointBtn, addCommentBtn, updateTourBtn, addUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +53,10 @@ public class TourDetailActivity extends AppCompatActivity {
         try {
             setupVariable();
             findView();
-            setupStopPointList();
+            setupListSpinner();
+            setupAdapter();
+
+            listSpinner.setSelection(0);
 
             addStopPointBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -64,24 +78,26 @@ public class TourDetailActivity extends AppCompatActivity {
                 }
             });
 
-            deleteTourBtn.setOnClickListener(new View.OnClickListener() {
+            addCommentBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Intent intent = new Intent(TourDetailActivity.this, AddCommentActivity.class);
+                    intent.putExtra("token", token);
+                    intent.putExtra("id", myTour.getId());
+                    startActivity(intent);
                 }
             });
             addUser.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
-                    Intent intent = new Intent(TourDetailActivity.this,InviteToTour.class);
+                    Intent intent = new Intent(TourDetailActivity.this, InviteToTour.class);
                     Bundle bundle1 = new Bundle();
                     bundle1.putString("Key_1", token);
                     intent.putExtras(bundle1);
                     bundle1.putString("Key_2", String.valueOf(id));
                     intent.putExtras(bundle1);
                     startActivity(intent);
-
 
                 }
             });
@@ -109,16 +125,48 @@ public class TourDetailActivity extends AppCompatActivity {
         startDate = findViewById(R.id.tourDetail_startDate);
         endDate = findViewById(R.id.tourDetail_endDate);
         status = findViewById(R.id.tourDetail_status);
-        stopPointList = findViewById(R.id.tourDetail_stopPointList);
+        listSpinner = findViewById(R.id.tourDetail_listSpinner);
+        infoList = findViewById(R.id.tourDetail_infoList);
         addStopPointBtn = findViewById(R.id.tourDetail_addStopPointBtn);
-        deleteTourBtn = findViewById(R.id.tourDetail_deleteTourBtn);
+        addCommentBtn = findViewById(R.id.tourDetail_addCommentBtn);
         updateTourBtn = findViewById(R.id.tourDetail_updateTourBtn);
-        addUser = (Button)findViewById(R.id.tourDetail_addUser);
+        addUser = findViewById(R.id.tourDetail_addUser);
     }
 
-    private void setupStopPointList() {
+    private void setupListSpinner() {
+        ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(
+                this,
+                R.array.tourDetail_infoSpinner,
+                android.R.layout.simple_spinner_item);
+
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        listSpinner.setAdapter(arrayAdapter);
+
+        listSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                try {
+                    infoList.setAdapter(adapters.get((position)));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+    private void setupAdapter() {
         stopPointAdapter = new StopPointAdapter(TourDetailActivity.this, myStopPoint);
-        stopPointList.setAdapter(stopPointAdapter);
+        commentAdapter = new CommentAdapter(TourDetailActivity.this, myComments);
+        memberAdapter = new MemberAdapter(TourDetailActivity.this, myMembers);
+
+        adapters.add(stopPointAdapter);
+        adapters.add(commentAdapter);
+        adapters.add(memberAdapter);
     }
 
     @Override
@@ -175,6 +223,14 @@ public class TourDetailActivity extends AppCompatActivity {
         myStopPoint.clear();
         myStopPoint.addAll(myTour.getStopPoints());
         stopPointAdapter.notifyDataSetChanged();
+
+        myComments.clear();
+        myComments.addAll(myTour.getComments());
+        commentAdapter.notifyDataSetChanged();
+
+        myMembers.clear();
+        myMembers.addAll(myTour.getMembers());
+        memberAdapter.notifyDataSetChanged();
     }
 
 }

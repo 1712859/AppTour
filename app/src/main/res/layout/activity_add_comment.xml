@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddCommentActivity">
+
+    <EditText
+        android:id="@+id/addComment_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="top|start"
+        android:hint="@string/addComment_content_hint"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/addComment_submitBtn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/addComment_submitBtn" />
+
+</LinearLayout>

@@ -59,13 +59,14 @@ public class StopPointAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        Picasso.get().load(stopPoints.get(position).getAvatar()).fit().into(viewHolder.avatar);
-        viewHolder.name.setText(stopPoints.get(position).getName());
-        viewHolder.minCost.setText(stopPoints.get(position).getMinCost());
-        viewHolder.maxCost.setText(stopPoints.get(position).getMaxCost());
-        viewHolder.arrivalAt.setText(stopPoints.get(position).getArrivalAt());
-        viewHolder.leaveAt.setText(stopPoints.get(position).getLeaveAt());
+        StopPoint stopPoint = stopPoints.get(position);
 
+        Picasso.get().load(stopPoint.getAvatar()).fit().into(viewHolder.avatar);
+        viewHolder.name.setText(stopPoint.getName());
+        viewHolder.minCost.setText(stopPoint.getMinCost());
+        viewHolder.maxCost.setText(stopPoint.getMaxCost());
+        viewHolder.arrivalAt.setText(stopPoint.getArrivalAt());
+        viewHolder.leaveAt.setText(stopPoint.getLeaveAt());
 
         return convertView;
     }

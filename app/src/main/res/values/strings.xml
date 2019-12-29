@@ -55,7 +55,7 @@
     <string name="tourDetail_startDate_hint">ngày bắt đầu</string>
     <string name="tourDetail_endDate_hint">ngày kết thúc</string>
     <string name="tourDetail_updateTourBtn">Chỉnh sửa chuyến đi</string>
-    <string name="tourDetail_deleteTourBtn">Xóa chuyến đi</string>
+    <string name="tourDetail_addCommentBtn">Thêm bình luận</string>
     <string name="tourDetail_stopPointListText">Danh sách điểm dừng</string>
     <string name="tourDetail_addStopPointBtn">Thêm điểm dừng</string>
     <string name="tourDetail_status">trạng thái:</string>
@@ -68,6 +68,11 @@
         <item>…</item>
         <item>…</item>
         <item>…</item>
+    </string-array>
+    <string-array name="tourDetail_infoSpinner">
+        <item>Danh sách điểm dừng</item>
+        <item>Bình luận</item>
+        <item>Các thành viên</item>
     </string-array>
 
     <string name="facebook_app_id">737774043369479</string>
@@ -163,5 +168,18 @@
     <string name="addStopPoint_confirmBtn">Xác nhận</string>
     <string name="addStopPoint_avatar">Ảnh minh họa</string>
     <string name="title_activity_forgot_pass">forgot_pass</string>
+
+    <string name="comment_avatar_hint">Ảnh đại diện</string>
+    <string name="comment_id_hint">ID bình luận</string>
+    <string name="comment_name_hint">Tên bình luận</string>
+    <string name="comment_comment_hint">Nội dung bình luận</string>
+
+    <string name="member_avatar_hint">Ảnh đại diện</string>
+    <string name="member_id_hint">ID nhân viên</string>
+    <string name="member_name_hint">Tên nhân viên</string>
+    <string name="member_phone_hint">SĐT</string>
+
+    <string name="addComment_content_hint">Nội dung bình luận</string>
+    <string name="addComment_submitBtn">Đăng bình luận</string>
 
 </resources>

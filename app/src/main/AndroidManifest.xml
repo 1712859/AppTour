@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".InviteToTour"></activity>
+        <activity android:name=".AddCommentActivity"></activity>
+        <activity android:name=".InviteToTour" />
         <activity android:name=".opt_requet" />
         <activity android:name=".forgot_pass" />
         <activity android:name=".AddStopPointActivity" />

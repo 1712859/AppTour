@@ -17,9 +17,27 @@ public class TourInfo {
     private int childs;
     private boolean isPrivate;
     private List<StopPoint> stopPoints = new ArrayList<>();
+    private List<TourComment> comments = new ArrayList<>();
+    private List<TourMember> members = new ArrayList<>();
 
     public TourInfo() {
 
+    }
+
+    public List<TourComment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<TourComment> comments) {
+        this.comments = comments;
+    }
+
+    public List<TourMember> getMembers() {
+        return members;
+    }
+
+    public void setMembers(List<TourMember> members) {
+        this.members = members;
     }
 
     public long getId() {

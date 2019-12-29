@@ -8,6 +8,7 @@
         android:id="@+id/stopPoint_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:text="@string/stopPoint_name" />
 
     <LinearLayout
@@ -17,8 +18,8 @@
 
         <ImageView
             android:id="@+id/stopPoint_avatar"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:contentDescription="@string/stopPoint_avatarDescription" />
 
         <LinearLayout

@@ -1,11 +1,13 @@
 package com.example.tourviet;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
 
 class AddStopPointBody {
-    long tourId;
-    List<MyStopPoint> myStopPoints = new ArrayList<>();
+    private long tourId;
+    private List<MyStopPoint> stopPoints = new ArrayList<>();
 
     public AddStopPointBody() {
 
@@ -31,22 +33,23 @@ class AddStopPointBody {
         myStopPoint.lng = lng;
         myStopPoint.minCost = minCost;
         myStopPoint.maxCost = maxCost;
-        myStopPoint.avatar=avatar;
+        //myStopPoint.avatar=avatar;
 
-        myStopPoints.add(myStopPoint);
+        stopPoints.add(myStopPoint);
     }
 
 
     private static class MyStopPoint {
-        String name;
-        long arrivalAt;
-        long leaveAt;
-        double lat;
-        double lng;
-        long minCost;
-        long maxCost;
-        String avatar;
-        int serviceTypeId = 1;
+        public String name;
+        public long arrivalAt;
+        public long leaveAt;
+        public double lat;
+        @SerializedName("long")
+        public double lng;
+        public long minCost;
+        public long maxCost;
+        //public String avatar;
+        public int serviceTypeId = 1;
     }
 
     public long getTourId() {
@@ -58,10 +61,10 @@ class AddStopPointBody {
     }
 
     public List<MyStopPoint> getMyStopPoints() {
-        return myStopPoints;
+        return stopPoints;
     }
 
     public void setMyStopPoints(List<MyStopPoint> myStopPoints) {
-        this.myStopPoints = myStopPoints;
+        this.stopPoints = myStopPoints;
     }
 }

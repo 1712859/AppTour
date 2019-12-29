@@ -31,4 +31,7 @@ public interface JsonPlaceHolderApi {
 
     @POST("/tour/set-stop-points")
     Call<Object> addStopPoint(@Body AddStopPointBody addStopPointBody, @Header("Authorization") String token);
+
+    @GET("/user/info")
+    Call<UserInfoGET> userInfo(@Header("Authorization") String token);
 }
